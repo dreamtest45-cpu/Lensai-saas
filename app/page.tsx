@@ -50,7 +50,7 @@ export default async function LandingPage() {
                 <Wand2 size={18} strokeWidth={2.5} />
                 جرّب مجاناً الآن
               </Link>
-              <span className="text-sm text-white/40">بدون بطاقة ائتمان — 5 صور مجانية شهرياً</span>
+              <span className="text-sm text-white/40">بدون بطاقة ائتمان — 3 صور مجانية شهرياً</span>
             </div>
           </div>
 
