@@ -109,6 +109,12 @@ export default function LoginPage() {
               {loading && <Loader2 className="animate-spin" size={18} />}
               {mode === "signin" ? "دخول" : "إنشاء حساب"}
             </button>
+
+            {mode === "signin" && (
+              <a href="/forgot-password" className="block text-center text-sm text-white/40 hover:text-amber-400 transition-colors">
+                نسيت كلمة المرور؟
+              </a>
+            )}
           </form>
         </div>
       </div>
