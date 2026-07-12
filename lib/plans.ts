@@ -15,7 +15,7 @@ export const PLANS: Record<PlanId, Plan> = {
     id: "free",
     name: "Free",
     nameAr: "مجاني",
-    monthlyGenerations: 5,
+    monthlyGenerations: 3,
     price: 0,
     featuresAr: [
       "5 صور شهرياً",
