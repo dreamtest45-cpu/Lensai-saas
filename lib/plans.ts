@@ -18,7 +18,7 @@ export const PLANS: Record<PlanId, Plan> = {
     monthlyGenerations: 3,
     price: 0,
     featuresAr: [
-      "5 صور شهرياً",
+      "3 صور شهرياً",
       "دمج لوغو أساسي",
       "دقة قياسية",
     ],
