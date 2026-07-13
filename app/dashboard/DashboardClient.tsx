@@ -111,7 +111,7 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
               <Aperture className="text-ink" size={20} />
             </div>
             <div>
-              <h1 className="text-xl font-display font-bold">LensAI</h1>
+              <h1 className="text-xl font-display font-bold">ShelfShot AI</h1>
               <p className="text-xs text-white/40">{email}</p>
             </div>
           </div>
