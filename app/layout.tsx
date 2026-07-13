@@ -6,7 +6,7 @@ const cairo = Cairo({ subsets: ["arabic", "latin"], variable: "--font-display", 
 const plexArabic = IBM_Plex_Sans_Arabic({ subsets: ["arabic", "latin"], variable: "--font-body", weight: ["400", "500", "600"] });
 
 export const metadata: Metadata = {
-  title: "LensAI — استوديو تصوير المنتجات بالذكاء الاصطناعي",
+  title: "ShelfShot AI — استوديو تصوير المنتجات بالذكاء الاصطناعي",
   description: "حوّل صور منتجاتك العادية إلى لقطات تصوير احترافية وسينمائية خلال ثوانٍ، بدون استوديو تصوير أو مصمم.",
 };
 
