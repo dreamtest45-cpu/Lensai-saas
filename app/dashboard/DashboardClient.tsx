@@ -70,7 +70,7 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
     }
   };
 
-  const handleUpgrade = async (targetPlan: "pro" | "business") => {
+  const handleUpgrade = async (targetPlan: "starter" | "economic" | "pro") => {
     setBillingLoading(true);
     try {
       const res = await fetch("/api/stripe/checkout", {
@@ -142,16 +142,19 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
               />
             </div>
           </div>
-          <div className="flex gap-2">
-            {plan !== "business" && (
-              <button
-                disabled={billingLoading}
-                onClick={() => handleUpgrade(plan === "free" ? "pro" : "business")}
-                className="text-sm font-semibold bg-amber-500 text-ink px-4 py-2 rounded-full hover:bg-amber-400 disabled:opacity-60"
-              >
-                ترقية الخطة
-              </button>
-            )}
+          <div className="flex gap-2 flex-wrap">
+            {(Object.keys(PLANS) as PlanId[])
+              .filter((id) => id !== "free" && PLANS[id].monthlyGenerations > limit)
+              .map((id) => (
+                <button
+                  key={id}
+                  disabled={billingLoading}
+                  onClick={() => handleUpgrade(id as "starter" | "economic" | "pro")}
+                  className="text-sm font-semibold bg-amber-500 text-ink px-4 py-2 rounded-full hover:bg-amber-400 disabled:opacity-60"
+                >
+                  {PLANS[id].nameAr} — ${PLANS[id].price}
+                </button>
+              ))}
             {plan !== "free" && (
               <button
                 disabled={billingLoading}
