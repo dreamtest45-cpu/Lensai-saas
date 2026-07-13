@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "الرجاء تسجيل الدخول أولاً." }, { status: 401 });
   }
 
-  const { plan } = (await req.json()) as { plan: "pro" | "business" };
-  if (plan !== "pro" && plan !== "business") {
+  const { plan } = (await req.json()) as { plan: "starter" | "economic" | "pro" };
+  if (plan !== "starter" && plan !== "economic" && plan !== "pro") {
     return NextResponse.json({ error: "خطة غير صالحة." }, { status: 400 });
   }
 
