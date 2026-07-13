@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Aperture, Wand2, Layers, ShieldCheck, Zap, ScanLine } from "lucide-react";
+import { Aperture, Wand2, Layers, ShieldCheck, Zap } from "lucide-react";
 import { PLANS } from "@/lib/plans";
 import { createClient } from "@/lib/supabase/server";
+import { BeforeAfterHero } from "@/components/BeforeAfterHero";
 
 export default async function LandingPage() {
   const supabase = createClient();
@@ -16,7 +17,7 @@ export default async function LandingPage() {
             <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
               <Aperture className="text-ink" size={20} strokeWidth={2.5} />
             </div>
-            <span className="font-display font-bold text-xl tracking-tight">LensAI</span>
+            <span className="font-display font-bold text-xl tracking-tight">ShelfShot AI</span>
           </div>
           <Link
             href={user ? "/dashboard" : "/login"}
@@ -27,7 +28,7 @@ export default async function LandingPage() {
         </div>
       </nav>
 
-      {/* Hero — signature element: a literal shutter-line "before / after" split */}
+      {/* Hero */}
       <header className="container mx-auto max-w-6xl px-6 pt-16 pb-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -54,31 +55,14 @@ export default async function LandingPage() {
             </div>
           </div>
 
-          <div className="relative rounded-xl2 overflow-hidden border border-line bg-panel aspect-square">
-            <div className="absolute inset-0 grid grid-cols-2">
-              <div className="relative flex items-center justify-center bg-[#1A1D24] p-8">
-                <div className="w-full aspect-square rounded-xl bg-[#23262E] border border-line/60 flex items-center justify-center">
-                  <span className="text-white/25 text-xs">صورة أصلية</span>
-                </div>
-              </div>
-              <div className="relative flex items-center justify-center bg-gradient-to-br from-amber-900/40 via-panel to-panel p-8">
-                <div className="w-full aspect-square rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-600/10 border border-amber-500/30 flex items-center justify-center shadow-inner">
-                  <span className="text-amber-300/70 text-xs">لقطة LensAI</span>
-                </div>
-              </div>
-            </div>
-            <div className="absolute inset-y-0 right-1/2 w-px bg-amber-500/50" />
-            <div className="absolute top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 w-9 h-9 rounded-full bg-amber-500 flex items-center justify-center shadow-lg">
-              <ScanLine size={16} className="text-ink" />
-            </div>
-          </div>
+          <BeforeAfterHero />
         </div>
       </header>
 
       {/* Features */}
       <section className="border-t border-line/60 py-20">
         <div className="container mx-auto max-w-6xl px-6">
-          <h2 className="font-display font-bold text-2xl mb-10">ليش LensAI؟</h2>
+          <h2 className="font-display font-bold text-2xl mb-10">ليش ShelfShot AI؟</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: Wand2, title: "من فكرة إلى صورة", desc: "اكتب وصف المشهد بالعربي أو الإنجليزي، والذكاء الاصطناعي يبنيه حول منتجك فعلياً." },
@@ -146,7 +130,7 @@ export default async function LandingPage() {
 
       <footer className="border-t border-line/60 py-10">
         <div className="container mx-auto max-w-6xl px-6 text-sm text-white/30 flex items-center justify-between">
-          <span>© {new Date().getFullYear()} LensAI</span>
+          <span>© {new Date().getFullYear()} ShelfShot AI</span>
           <span>مدعوم بواسطة Gemini</span>
         </div>
       </footer>
