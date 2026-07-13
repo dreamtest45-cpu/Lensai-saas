@@ -65,7 +65,7 @@ export default function ResetPasswordPage() {
           <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
             <Aperture className="text-ink" size={22} strokeWidth={2.5} />
           </div>
-          <span className="font-display font-bold text-2xl">LensAI</span>
+          <span className="font-display font-bold text-2xl">ShelfShot AI</span>
         </div>
 
         <div className="bg-panel border border-line rounded-xl2 p-7">
