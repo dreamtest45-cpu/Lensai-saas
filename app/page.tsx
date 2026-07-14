@@ -141,3 +141,6 @@ export default async function LandingPage() {
           <span className="text-sm text-white/30">مدعوم بواسطة Gemini</span>
         </div>
       </footer>
+</div>
+  );
+}
