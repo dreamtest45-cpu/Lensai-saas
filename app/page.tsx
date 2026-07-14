@@ -128,12 +128,16 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      <footer className="border-t border-line/60 py-10">
-        <div className="container mx-auto max-w-6xl px-6 text-sm text-white/30 flex items-center justify-between">
-          <span>© {new Date().getFullYear()} ShelfShot AI</span>
-          <span>مدعوم بواسطة Gemini</span>
+     <footer className="border-t border-line/60 py-10">
+        <div className="container mx-auto max-w-6xl px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <span className="text-sm text-white/30">© {new Date().getFullYear()} ShelfShot AI</span>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/40">
+            <Link href="/about" className="hover:text-white/70">من نحن</Link>
+            <Link href="/contact" className="hover:text-white/70">اتصل بنا</Link>
+            <Link href="/terms" className="hover:text-white/70">شروط الاستخدام</Link>
+            <Link href="/privacy" className="hover:text-white/70">سياسة الخصوصية</Link>
+            <Link href="/refund" className="hover:text-white/70">سياسة الاسترجاع</Link>
+          </div>
+          <span className="text-sm text-white/30">مدعوم بواسطة Gemini</span>
         </div>
       </footer>
-    </div>
-  );
-}
