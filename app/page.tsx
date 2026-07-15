@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Aperture, Wand2, Layers, ShieldCheck, Zap } from "lucide-react";
 import { PLANS } from "@/lib/plans";
 import { createClient } from "@/lib/supabase/server";
-import { BeforeAfterHero } from "@/components/BeforeAfterHero";
+import { ToolTutorialHero } from "@/components/ToolTutorialHero";
 
 export default async function LandingPage() {
   const supabase = createClient();
@@ -55,7 +55,7 @@ export default async function LandingPage() {
             </div>
           </div>
 
-          <BeforeAfterHero />
+          <ToolTutorialHero />
         </div>
       </header>
 
