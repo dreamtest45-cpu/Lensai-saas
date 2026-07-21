@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Aperture, Wand2, Layers, ShieldCheck, Zap } from "lucide-react";
+import { Wand2, Layers, ShieldCheck, Zap } from "lucide-react";
 import { PLANS } from "@/lib/plans";
 import { createClient } from "@/lib/supabase/server";
 import { ToolTutorialHero } from "@/components/ToolTutorialHero";
@@ -14,9 +14,7 @@ export default async function LandingPage() {
       <nav className="border-b border-line/60">
         <div className="container mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-              <Aperture className="text-ink" size={20} strokeWidth={2.5} />
-            </div>
+            <img src="/icon.png" alt="ShelfShot AI" className="w-10 h-10" />
             <span className="font-display font-bold text-xl tracking-tight">ShelfShot AI</span>
           </div>
           <Link
