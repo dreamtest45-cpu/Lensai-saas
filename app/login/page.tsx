@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Aperture, Mail, Lock, Loader2 } from "lucide-react";
+import { Mail, Lock, Loader2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 
@@ -47,9 +47,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center px-6 grain">
       <div className="w-full max-w-sm">
         <div className="flex items-center justify-center gap-3 mb-8">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-            <Aperture className="text-ink" size={22} strokeWidth={2.5} />
-          </div>
+         <img src="/icon.png" alt="ShelfShot AI" className="w-11 h-11" />
           <span className="font-display font-bold text-2xl">ShelfShot AI</span>
         </div>
 
