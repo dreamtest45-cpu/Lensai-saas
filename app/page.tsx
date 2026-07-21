@@ -82,7 +82,7 @@ export default async function LandingPage() {
         <div className="container mx-auto max-w-6xl px-6">
           <h2 className="font-display font-bold text-2xl mb-2">خطط واضحة، بدون مفاجآت</h2>
           <p className="text-white/50 mb-10">غيّر أو ألغِ اشتراكك في أي وقت.</p>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {Object.values(PLANS).map((plan) => (
               <div
                 key={plan.id}
@@ -110,16 +110,21 @@ export default async function LandingPage() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href={user ? "/dashboard" : "/login"}
-                  className={`block text-center font-semibold rounded-full py-2.5 text-sm transition-colors ${
-                    plan.id === "pro"
-                      ? "bg-amber-500 text-ink hover:bg-amber-400"
-                      : "bg-white/5 border border-line hover:bg-white/10"
-                  }`}
-                >
-                  {plan.price === 0 ? "ابدأ مجاناً" : "اشترك الآن"}
-                </Link>
+                {plan.price === 0 ? (
+                  <Link
+                    href={user ? "/dashboard" : "/login"}
+                    className="block text-center font-semibold rounded-full py-2.5 text-sm transition-colors bg-white/5 border border-line hover:bg-white/10"
+                  >
+                    ابدأ مجاناً
+                  </Link>
+                ) : (
+                  <button
+                    disabled
+                    className="w-full text-center font-semibold rounded-full py-2.5 text-sm bg-white/5 border border-line text-white/40 cursor-not-allowed"
+                  >
+                    قريباً
+                  </button>
+                )}
               </div>
             ))}
           </div>
