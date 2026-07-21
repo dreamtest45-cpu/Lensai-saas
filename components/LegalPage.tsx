@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Aperture, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface Props {
   title: string;
@@ -13,9 +13,7 @@ export function LegalPage({ title, updatedAt, children }: Props) {
       <nav className="border-b border-line/60">
         <div className="container mx-auto max-w-3xl px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center">
-              <Aperture className="text-ink" size={18} strokeWidth={2.5} />
-            </div>
+            <img src="/icon.png" alt="ShelfShot AI" className="w-9 h-9" />
             <span className="font-display font-bold text-lg tracking-tight">ShelfShot AI</span>
           </Link>
           <Link href="/" className="text-sm text-white/50 hover:text-white flex items-center gap-1">
