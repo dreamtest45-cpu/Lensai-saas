@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Aperture, Wand2, LogOut, CreditCard, Crown } from "lucide-react";
+import { Wand2, LogOut, CreditCard, Crown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { ImageUploader } from "@/components/ImageUploader";
@@ -107,9 +107,7 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
       <header className="bg-panel border-b border-line sticky top-0 z-50">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between max-w-6xl">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center">
-              <Aperture className="text-ink" size={20} />
-            </div>
+            <img src="/icon.png" alt="ShelfShot AI" className="w-10 h-10" />
             <div>
               <h1 className="text-xl font-display font-bold">ShelfShot AI</h1>
               <p className="text-xs text-white/40">{email}</p>
