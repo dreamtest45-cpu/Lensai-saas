@@ -68,8 +68,8 @@ export async function POST(req: NextRequest) {
   const ai = new GoogleGenAI({ apiKey });
 
   const basePrompt = `
-    You are a world-class professional product photographer and digital artist.
-    Task: Create a photorealistic, cinematic product shot based on the input image(s) and the user's description.
+    You are a professional product photographer shooting with a high-end DSLR camera (e.g. Canon EOS R5) in a real studio.
+    Task: Create a photorealistic product photo based on the input image(s) and the user's description.
 
     Input 1: The main product.
     ${logoBase64 ? "Input 2: The brand logo." : ""}
@@ -77,12 +77,13 @@ export async function POST(req: NextRequest) {
     User Description: "${prompt}"
 
     Instructions:
-    1. Visualize the product in the described setting.
-    2. Lighting must be cinematic, clean, and high-end (studio quality).
-    3. ${logoBase64 ? "Integrate the logo naturally onto the product surface or place it elegantly in the scene if explicitly asked, otherwise ensure the product branding is highlighted." : "Ensure the product looks premium."}
-    4. Return ONLY the generated image.
-    5. Aspect Ratio: 1:1.
-    6. Style: 8k resolution, highly detailed, commercial photography.
+    1. Visualize the product in the described setting as if physically photographed, not digitally rendered.
+    2. Lighting must look like real studio lighting (softbox/natural light) — avoid an overly smooth, plastic, or "airbrushed" look.
+    3. Preserve natural material textures, subtle imperfections, and realistic shadows/reflections — do not over-sharpen or over-saturate.
+    4. ${logoBase64 ? "Integrate the logo naturally onto the product surface or place it elegantly in the scene if explicitly asked, otherwise ensure the product branding is highlighted." : "Ensure the product looks premium and true-to-life."}
+    5. Return ONLY the generated image.
+    6. Aspect Ratio: 1:1.
+    7. Style: natural commercial product photography, true colors, subtle realistic depth of field — avoid a synthetic/CGI/over-processed AI look.
   `;
 
   const parts: any[] = [
