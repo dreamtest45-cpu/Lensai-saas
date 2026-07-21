@@ -84,6 +84,7 @@ export async function POST(req: NextRequest) {
     5. Return ONLY the generated image.
     6. Aspect Ratio: 1:1.
     7. Style: natural commercial product photography, true colors, subtle realistic depth of field — avoid a synthetic/CGI/over-processed AI look.
+    8. CRITICAL: Preserve the exact shape, form, texture, and toppings of the product exactly as shown in the input image — do not redesign, restyle, or reinterpret the product itself, only the surrounding scene and lighting.
   `;
 
   const parts: any[] = [
