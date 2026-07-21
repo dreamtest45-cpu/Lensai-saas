@@ -14,8 +14,8 @@ export default function ContactPage() {
         <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center">
           <Mail className="text-amber-400" size={18} />
         </div>
-        <a href="mailto:support@shelfshotai.com" className="text-amber-400 hover:text-amber-300 font-semibold">
-          support@shelfshotai.com
+        <a href="mailto:info@shelfshotai.com" className="text-amber-400 hover:text-amber-300 font-semibold">
+          info@shelfshotai.com
         </a>
       </div>
 
