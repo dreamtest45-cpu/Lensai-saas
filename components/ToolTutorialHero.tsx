@@ -6,7 +6,7 @@ import { Wand2, Check } from "lucide-react";
 // A silent, auto-looping mini walkthrough using real product photos:
 // upload product + logo -> type prompt -> generate -> real result.
 
-const PROMPT_TEXT = "حبات الشوكولاته على رخام في مطبخ أبيض مع أدوات مطبخ...";
+const PROMPT_TEXT = "علبة شوكولاته فاخرة مفتوحة بشريط ذهبي على خلفية بنية دافئة، إضاءة استوديو احترافية...";
 
 type Stage = "idle" | "uploaded" | "typing" | "generating" | "result";
 
