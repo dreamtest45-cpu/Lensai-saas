@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Upload, Sparkles, Wand2, Check } from "lucide-react";
+import { Wand2, Check } from "lucide-react";
 
-// A silent, auto-looping mini walkthrough of the product: upload -> type prompt -> generate -> result.
-// Purely visual/decorative — no real network calls, just a mockup that demonstrates the flow.
+// A silent, auto-looping mini walkthrough using real product photos:
+// upload product + logo -> type prompt -> generate -> real result.
 
-const PROMPT_TEXT = "زجاجة عطر على رخام أسود بإضاءة سينمائية دافئة...";
+const PROMPT_TEXT = "حبات الشوكولاته على رخام في مطبخ أبيض مع أدوات مطبخ...";
 
 type Stage = "idle" | "uploaded" | "typing" | "generating" | "result";
 
@@ -58,15 +58,24 @@ export const ToolTutorialHero: React.FC = () => {
 
       <div className="flex-1 grid grid-cols-2 gap-3 min-h-0">
         <div
-          className={`relative rounded-xl border-2 border-dashed flex items-center justify-center transition-colors duration-500 ${
+          className={`relative rounded-xl border-2 border-dashed overflow-hidden flex items-center justify-center transition-colors duration-500 ${
             hasProduct ? "border-amber-500/50 bg-white/5" : "border-line"
           }`}
         >
           {!hasProduct ? (
-            <Upload className="text-white/25" size={22} />
+            <span className="text-white/25 text-[11px]">اسحب صورة المنتج هنا</span>
           ) : (
-            <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center scale-in">
-              <div className="w-6 h-9 rounded-sm bg-ink/30" />
+            <div className="relative w-full h-full scale-in">
+              <img
+                src="/demo-product.jpg"
+                alt="صورة المنتج الأصلية"
+                className="w-full h-full object-cover"
+              />
+              <img
+                src="/demo-logo.png"
+                alt="لوغو"
+                className="absolute bottom-2 right-2 w-10 h-auto rounded shadow-lg bg-[#2b0f1f]/80 p-1"
+              />
             </div>
           )}
         </div>
@@ -76,15 +85,19 @@ export const ToolTutorialHero: React.FC = () => {
             <div className="w-6 h-6 border-2 border-white/15 border-t-amber-500 rounded-full animate-spin" />
           )}
           {showResult && (
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-amber-900/50 via-panel to-panel fade-in">
-              <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-amber-300 via-amber-500 to-orange-700 shadow-lg" />
+            <div className="absolute inset-0 fade-in">
+              <img
+                src="/demo-result.jpg"
+                alt="النتيجة الاحترافية"
+                className="w-full h-full object-cover"
+              />
               <span className="absolute top-2 left-2 bg-emerald-500/90 text-ink text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
                 <Check size={10} strokeWidth={3} /> تم
               </span>
             </div>
           )}
           {!isGenerating && !showResult && (
-            <Sparkles className="text-white/10" size={22} />
+            <span className="text-white/10 text-[11px]">ستظهر النتيجة هنا</span>
           )}
         </div>
       </div>
