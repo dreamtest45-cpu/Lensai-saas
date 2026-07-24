@@ -17,6 +17,9 @@ export default async function LandingPage() {
             <img src="/icon.png" alt="ShelfShot AI" className="w-10 h-10" />
             <span className="font-display font-bold text-xl tracking-tight">ShelfShot AI</span>
           </div>
+          <Link href="/blog" className="text-sm text-white/60 hover:text-white font-medium">
+  المدونة
+</Link>
           <Link
             href={user ? "/dashboard" : "/login"}
             className="text-sm font-semibold bg-white/5 hover:bg-white/10 border border-line rounded-full px-5 py-2.5 transition-colors"
