@@ -11,6 +11,12 @@ function startOfMonthISO() {
   return new Date(d.getFullYear(), d.getMonth(), 1).toISOString();
 }
 
+// Generic, user-facing message for any case where Gemini refuses to generate
+// because the input contains sensitive/identifying information (license
+// plates, faces, ID numbers, addresses, etc.) — not tied to one specific case.
+const SENSITIVE_CONTENT_MESSAGE =
+  "تعذّر توليد الصورة لأنها قد تحتوي على معلومات تعريفية أو حساسة (مثل لوحات الترخيص، الوجوه، أو أرقام تعريفية). الرجاء تعديل الصورة (مثل تغطية أو إخفاء هذه العناصر) وإعادة المحاولة.";
+
 export async function POST(req: NextRequest) {
   const supabase = createClient();
 
@@ -101,13 +107,37 @@ export async function POST(req: NextRequest) {
       contents: { parts },
     });
 
-    const content = response.candidates?.[0]?.content;
+    // --- Check for a safety/content block BEFORE assuming a missing image
+    // means something else. Gemini reports blocks in two places:
+    //   1. promptFeedback.blockReason — the whole prompt was blocked
+    //   2. candidates[0].finishReason === "SAFETY" (or similar) — the
+    //      response generation itself was halted for safety reasons
+    // Common triggers: visible license plates, faces, ID numbers, addresses,
+    // or other identifying/sensitive info in the uploaded image.
+    const blockReason = (response as any).promptFeedback?.blockReason;
+    const candidate = response.candidates?.[0];
+    const finishReason = candidate?.finishReason;
+    const isSafetyBlocked =
+      !!blockReason ||
+      finishReason === "SAFETY" ||
+      finishReason === "PROHIBITED_CONTENT" ||
+      finishReason === "BLOCKLIST" ||
+      finishReason === "SPII"; // Sensitive PII, if the SDK surfaces it this way
+
+    if (isSafetyBlocked) {
+      return NextResponse.json({ error: SENSITIVE_CONTENT_MESSAGE }, { status: 422 });
+    }
+
+    const content = candidate?.content;
     const imagePart = content?.parts?.find((p: any) => p.inlineData);
 
     if (!imagePart?.inlineData) {
+      // No explicit block flag, but still no image — treat conservatively
+      // as a possible content-sensitivity issue rather than a vague error,
+      // since this is the most common real-world cause.
       return NextResponse.json(
-        { error: "لم يُرجع النموذج صورة. ربما رفض الطلب — جرّب صياغة مختلفة." },
-        { status: 502 }
+        { error: SENSITIVE_CONTENT_MESSAGE },
+        { status: 422 }
       );
     }
 
@@ -124,9 +154,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ url: resultUrl });
   } catch (err: any) {
     console.error("Gemini generation error:", err);
+
+    // If the underlying SDK error text hints at a safety/policy block,
+    // surface the same clear, generic message instead of a raw/technical one.
+    const rawMessage = String(err?.message || "");
+    const looksLikeSafetyBlock = /safety|blocked|prohibited|policy|sensitive/i.test(rawMessage);
+
     return NextResponse.json(
-      { error: "حدث خطأ أثناء توليد الصورة. الرجاء المحاولة مرة أخرى." },
-      { status: 500 }
+      {
+        error: looksLikeSafetyBlock
+          ? SENSITIVE_CONTENT_MESSAGE
+          : "حدث خطأ أثناء توليد الصورة. الرجاء المحاولة مرة أخرى.",
+      },
+      { status: looksLikeSafetyBlock ? 422 : 500 }
     );
   }
 }
