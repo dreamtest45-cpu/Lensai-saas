@@ -10,6 +10,24 @@ interface ResultDisplayProps {
 }
 
 export const ResultDisplay: React.FC<ResultDisplayProps> = ({ isLoading, generatedImageUrl, error }) => {
+  const handleDownload = async () => {
+    if (!generatedImageUrl) return;
+    try {
+      const res = await fetch(generatedImageUrl);
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = "shelfshot-ai-result.png";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+    } catch {
+      window.open(generatedImageUrl, "_blank");
+    }
+  };
+
   return (
     <div className="bg-panel border border-line rounded-xl2 aspect-square flex items-center justify-center overflow-hidden relative">
       {isLoading && (
@@ -29,14 +47,14 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ isLoading, generat
       {!isLoading && !error && generatedImageUrl && (
         <>
           <img src={generatedImageUrl} alt="Generated product shot" className="w-full h-full object-cover" />
-          <a
-            href={generatedImageUrl}
-            download="lensai-shot.png"
+          <button
+            onClick={handleDownload}
+            type="button"
             className="absolute bottom-4 left-4 bg-ink/80 backdrop-blur border border-line text-white text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 hover:bg-ink transition-colors"
           >
             <Download size={16} />
             تحميل
-          </a>
+          </button>
         </>
       )}
 
