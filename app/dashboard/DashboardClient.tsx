@@ -223,9 +223,14 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
               <>
                 <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
                   {history.map((h) => (
-                    <div key={h.id} className="aspect-square rounded-xl overflow-hidden bg-panel border border-line/50">
-                      {h.result_url && <img src={h.result_url} alt={h.prompt} className="w-full h-full object-cover" />}
-                    </div>
+                    <button
+  key={h.id}
+  type="button"
+  onClick={() => h.result_url && setResultImage(h.result_url)}
+  className="aspect-square rounded-xl overflow-hidden bg-panel border border-line/50 hover:border-amber-500/50 transition-colors"
+>
+  {h.result_url && <img src={h.result_url} alt={h.prompt} className="w-full h-full object-cover" />}
+</button>
                   ))}
                 </div>
                 <p className="text-center text-white/30 mt-2 text-sm">آخر عمليات التوليد</p>
