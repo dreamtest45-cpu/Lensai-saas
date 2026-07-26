@@ -13,7 +13,7 @@ function startOfMonthISO() {
 
 // Generic, user-facing message for any case where Gemini refuses to generate
 // because the input contains sensitive/identifying information (license
-// plates, faces, ID numbers, addresses, etc.) — not tied to one specific case.
+// plates, faces, ID numbers, etc.) — not tied to one specific case.
 const SENSITIVE_CONTENT_MESSAGE =
   "تعذّر توليد الصورة لأنها قد تحتوي على معلومات تعريفية أو حساسة (مثل لوحات الترخيص، الوجوه، أو أرقام تعريفية). الرجاء تعديل الصورة (مثل تغطية أو إخفاء هذه العناصر) وإعادة المحاولة.";
 
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     5. Return ONLY the generated image.
     6. Aspect Ratio: 1:1.
     7. Style: natural commercial product photography, true colors, subtle realistic depth of field — avoid a synthetic/CGI/over-processed AI look.
-    8. CRITICAL: Preserve the exact shape, form, texture, and toppings of the product exactly as shown in the input image — do not redesign, restyle, or reinterpret the product itself, only the surrounding scene and lighting.
+    8. ABSOLUTE REQUIREMENT — DO NOT REDESIGN THE PRODUCT: The product in the output image must be IDENTICAL to the product in the input image. Do not alter, restyle, "improve", or reinterpret ANY part of the product itself — this includes (for any product type) its exact shape, proportions, colors, materials, logos/badges, trim pieces, grilles, wheels/rims, panel lines, text, labels, packaging design, and every other structural or cosmetic detail exactly as shown in the input. Only the surrounding environment, background, lighting, and camera angle may be changed. If you are unsure whether a detail should change, DO NOT change it — copy it exactly as it appears in the input image.
   `;
 
   const parts: any[] = [
