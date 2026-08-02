@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Wand2, Layers, ShieldCheck, Zap } from "lucide-react";
+import { Wand2, Layers, ShieldCheck, Zap, CreditCard } from "lucide-react";
 import { PLANS } from "@/lib/plans";
 import { createClient } from "@/lib/supabase/server";
 import { ToolTutorialHero } from "@/components/ToolTutorialHero";
@@ -143,6 +143,16 @@ export default async function LandingPage() {
             <Link href="/terms" className="hover:text-white/70">شروط الاستخدام</Link>
             <Link href="/privacy" className="hover:text-white/70">سياسة الخصوصية</Link>
             <Link href="/refund" className="hover:text-white/70">سياسة الاسترجاع</Link>
+          </div>
+          <div className="flex items-center gap-3 text-white/40">
+            <span className="inline-flex items-center gap-1.5 border border-line rounded-md px-2.5 py-1 text-xs font-semibold">
+              <CreditCard size={14} />
+              Visa
+            </span>
+            <span className="inline-flex items-center gap-1.5 border border-line rounded-md px-2.5 py-1 text-xs font-semibold">
+              <CreditCard size={14} />
+              Mastercard
+            </span>
           </div>
           <span className="text-sm text-white/30">مدعوم بواسطة Gemini</span>
         </div>
