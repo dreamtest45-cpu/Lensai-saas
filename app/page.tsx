@@ -42,7 +42,7 @@ export default async function LandingPage() {
               <span className="text-amber-400">تخرج بجودة استوديو احترافي</span>
             </h1>
             <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-lg">
-              ارفع صورة منتجك، اكتب وصف المشهد اللي تتخيله، ودع Gemini يصنع لك لقطة تسويقية سينمائية جاهزة للنشر — بلوغو مدمج وإضاءة استوديو، خلال ثوانٍ.
+              ارفع صورة منتجك، اكتب وصف المشهد اللي تتخيله، ودع الذكاء الاصطناعي يصنع لك لقطة تسويقية سينمائية جاهزة للنشر — بلوغو مدمج وإضاءة استوديو، خلال ثوانٍ.
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link
@@ -154,7 +154,6 @@ export default async function LandingPage() {
               Mastercard
             </span>
           </div>
-          <span className="text-sm text-white/30">مدعوم بواسطة Gemini</span>
         </div>
       </footer>
 </div>
