@@ -3,6 +3,7 @@ import { Wand2, Layers, ShieldCheck, Zap, CreditCard } from "lucide-react";
 import { PLANS } from "@/lib/plans";
 import { createClient } from "@/lib/supabase/server";
 import { ToolTutorialHero } from "@/components/ToolTutorialHero";
+import { SubscribeButton } from "@/components/SubscribeButton";
 
 export default async function LandingPage() {
   const supabase = createClient();
@@ -120,13 +121,8 @@ export default async function LandingPage() {
                   >
                     ابدأ مجاناً
                   </Link>
-                ) : (
-                  <button
-                    disabled
-                    className="w-full text-center font-semibold rounded-full py-2.5 text-sm bg-white/5 border border-line text-white/40 cursor-not-allowed"
-                  >
-                    قريباً
-                  </button>
+                              ) : (
+                  <SubscribeButton planId={plan.id} />
                 )}
               </div>
             ))}
