@@ -57,7 +57,7 @@ export async function createMepsPayment({
     cart_currency: currency,
     cart_amount: amount,
     callback: `${appUrl}/api/webhooks/meps`,
-    return: `${appUrl}/dashboard?payment=complete`,
+    return: `${appUrl}/api/meps-return`,
   };
 
   if (customerEmail || customerName) {
