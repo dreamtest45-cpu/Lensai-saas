@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     const payment = await createMepsPayment({
       cartId,
       amount: plan.price,
-      currency: "USD",
+      currency: "JOD", // TEMP: testing whether USD is the actual blocker - revert to "USD" after this test
       description: `ShelfShot AI - ${(plan as any).nameAr ?? planId} Subscription`,
       customerEmail: user.email ?? undefined,
     });
