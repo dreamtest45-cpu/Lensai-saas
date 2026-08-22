@@ -20,8 +20,6 @@ export async function POST(req: NextRequest) {
   const success = status === "A";
   const supabase = createAdminClient();
 
-  // TODO: confirm `transactions` and `subscriptions` table/column names below
-  // match your actual schema.
   const { data: txn, error: txnError } = await supabase
     .from("transactions")
     .update({ status: success ? "paid" : "failed", tran_ref: tranRef })
@@ -35,18 +33,20 @@ export async function POST(req: NextRequest) {
   }
 
   if (success && txn) {
-    const { error: subError } = await supabase.from("subscriptions").upsert({
-      user_id: txn.user_id,
-      plan_id: txn.plan_id,
-      status: "active",
-      // Adjust billing period length/field name to match your schema.
-      current_period_end: new Date(
-        Date.now() + 30 * 24 * 60 * 60 * 1000
-      ).toISOString(),
-    });
+    const { error: profileError } = await supabase
+      .from("profiles")
+      .update({
+        plan: txn.plan_id,
+        subscription_status: "active",
+        // Adjust billing period length if your plans aren't monthly.
+        current_period_end: new Date(
+          Date.now() + 30 * 24 * 60 * 60 * 1000
+        ).toISOString(),
+      })
+      .eq("id", txn.user_id);
 
-    if (subError) {
-      console.error("MEPS webhook: failed to activate subscription", subError);
+    if (profileError) {
+      console.error("MEPS webhook: failed to activate subscription", profileError);
       return NextResponse.json({ error: "Subscription update failed" }, { status: 500 });
     }
   }
