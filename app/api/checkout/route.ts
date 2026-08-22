@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server"; // TODO: adjust import path to match your actual Supabase server client helper
 import { createMepsPayment } from "@/lib/meps";
-import { plans } from "@/lib/plans"; // TODO: confirm plans export shape matches { id, name, price } below
+import { PLANS } from "@/lib/plans";
 
 export async function POST(req: NextRequest) {
   const { planId } = await req.json();
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
-  const plan = plans.find((p) => p.id === planId);
+  const plan = Object.values(PLANS).find((p: any) => p.id === planId);
   if (!plan || plan.price === 0) {
     return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
   }
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
       cartId,
       amount: plan.price,
       currency: "USD",
-      description: `ShelfShot AI - ${plan.name} Subscription`,
+      description: `ShelfShot AI - ${(plan as any).nameAr ?? planId} Subscription`,
       customerEmail: user.email ?? undefined,
     });
 
