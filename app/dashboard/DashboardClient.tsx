@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Wand2, LogOut, CreditCard, Crown } from "lucide-react";
+import { Wand2, LogOut, Crown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { ImageUploader } from "@/components/ImageUploader";
 import { ResultDisplay } from "@/components/ResultDisplay";
 import { SubscribeButton } from "@/components/SubscribeButton";
+import { ManageSubscriptionModal } from "@/components/ManageSubscriptionModal";
 import { ImageAsset } from "@/types";
 import { PLANS, PlanId } from "@/lib/plans";
 
@@ -36,7 +37,6 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
   const [isGenerating, setIsGenerating] = useState(false);
   const [resultImage, setResultImage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [billingLoading, setBillingLoading] = useState(false);
 
   const remaining = Math.max(limit - used, 0);
   const usagePct = Math.min((used / limit) * 100, 100);
@@ -69,19 +69,6 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
       setError(err.message);
     } finally {
       setIsGenerating(false);
-    }
-  };
-
-  // NOTE: billing portal (Stripe) is not wired to MEPS yet - "إدارة الاشتراك"
-  // button below will not work until this is rebuilt for MEPS.
-  const handleManageBilling = async () => {
-    setBillingLoading(true);
-    try {
-      const res = await fetch("/api/stripe/portal", { method: "POST" });
-      const data = await res.json();
-      if (data.url) window.location.href = data.url;
-    } finally {
-      setBillingLoading(false);
     }
   };
 
@@ -137,16 +124,7 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
                   <SubscribeButton planId={id} />
                 </div>
               ))}
-            {plan !== "free" && (
-              <button
-                disabled={billingLoading}
-                onClick={handleManageBilling}
-                className="text-sm font-semibold bg-white/5 border border-line px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white/10 disabled:opacity-60"
-              >
-                <CreditCard size={14} />
-                إدارة الاشتراك
-              </button>
-            )}
+            {plan !== "free" && <ManageSubscriptionModal planNameAr={PLANS[plan].nameAr} />}
           </div>
         </div>
 
