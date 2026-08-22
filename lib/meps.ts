@@ -40,11 +40,11 @@ export async function createMepsPayment({
 }: CreatePaymentParams): Promise<MepsPaymentResponse> {
   const profileId = process.env.MEPS_PROFILE_ID;
   const serverKey = process.env.MEPS_SERVER_KEY;
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+  const appUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
   if (!profileId || !serverKey || !appUrl) {
     throw new Error(
-      "Missing MEPS_PROFILE_ID, MEPS_SERVER_KEY, or NEXT_PUBLIC_APP_URL env vars"
+      "Missing MEPS_PROFILE_ID, MEPS_SERVER_KEY, or NEXT_PUBLIC_SITE_URL env vars"
     );
   }
 
