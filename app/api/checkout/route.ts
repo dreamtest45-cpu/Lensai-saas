@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server"; // TODO: adjust import path to match your actual Supabase server client helper
+import { createClient } from "@/lib/supabase/server";
 import { createMepsPayment } from "@/lib/meps";
 import { PLANS } from "@/lib/plans";
 
@@ -26,13 +26,16 @@ export async function POST(req: NextRequest) {
     const payment = await createMepsPayment({
       cartId,
       amount: plan.price,
-      currency: "JOD", // TEMP: testing whether USD is the actual blocker - revert to "USD" after this test
+      // TEMP: forced to JOD because USD isn't enabled on the MEPS account yet
+      // ("Currency not available"). This charges the wrong amount (JOD amounts
+      // are worth more than the same number in USD) - do NOT go live like this.
+      // Once MEPS enables USD, change this back to "USD".
+      currency: "JOD",
       description: `ShelfShot AI - ${(plan as any).nameAr ?? planId} Subscription`,
       customerEmail: user.email ?? undefined,
     });
 
     // Record a pending transaction so the webhook can reconcile it later.
-    // TODO: confirm your `transactions` table's actual column names match these.
     const { error: insertError } = await supabase.from("transactions").insert({
       user_id: user.id,
       cart_id: cartId,
