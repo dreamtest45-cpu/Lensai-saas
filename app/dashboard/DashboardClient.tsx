@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { Wand2, LogOut, CreditCard, Crown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { ImageUploader } from "@/components/ImageUploader";
 import { ResultDisplay } from "@/components/ResultDisplay";
+import { SubscribeButton } from "@/components/SubscribeButton";
 import { ImageAsset } from "@/types";
 import { PLANS, PlanId } from "@/lib/plans";
 
@@ -70,21 +72,8 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
     }
   };
 
-  const handleUpgrade = async (targetPlan: "starter" | "economic" | "pro") => {
-    setBillingLoading(true);
-    try {
-      const res = await fetch("/api/stripe/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: targetPlan }),
-      });
-      const data = await res.json();
-      if (data.url) window.location.href = data.url;
-    } finally {
-      setBillingLoading(false);
-    }
-  };
-
+  // NOTE: billing portal (Stripe) is not wired to MEPS yet - "إدارة الاشتراك"
+  // button below will not work until this is rebuilt for MEPS.
   const handleManageBilling = async () => {
     setBillingLoading(true);
     try {
@@ -106,13 +95,13 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
     <div className="min-h-screen">
       <header className="bg-panel border-b border-line sticky top-0 z-50">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between max-w-6xl">
-          <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <img src="/icon.png" alt="ShelfShot AI" className="w-10 h-10" />
             <div>
               <h1 className="text-xl font-display font-bold">ShelfShot AI</h1>
               <p className="text-xs text-white/40">{email}</p>
             </div>
-          </div>
+          </Link>
           <div className="flex items-center gap-3">
             <span className="hidden md:flex items-center gap-2 text-sm text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded-full border border-amber-500/20">
               <Crown size={14} />
@@ -144,14 +133,9 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
             {(Object.keys(PLANS) as PlanId[])
               .filter((id) => id !== "free" && PLANS[id].monthlyGenerations > limit)
               .map((id) => (
-                <button
-                  key={id}
-                  disabled={billingLoading}
-                  onClick={() => handleUpgrade(id as "starter" | "economic" | "pro")}
-                  className="text-sm font-semibold bg-amber-500 text-ink px-4 py-2 rounded-full hover:bg-amber-400 disabled:opacity-60"
-                >
-                  {PLANS[id].nameAr} — ${PLANS[id].price}
-                </button>
+                <div key={id} className="w-40">
+                  <SubscribeButton planId={id} />
+                </div>
               ))}
             {plan !== "free" && (
               <button
@@ -224,13 +208,13 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
                 <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
                   {history.map((h) => (
                     <button
-  key={h.id}
-  type="button"
-  onClick={() => h.result_url && setResultImage(h.result_url)}
-  className="aspect-square rounded-xl overflow-hidden bg-panel border border-line/50 hover:border-amber-500/50 transition-colors"
->
-  {h.result_url && <img src={h.result_url} alt={h.prompt} className="w-full h-full object-cover" />}
-</button>
+                      key={h.id}
+                      type="button"
+                      onClick={() => h.result_url && setResultImage(h.result_url)}
+                      className="aspect-square rounded-xl overflow-hidden bg-panel border border-line/50 hover:border-amber-500/50 transition-colors"
+                    >
+                      {h.result_url && <img src={h.result_url} alt={h.prompt} className="w-full h-full object-cover" />}
+                    </button>
                   ))}
                 </div>
                 <p className="text-center text-white/30 mt-2 text-sm">آخر عمليات التوليد</p>
