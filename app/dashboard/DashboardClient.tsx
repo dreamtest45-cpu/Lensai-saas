@@ -121,6 +121,9 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
               .filter((id) => id !== "free" && PLANS[id].monthlyGenerations > limit)
               .map((id) => (
                 <div key={id} className="w-40">
+                  <p className="text-center text-xs text-white/50 mb-1">
+                    {PLANS[id].nameAr} — ${PLANS[id].price}
+                  </p>
                   <SubscribeButton planId={id} />
                 </div>
               ))}
