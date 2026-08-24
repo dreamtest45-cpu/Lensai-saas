@@ -4,10 +4,12 @@
 // Required env vars (set in Vercel + .env.local):
 //   MEPS_PROFILE_ID=182942
 //   MEPS_SERVER_KEY=<server key from "مفاتيح الربط" -> "مفتاح الخادم">
-//   NEXT_PUBLIC_APP_URL=https://www.shelfshotai.com
+//   NEXT_PUBLIC_SITE_URL=https://www.shelfshotai.com
 //
 // IMPORTANT: use the SERVER key here, not the client key. The server key
 // goes in the Authorization header and must never be exposed to the browser.
+
+import { createHmac, timingSafeEqual } from "crypto";
 
 const MEPS_ENDPOINT = "https://secure-jordan.paytabs.com/payment/request";
 
@@ -90,4 +92,41 @@ export async function createMepsPayment({
   }
 
   return data;
+}
+
+/**
+ * Verifies that an incoming request to app/api/webhooks/meps really came
+ * from PayTabs, using their HMAC-SHA256 "Signature" header:
+ * https://support.paytabs.com/en/support/solutions/articles/60000718961
+ *
+ * PayTabs computes HMAC-SHA256 of the *raw* callback request body, keyed
+ * with your profile's Server Key, and sends it in a "Signature" header.
+ *
+ * SECURITY: this check is mandatory before trusting anything in the
+ * webhook payload. Without it, that endpoint is public and unauthenticated
+ * (PayTabs can't send us a browser session), so anyone could POST a fake
+ * `{"cart_id": "...", "payment_result": {"response_status": "A"}}` body
+ * and get a paid plan activated for free.
+ *
+ * IMPORTANT: `rawBody` must be the exact raw text of the request body as
+ * received — do NOT verify against `JSON.stringify(JSON.parse(rawBody))`,
+ * since re-serializing can reorder keys / change whitespace and make a
+ * genuine PayTabs request fail verification.
+ */
+export function verifyMepsSignature(
+  rawBody: string,
+  signatureHeader: string | null
+): boolean {
+  const serverKey = process.env.MEPS_SERVER_KEY;
+  if (!serverKey || !signatureHeader) return false;
+
+  const expected = createHmac("sha256", serverKey).update(rawBody).digest("hex");
+
+  const expectedBuf = Buffer.from(expected, "utf8");
+  const receivedBuf = Buffer.from(signatureHeader, "utf8");
+
+  // timingSafeEqual throws on length mismatch, so check that first.
+  if (expectedBuf.length !== receivedBuf.length) return false;
+
+  return timingSafeEqual(expectedBuf, receivedBuf);
 }

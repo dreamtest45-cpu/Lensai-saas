@@ -1,13 +1,38 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/server";
+import { verifyMepsSignature } from "@/lib/meps";
 
 // MEPS calls this URL server-to-server after a transaction completes.
 // It is NOT a browser redirect - there is no logged-in session here, so we
 // use the service-role admin client (bypasses RLS) instead of the normal
 // cookie-based server client.
+//
+// SECURITY: this endpoint is public and unauthenticated by nature (PayTabs
+// can't send us a login session), so it MUST verify the "Signature" header
+// PayTabs sends (HMAC-SHA256 of the raw body, keyed with MEPS_SERVER_KEY)
+// before trusting anything in the payload. Previously this route trusted
+// the incoming JSON body outright, which meant anyone who could guess or
+// observe a cart_id could POST a fake "Authorised" result here and get a
+// paid plan for free. See lib/meps.ts#verifyMepsSignature and:
+// https://support.paytabs.com/en/support/solutions/articles/60000718961
 
 export async function POST(req: NextRequest) {
-  const payload = await req.json();
+  // Read the raw text first: verification must run against the exact bytes
+  // PayTabs sent, not a re-serialized copy of the parsed JSON.
+  const rawBody = await req.text();
+  const signature = req.headers.get("signature");
+
+  if (!verifyMepsSignature(rawBody, signature)) {
+    console.error("MEPS webhook: missing or invalid Signature header — rejecting request.");
+    return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+  }
+
+  let payload: any;
+  try {
+    payload = JSON.parse(rawBody);
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
 
   const cartId: string | undefined = payload?.cart_id;
   const tranRef: string | undefined = payload?.tran_ref;

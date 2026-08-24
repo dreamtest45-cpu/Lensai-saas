@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
+import { randomUUID } from "crypto";
 import { createClient } from "@/lib/supabase/server";
 import { PLANS, PlanId } from "@/lib/plans";
+
+// Rough cap on input image size (base64 chars ≈ bytes * 4/3). Guards
+// against abusive/oversized uploads driving up Gemini cost and request
+// time — the UI never sends anything this large in normal use.
+const MAX_BASE64_LENGTH = 15_000_000; // ~11MB decoded
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -64,6 +70,16 @@ export async function POST(req: NextRequest) {
 
   if (!productBase64 || !prompt?.trim()) {
     return NextResponse.json({ error: "صورة المنتج والوصف مطلوبان." }, { status: 400 });
+  }
+
+  if (
+    productBase64.length > MAX_BASE64_LENGTH ||
+    (logoBase64 && logoBase64.length > MAX_BASE64_LENGTH)
+  ) {
+    return NextResponse.json(
+      { error: "حجم الصورة كبير جداً. الرجاء استخدام صورة أصغر." },
+      { status: 413 }
+    );
   }
 
   const apiKey = process.env.GEMINI_API_KEY;
@@ -131,7 +147,7 @@ export async function POST(req: NextRequest) {
     const content = candidate?.content;
     const imagePart = content?.parts?.find((p: any) => p.inlineData);
 
-    if (!imagePart?.inlineData) {
+    if (!imagePart?.inlineData?.data) {
       // No explicit block flag, but still no image — treat conservatively
       // as a possible content-sensitivity issue rather than a vague error,
       // since this is the most common real-world cause.
@@ -141,10 +157,40 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const mimeType = imagePart.inlineData.mimeType || "image/png";
-    const resultUrl = `data:${mimeType};base64,${imagePart.inlineData.data}`;
+    const inlineData = imagePart.inlineData;
+    const mimeType = inlineData.mimeType || "image/png";
 
-    // 4. Record the generation (also serves as this month's usage counter).
+    // 4. Upload the result to Supabase Storage instead of keeping it as a
+    // base64 data URL — storing images as text in the database doesn't
+    // scale (bloats table size, slows every query that touches
+    // `generations`). Path is namespaced under the user's id; the storage
+    // RLS policies in supabase/schema.sql only allow a user to write under
+    // their own folder. See that file for the bucket + policy setup.
+    const ext = mimeType.split("/")[1]?.split("+")[0] || "png";
+    const objectPath = `${user.id}/${randomUUID()}.${ext}`;
+    const imageBuffer = Buffer.from(inlineData.data as string, "base64");
+
+    const { error: uploadError } = await supabase.storage
+      .from("generations")
+      .upload(objectPath, imageBuffer, { contentType: mimeType, upsert: false });
+
+    if (uploadError) {
+      console.error("Failed to upload generated image to storage:", uploadError);
+      return NextResponse.json(
+        {
+          error:
+            "تم توليد الصورة لكن حدث خطأ أثناء حفظها. الرجاء المحاولة مرة أخرى — إذا تكررت المشكلة تأكد أن bucket \"generations\" موجود على Supabase Storage.",
+        },
+        { status: 500 }
+      );
+    }
+
+    const { data: publicUrlData } = supabase.storage
+      .from("generations")
+      .getPublicUrl(objectPath);
+    const resultUrl = publicUrlData.publicUrl;
+
+    // 5. Record the generation (also serves as this month's usage counter).
     await supabase.from("generations").insert({
       user_id: user.id,
       prompt,

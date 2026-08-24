@@ -25,9 +25,19 @@ interface Props {
   used: number;
   limit: number;
   history: HistoryItem[];
+  subscriptionStatus: string | null;
+  currentPeriodEnd: string | null;
 }
 
-export default function DashboardClient({ email, plan, used, limit, history }: Props) {
+export default function DashboardClient({
+  email,
+  plan,
+  used,
+  limit,
+  history,
+  subscriptionStatus,
+  currentPeriodEnd,
+}: Props) {
   const router = useRouter();
   const supabase = createClient();
 
@@ -102,6 +112,18 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
       </header>
 
       <main className="container mx-auto px-6 py-8 max-w-6xl">
+        {subscriptionStatus === "cancelled" && currentPeriodEnd && (
+          <div className="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm rounded-xl2 px-5 py-3 mb-6">
+            تم إلغاء الاشتراك. راح تضل مستفيد من خطة {PLANS[plan].nameAr} لحد{" "}
+            {new Date(currentPeriodEnd).toLocaleDateString("ar-EG", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+            ، وبعدها بترجع تلقائياً لخطة مجاني.
+          </div>
+        )}
+
         {/* Usage bar */}
         <div className="bg-panel border border-line rounded-xl2 p-5 mb-8 flex items-center justify-between flex-wrap gap-4">
           <div className="flex-1 min-w-[220px]">
@@ -127,7 +149,9 @@ export default function DashboardClient({ email, plan, used, limit, history }: P
                   <SubscribeButton planId={id} />
                 </div>
               ))}
-            {plan !== "free" && <ManageSubscriptionModal planNameAr={PLANS[plan].nameAr} />}
+            {plan !== "free" && subscriptionStatus !== "cancelled" && (
+              <ManageSubscriptionModal planNameAr={PLANS[plan].nameAr} />
+            )}
           </div>
         </div>
 

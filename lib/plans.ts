@@ -6,7 +6,6 @@ export interface Plan {
   nameAr: string;
   monthlyGenerations: number;
   price: number; // USD / month, 0 for free
-  priceId?: string; // Stripe price id, set via env at runtime
   featuresAr: string[];
 }
 
@@ -62,22 +61,3 @@ export const PLANS: Record<PlanId, Plan> = {
     ],
   },
 };
-
-// Stripe price IDs are injected from env vars (public, since Checkout needs them client-side)
-export function getPriceId(plan: "starter" | "economic" | "pro"): string {
-  const map: Record<string, string | undefined> = {
-    starter: process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER,
-    economic: process.env.NEXT_PUBLIC_STRIPE_PRICE_ECONOMIC,
-    pro: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO,
-  };
-  const id = map[plan];
-  if (!id) throw new Error(`Missing Stripe price id for plan: ${plan}`);
-  return id;
-}
-
-export function planFromPriceId(priceId: string | null | undefined): PlanId {
-  if (priceId && priceId === process.env.NEXT_PUBLIC_STRIPE_PRICE_STARTER) return "starter";
-  if (priceId && priceId === process.env.NEXT_PUBLIC_STRIPE_PRICE_ECONOMIC) return "economic";
-  if (priceId && priceId === process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO) return "pro";
-  return "free";
-}

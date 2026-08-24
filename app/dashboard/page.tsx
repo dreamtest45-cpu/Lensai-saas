@@ -15,7 +15,7 @@ export default async function DashboardPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("plan, subscription_status")
+    .select("plan, subscription_status, current_period_end")
     .eq("id", user.id)
     .single();
 
@@ -41,6 +41,8 @@ export default async function DashboardPage() {
       used={count ?? 0}
       limit={PLANS[plan].monthlyGenerations}
       history={history ?? []}
+      subscriptionStatus={profile?.subscription_status ?? null}
+      currentPeriodEnd={profile?.current_period_end ?? null}
     />
   );
 }
