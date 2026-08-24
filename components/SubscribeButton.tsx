@@ -24,6 +24,10 @@ export function SubscribeButton({ planId }: SubscribeButtonProps) {
       const data = await res.json();
 
       if (!res.ok) {
+        if (res.status === 401) {
+          window.location.href = "/login";
+          return;
+        }
         throw new Error(data.error || "حصل خطأ، حاولي مرة ثانية");
       }
 
