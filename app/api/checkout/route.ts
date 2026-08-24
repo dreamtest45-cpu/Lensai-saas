@@ -26,11 +26,7 @@ export async function POST(req: NextRequest) {
     const payment = await createMepsPayment({
       cartId,
       amount: plan.price,
-      // TEMP: forced to JOD because USD isn't enabled on the MEPS account yet
-      // ("Currency not available"). This charges the wrong amount (JOD amounts
-      // are worth more than the same number in USD) - do NOT go live like this.
-      // Once MEPS enables USD, change this back to "USD".
-      currency: "JOD",
+      currency: "USD",
       description: `ShelfShot AI - ${(plan as any).nameAr ?? planId} Subscription`,
       customerEmail: user.email ?? undefined,
     });
