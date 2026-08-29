@@ -15,8 +15,8 @@ export default async function BlogIndexPage() {
   return (
     <div className="min-h-screen grain">
       <nav className="border-b border-line/60">
-        <div className="container mx-auto max-w-4xl px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+        <div className="container mx-auto max-w-4xl px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
             <img src="/icon.png" alt="ShelfShot AI" className="w-9 h-9" />
             <span className="font-display font-bold text-lg tracking-tight">ShelfShot AI</span>
           </Link>
