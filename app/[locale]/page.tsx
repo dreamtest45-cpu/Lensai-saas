@@ -29,14 +29,16 @@ export default async function LandingPage() {
             <Link href="/blog" className="text-sm text-white/60 hover:text-white font-medium">
               {tNav("blog")}
             </Link>
-            <LanguageSwitcher />
           </div>
-          <Link
-            href={user ? "/dashboard" : "/login"}
-            className="text-sm font-semibold bg-white/5 hover:bg-white/10 border border-line rounded-full px-5 py-2.5 transition-colors"
-          >
-            {user ? tNav("dashboard") : tNav("login")}
-          </Link>
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            <Link
+              href={user ? "/dashboard" : "/login"}
+              className="text-sm font-semibold bg-white/5 hover:bg-white/10 border border-line rounded-full px-5 py-2.5 transition-colors"
+            >
+              {user ? tNav("dashboard") : tNav("login")}
+            </Link>
+          </div>
         </div>
       </nav>
 
