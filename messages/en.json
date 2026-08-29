@@ -1,0 +1,359 @@
+{
+  "common": {
+    "switchToEnglish": "English",
+    "switchToArabic": "العربية"
+  },
+  "nav": {
+    "blog": "Blog",
+    "home": "Home",
+    "login": "Sign In",
+    "dashboard": "Dashboard"
+  },
+  "home": {
+    "eyebrow": "AI-Powered Product Photography Studio",
+    "titleLine1": "An ordinary product photo on your kitchen table,",
+    "titleHighlight": "comes out with professional studio quality",
+    "subtitle": "Upload your product photo, describe the scene you're imagining, and let AI create a cinematic, publish-ready marketing shot for you — with your logo embedded and studio lighting, in seconds.",
+    "ctaTry": "Try It Free Now",
+    "ctaNote": "No credit card — 3 free images monthly",
+    "featuresTitle": "Why ShelfShot AI?",
+    "features": [
+      {
+        "title": "From Idea to Image",
+        "desc": "Describe the scene in Arabic or English, and the AI builds it around your actual product."
+      },
+      {
+        "title": "Automatic Logo Placement",
+        "desc": "Upload your brand logo to have it appear naturally on or near the product."
+      },
+      {
+        "title": "Your Key Stays Protected",
+        "desc": "Generation happens entirely on the server — no one can access the API key from the browser."
+      }
+    ],
+    "pricingTitle": "Clear Plans, No Surprises",
+    "pricingSubtitle": "Change or cancel your subscription anytime.",
+    "mostPopular": "Most Popular",
+    "free": "Free",
+    "perMonth": "/ month",
+    "startFree": "Start Free",
+    "footer": {
+      "about": "About Us",
+      "contact": "Contact",
+      "terms": "Terms of Use",
+      "privacy": "Privacy Policy",
+      "refund": "Refund Policy"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "updatedAt": "July 2026",
+    "p1": "ShelfShot AI is a platform that lets store and product owners turn ordinary product photos into professional, studio-quality marketing shots using the latest AI models — without needing a photo studio or a professional designer.",
+    "p2": "We believe every small or medium business owner deserves marketing photos that compete with major brands, at an affordable cost and within seconds.",
+    "offerTitle": "What We Offer",
+    "offerItems": [
+      "Generate professional product photos from a single image.",
+      "Naturally embed your brand logo within the scene.",
+      "Flexible subscription plans for individuals and small-to-medium businesses."
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "updatedAt": "July 2026",
+    "intro": "For any inquiry, technical issue, or support request regarding your subscription, we'd be happy to hear from you at the email below and will respond within 1-2 business days:",
+    "activityTitle": "Business Information",
+    "activityBody": "ShelfShot AI — a digital service for AI-generated product photography, operating on monthly subscriptions. The business is registered in the Hashemite Kingdom of Jordan."
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "updatedAt": "July 2026",
+    "intro": "At ShelfShot AI, we're committed to protecting our users' privacy. This policy explains what data we collect, and how we use and protect it.",
+    "sections": [
+      {
+        "heading": "1. Data We Collect",
+        "items": [
+          "Account data: email and password (encrypted) upon registration.",
+          "Uploaded images: product and logo images the user uploads for generation purposes.",
+          "Usage data: number of images generated, usage dates, and subscribed plan.",
+          "Payment data: fully processed through our approved third-party payment gateway; card numbers are never stored on our servers."
+        ]
+      },
+      {
+        "heading": "2. How We Use Your Data",
+        "items": [
+          "To provide the core service: generating images and keeping usage history.",
+          "To manage subscriptions and billing.",
+          "To contact you about your account (email confirmation, password reset, important notices).",
+          "We do not sell your personal data to any third party for marketing purposes."
+        ]
+      },
+      {
+        "heading": "3. Sharing Data with Third Parties",
+        "paragraphs": [
+          "We use a number of trusted service providers to run the platform, and limited data is shared with them only to the extent needed to deliver the service:"
+        ],
+        "items": [
+          "Database and authentication provider (Supabase) for storing account data.",
+          "AI model provider (Google Gemini) for processing images and generating results.",
+          "Our approved payment gateway for processing subscriptions.",
+          "Email service provider for sending account notifications."
+        ]
+      },
+      {
+        "heading": "4. Data Security",
+        "paragraphs": [
+          "All data is transmitted over an encrypted connection (HTTPS/SSL). Access keys to external systems are stored on the server only and are never exposed to the browser."
+        ]
+      },
+      {
+        "heading": "5. Your Rights",
+        "paragraphs": [
+          "You may at any time request to view your data, correct it, or delete your account and all associated data, by contacting us via our"
+        ],
+        "hasContactLink": true
+      },
+      {
+        "heading": "6. Data Retention",
+        "paragraphs": [
+          "We retain your account data and generated image history as long as your account is active. Upon account deletion, associated data is removed within a reasonable period, except where retention is required for accounting or legal purposes."
+        ]
+      }
+    ],
+    "contactLinkLabel": "Contact page"
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "updatedAt": "July 2026",
+    "intro": "By using the ShelfShot AI website and service (the \"Service\"), you agree to the following terms and conditions. Please read them carefully before using the Service.",
+    "sections": [
+      {
+        "heading": "1. Nature of the Service",
+        "paragraphs": [
+          "ShelfShot AI is a monthly subscription-based service that allows users to upload their product photos and generate professional marketing images using AI models. The service is entirely digital and does not include any physical product shipped to the user."
+        ]
+      },
+      {
+        "heading": "2. Accounts and Usage",
+        "items": [
+          "You must be 18 years of age or older to create an account and use the Service.",
+          "You are responsible for keeping your login credentials confidential, and for any activity conducted through your account.",
+          "Using the Service to generate illegal content, content that infringes third-party intellectual property, offensive content, or content that violates applicable regulations is prohibited."
+        ]
+      },
+      {
+        "heading": "3. Plans and Subscriptions",
+        "paragraphs": [
+          "The Service is offered through monthly subscription plans with defined usage limits per plan (number of images generated monthly), as shown on the pricing page. The subscription renews automatically each month unless cancelled by the user before the renewal date."
+        ]
+      },
+      {
+        "heading": "4. Intellectual Property of Generated Content",
+        "paragraphs": [
+          "The user retains rights to the images they upload. Images resulting from the AI generation process may be used commercially by the user within the limits of their subscribed plan, with the understanding that AI models may produce results of varying quality, and ShelfShot AI does not guarantee the accuracy or suitability of every result for every use case."
+        ]
+      },
+      {
+        "heading": "5. Limitation of Liability",
+        "paragraphs": [
+          "The Service is provided \"as is\" without any express or implied warranties. ShelfShot AI is not liable for any indirect or consequential damages arising from the use of, or inability to use, the Service."
+        ]
+      },
+      {
+        "heading": "6. Changes to These Terms",
+        "paragraphs": [
+          "We reserve the right to modify these terms at any time. Any changes will be posted on this page, and your continued use of the Service after such changes constitutes implicit acceptance of them."
+        ]
+      },
+      {
+        "heading": "7. Contact",
+        "paragraphs": [
+          "For any inquiry regarding these terms, you can reach us via our"
+        ],
+        "hasContactLink": true
+      }
+    ],
+    "contactLinkLabel": "Contact page"
+  },
+  "refund": {
+    "title": "Refund & Cancellation Policy",
+    "updatedAt": "July 2026",
+    "sections": [
+      {
+        "heading": "1. Cancelling Your Subscription",
+        "paragraphs": [
+          "You can cancel your subscription at any time from the dashboard, with no extra fees or minimum commitment. Upon cancellation, your access to the current plan continues until the end of the paid period, and the subscription will not renew automatically afterward."
+        ]
+      },
+      {
+        "heading": "2. Refund Policy",
+        "paragraphs": [
+          "Since the service is digital and consumed immediately upon subscribing (image generation incurs an actual processing cost as soon as it's requested), we do not offer refunds for amounts paid for the current subscription period once any portion of the monthly image quota has been used.",
+          "If you experience a technical issue that prevented you from using the service fully during the month (due to a fault on our end), please contact us within 7 days of the issue occurring, and we will review the case and provide appropriate compensation (subscription extension or partial refund) depending on the nature of the issue."
+        ]
+      },
+      {
+        "heading": "3. Incorrect or Duplicate Payments",
+        "paragraphs": [
+          "If a duplicate or incorrect charge occurs for any technical reason, please contact us immediately via our"
+        ],
+        "paragraphSuffix": "with proof of payment attached, and the excess amount will be refunded within 5-10 business days.",
+        "hasContactLink": true
+      },
+      {
+        "heading": "4. Changing Your Plan",
+        "paragraphs": [
+          "You can upgrade to a higher plan at any time, and the difference will be prorated. To move to a lower plan, the change takes effect starting from the next billing cycle."
+        ]
+      },
+      {
+        "heading": "5. Supported Payment Methods",
+        "paragraphs": [
+          "We accept payment via Visa and Mastercard, in addition to digital payment wallets supported by our approved payment gateway."
+        ]
+      },
+      {
+        "heading": "6. Delivery Policy",
+        "paragraphs": [
+          "ShelfShot AI is a fully digital service and does not involve any physical shipping or delivery. As soon as generation is complete, the result appears directly inside your account dashboard, and you can download it immediately with no waiting or additional fees."
+        ]
+      }
+    ],
+    "contactLinkLabel": "Contact page"
+  },
+  "login": {
+    "signIn": "Sign In",
+    "signUp": "New Account",
+    "emailPlaceholder": "Your email",
+    "passwordPlaceholder": "Password",
+    "signInBtn": "Sign In",
+    "signUpBtn": "Create Account",
+    "forgotPassword": "Forgot your password?",
+    "signupSuccess": "Account created! Check your email to confirm your registration.",
+    "genericError": "Something went wrong, please try again."
+  },
+  "forgotPassword": {
+    "title": "Forgot Your Password?",
+    "subtitle": "Enter your email and we'll send you a link to reset it.",
+    "emailPlaceholder": "Your email",
+    "sendBtn": "Send Reset Link",
+    "sentTitle": "Link sent!",
+    "sentBody": "Check your email ({email}) and click the link to reset your password.",
+    "backToLogin": "Back to sign in",
+    "genericError": "Something went wrong, please try again."
+  },
+  "resetPassword": {
+    "verifying": "Verifying link...",
+    "title": "Set a New Password",
+    "subtitle": "Choose a new password for your account.",
+    "newPasswordPlaceholder": "New password",
+    "confirmPasswordPlaceholder": "Confirm password",
+    "saveBtn": "Save Password",
+    "successTitle": "Password changed successfully!",
+    "successBody": "Redirecting you to the dashboard...",
+    "errorShort": "Password must be at least 6 characters.",
+    "errorMismatch": "Passwords do not match.",
+    "genericError": "Something went wrong, please try again."
+  },
+  "dashboard": {
+    "planLabel": "{plan} Plan",
+    "signOut": "Sign Out",
+    "cancelledNotice": "Subscription cancelled. You'll keep {plan} plan access until {date}, after which you'll automatically move to the Free plan.",
+    "usageLabel": "This month's usage",
+    "step1Title": "Source Materials",
+    "step2Title": "Scene Description",
+    "productLabel": "Product Photo (required)",
+    "logoLabel": "Logo (optional)",
+    "promptPlaceholder": "Example: a perfume bottle on a black marble table with warm cinematic lighting...",
+    "generating": "Processing...",
+    "limitReached": "You've hit your limit — upgrade your plan",
+    "generateBtn": "Generate Image",
+    "historyLabel": "Recent generations",
+    "errNoProduct": "Please upload a product photo first.",
+    "errNoPrompt": "Please write a scene description.",
+    "errGenerate": "An error occurred while generating the image."
+  },
+  "imageUploader": {
+    "dropHint": "Click to upload or drag an image here",
+    "formats": "PNG, JPG, WEBP"
+  },
+  "resultDisplay": {
+    "loading": "Generating your product shot...",
+    "download": "Download",
+    "placeholder": "Your result will appear here"
+  },
+  "subscribeButton": {
+    "loading": "One moment...",
+    "cta": "Subscribe Now",
+    "genericError": "Something went wrong, please try again"
+  },
+  "manageSubscription": {
+    "manage": "Manage Subscription",
+    "title": "Cancel Subscription",
+    "bodyPrefix": "You're currently on the",
+    "bodySuffix": "plan. Cancelling will move you back to the \"Free\" plan immediately. This action cannot be undone, and you'll need to resubscribe if you want to come back.",
+    "back": "Go back",
+    "confirm": "Confirm Cancellation",
+    "cancelling": "Cancelling...",
+    "genericError": "Something went wrong, please try again"
+  },
+  "toolTutorial": {
+    "promptText": "A luxury open chocolate box with a gold ribbon on a warm brown background, professional studio lighting...",
+    "urlBar": "shelfshotai.com/dashboard",
+    "dragHint": "Drag your product photo here",
+    "originalAlt": "Original product photo",
+    "logoAlt": "Logo",
+    "resultAlt": "Professional result",
+    "done": "Done",
+    "resultPlaceholder": "Result will appear here",
+    "generateLabel": "Generate Image"
+  },
+  "blog": {
+    "metaTitle": "Blog | ShelfShot AI",
+    "metaDescription": "Practical articles and tips for store owners on product photography and boosting sales.",
+    "title": "Blog",
+    "subtitle": "Practical tips for store owners on product photography and boosting sales.",
+    "readArticle": "Read article",
+    "ctaBody": "Try ShelfShot AI for free and turn your product photos into professional studio quality.",
+    "ctaButton": "Try It Free Now"
+  },
+  "plans": {
+    "free": {
+      "name": "Free",
+      "features": [
+        "3 images/month",
+        "Basic logo placement",
+        "Standard resolution"
+      ]
+    },
+    "starter": {
+      "name": "Starter",
+      "features": [
+        "20 images/month",
+        "Basic logo placement",
+        "Standard resolution"
+      ]
+    },
+    "economic": {
+      "name": "Economic",
+      "features": [
+        "50 images/month",
+        "Advanced logo placement",
+        "Priority processing",
+        "Email support"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "features": [
+        "150 images/month",
+        "Full commercial usage",
+        "Priority direct support",
+        "Unlimited generation history"
+      ]
+    }
+  },
+  "meta": {
+    "title": "ShelfShot AI — AI Product Photography Studio",
+    "description": "Turn your ordinary product photos into professional, cinematic shots in seconds — no photo studio or designer needed."
+  }
+}
