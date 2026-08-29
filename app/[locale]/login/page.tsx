@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { Mail, Lock, Loader2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
-import { useRouter } from "next/navigation";
+import { useRouter, Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function LoginPage() {
   const supabase = createClient();
   const router = useRouter();
+  const t = useTranslations("login");
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +31,7 @@ export default function LoginPage() {
           options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
         });
         if (error) throw error;
-        setMessage("تم إنشاء الحساب! تحقق من بريدك الإلكتروني لتأكيد التسجيل.");
+        setMessage(t("signupSuccess"));
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
@@ -37,7 +39,7 @@ export default function LoginPage() {
         router.refresh();
       }
     } catch (err: any) {
-      setError(err.message || "حدث خطأ، حاول مرة أخرى.");
+      setError(err.message || t("genericError"));
     } finally {
       setLoading(false);
     }
@@ -59,7 +61,7 @@ export default function LoginPage() {
                 mode === "signin" ? "bg-amber-500 text-ink" : "text-white/50"
               }`}
             >
-              تسجيل الدخول
+              {t("signIn")}
             </button>
             <button
               onClick={() => setMode("signup")}
@@ -67,7 +69,7 @@ export default function LoginPage() {
                 mode === "signup" ? "bg-amber-500 text-ink" : "text-white/50"
               }`}
             >
-              حساب جديد
+              {t("signUp")}
             </button>
           </div>
 
@@ -77,7 +79,7 @@ export default function LoginPage() {
               <input
                 type="email"
                 required
-                placeholder="بريدك الإلكتروني"
+                placeholder={t("emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
@@ -89,7 +91,7 @@ export default function LoginPage() {
                 type="password"
                 required
                 minLength={6}
-                placeholder="كلمة المرور"
+                placeholder={t("passwordPlaceholder")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
@@ -105,13 +107,13 @@ export default function LoginPage() {
               className="w-full bg-gradient-to-l from-amber-500 to-orange-600 text-ink font-bold py-3 rounded-xl flex items-center justify-center gap-2 disabled:opacity-60"
             >
               {loading && <Loader2 className="animate-spin" size={18} />}
-              {mode === "signin" ? "دخول" : "إنشاء حساب"}
+              {mode === "signin" ? t("signInBtn") : t("signUpBtn")}
             </button>
 
             {mode === "signin" && (
-              <a href="/forgot-password" className="block text-center text-sm text-white/40 hover:text-amber-400 transition-colors">
-                نسيت كلمة المرور؟
-              </a>
+              <Link href="/forgot-password" className="block text-center text-sm text-white/40 hover:text-amber-400 transition-colors">
+                {t("forgotPassword")}
+              </Link>
             )}
           </form>
         </div>

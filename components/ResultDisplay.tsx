@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Download, ImageOff, Sparkles } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface ResultDisplayProps {
   isLoading: boolean;
@@ -10,6 +11,8 @@ interface ResultDisplayProps {
 }
 
 export const ResultDisplay: React.FC<ResultDisplayProps> = ({ isLoading, generatedImageUrl, error }) => {
+  const t = useTranslations("resultDisplay");
+
   const handleDownload = async () => {
     if (!generatedImageUrl) return;
     try {
@@ -33,7 +36,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ isLoading, generat
       {isLoading && (
         <div className="text-center space-y-3">
           <div className="w-10 h-10 border-2 border-white/20 border-t-amber-500 rounded-full animate-spin mx-auto" />
-          <p className="text-sm text-white/50">جاري توليد لقطة المنتج...</p>
+          <p className="text-sm text-white/50">{t("loading")}</p>
         </div>
       )}
 
@@ -53,7 +56,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ isLoading, generat
             className="absolute bottom-4 left-4 bg-ink/80 backdrop-blur border border-line text-white text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 hover:bg-ink transition-colors"
           >
             <Download size={16} />
-            تحميل
+            {t("download")}
           </button>
         </>
       )}
@@ -61,7 +64,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ isLoading, generat
       {!isLoading && !error && !generatedImageUrl && (
         <div className="text-center space-y-2">
           <Sparkles className="mx-auto text-white/15" size={32} />
-          <p className="text-sm text-white/30">ستظهر النتيجة هنا</p>
+          <p className="text-sm text-white/30">{t("placeholder")}</p>
         </div>
       )}
     </div>

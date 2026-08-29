@@ -1,63 +1,16 @@
 export type PlanId = "free" | "starter" | "economic" | "pro";
 
+// البيانات الرقمية فقط هون — النصوص (الاسم والمزايا) صارت بملفات الترجمة
+// messages/ar.json و messages/en.json تحت مفتاح "plans"
 export interface Plan {
   id: PlanId;
-  name: string;
-  nameAr: string;
   monthlyGenerations: number;
   price: number; // USD / month, 0 for free
-  featuresAr: string[];
 }
 
 export const PLANS: Record<PlanId, Plan> = {
-  free: {
-    id: "free",
-    name: "Free",
-    nameAr: "مجاني",
-    monthlyGenerations: 3,
-    price: 0,
-    featuresAr: [
-      "3 صور شهرياً",
-      "دمج لوغو أساسي",
-      "دقة قياسية",
-    ],
-  },
-  starter: {
-    id: "starter",
-    name: "Starter",
-    nameAr: "بداية",
-    monthlyGenerations: 20,
-    price: 6,
-    featuresAr: [
-      "20 صورة شهرياً",
-      "دمج لوغو أساسي",
-      "دقة قياسية",
-    ],
-  },
-  economic: {
-    id: "economic",
-    name: "Economic",
-    nameAr: "اقتصادي",
-    monthlyGenerations: 50,
-    price: 15,
-    featuresAr: [
-      "50 صورة شهرياً",
-      "دمج لوغو متقدم",
-      "أولوية بالمعالجة",
-      "دعم عبر البريد",
-    ],
-  },
-  pro: {
-    id: "pro",
-    name: "Pro",
-    nameAr: "احترافي",
-    monthlyGenerations: 150,
-    price: 39,
-    featuresAr: [
-      "150 صورة شهرياً",
-      "استخدام تجاري كامل",
-      "دعم مباشر ذو أولوية",
-      "سجل توليد غير محدود",
-    ],
-  },
+  free: { id: "free", monthlyGenerations: 3, price: 0 },
+  starter: { id: "starter", monthlyGenerations: 20, price: 6 },
+  economic: { id: "economic", monthlyGenerations: 50, price: 15 },
+  pro: { id: "pro", monthlyGenerations: 150, price: 39 },
 };

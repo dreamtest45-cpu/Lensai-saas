@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Wand2, LogOut, Crown } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
+import { useTranslations, useLocale } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 import { ImageUploader } from "@/components/ImageUploader";
 import { ResultDisplay } from "@/components/ResultDisplay";
@@ -40,6 +41,9 @@ export default function DashboardClient({
 }: Props) {
   const router = useRouter();
   const supabase = createClient();
+  const t = useTranslations("dashboard");
+  const tPlans = useTranslations("plans");
+  const locale = useLocale();
 
   const [productImage, setProductImage] = useState<ImageAsset | null>(null);
   const [logoImage, setLogoImage] = useState<ImageAsset | null>(null);
@@ -50,10 +54,11 @@ export default function DashboardClient({
 
   const remaining = Math.max(limit - used, 0);
   const usagePct = Math.min((used / limit) * 100, 100);
+  const planName = tPlans(`${plan}.name`);
 
   const handleGenerate = async () => {
-    if (!productImage) return setError("الرجاء رفع صورة المنتج أولاً.");
-    if (!prompt.trim()) return setError("الرجاء كتابة وصف للمشهد.");
+    if (!productImage) return setError(t("errNoProduct"));
+    if (!prompt.trim()) return setError(t("errNoPrompt"));
 
     setError(null);
     setIsGenerating(true);
@@ -72,7 +77,7 @@ export default function DashboardClient({
         }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "حدث خطأ أثناء توليد الصورة.");
+      if (!res.ok) throw new Error(data.error || t("errGenerate"));
       setResultImage(data.url);
       router.refresh();
     } catch (err: any) {
@@ -102,9 +107,9 @@ export default function DashboardClient({
           <div className="flex items-center gap-3">
             <span className="hidden md:flex items-center gap-2 text-sm text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded-full border border-amber-500/20">
               <Crown size={14} />
-              خطة {PLANS[plan].nameAr}
+              {t("planLabel", { plan: planName })}
             </span>
-            <button onClick={handleSignOut} className="text-white/50 hover:text-white p-2 rounded-lg hover:bg-white/5" title="تسجيل الخروج">
+            <button onClick={handleSignOut} className="text-white/50 hover:text-white p-2 rounded-lg hover:bg-white/5" title={t("signOut")}>
               <LogOut size={18} />
             </button>
           </div>
@@ -114,13 +119,14 @@ export default function DashboardClient({
       <main className="container mx-auto px-6 py-8 max-w-6xl">
         {subscriptionStatus === "cancelled" && currentPeriodEnd && (
           <div className="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm rounded-xl2 px-5 py-3 mb-6">
-            تم إلغاء الاشتراك. راح تضل مستفيد من خطة {PLANS[plan].nameAr} لحد{" "}
-            {new Date(currentPeriodEnd).toLocaleDateString("ar-EG", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
+            {t("cancelledNotice", {
+              plan: planName,
+              date: new Date(currentPeriodEnd).toLocaleDateString(locale === "ar" ? "ar-EG" : "en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }),
             })}
-            ، وبعدها بترجع تلقائياً لخطة مجاني.
           </div>
         )}
 
@@ -128,7 +134,7 @@ export default function DashboardClient({
         <div className="bg-panel border border-line rounded-xl2 p-5 mb-8 flex items-center justify-between flex-wrap gap-4">
           <div className="flex-1 min-w-[220px]">
             <div className="flex justify-between text-sm mb-2">
-              <span className="text-white/60">الاستخدام هذا الشهر</span>
+              <span className="text-white/60">{t("usageLabel")}</span>
               <span className="font-semibold">{used} / {limit}</span>
             </div>
             <div className="h-2 rounded-full bg-white/5 overflow-hidden">
@@ -144,13 +150,13 @@ export default function DashboardClient({
               .map((id) => (
                 <div key={id} className="w-40">
                   <p className="text-center text-xs text-white/50 mb-1">
-                    {PLANS[id].nameAr} — ${PLANS[id].price}
+                    {tPlans(`${id}.name`)} — ${PLANS[id].price}
                   </p>
                   <SubscribeButton planId={id} />
                 </div>
               ))}
             {plan !== "free" && subscriptionStatus !== "cancelled" && (
-              <ManageSubscriptionModal planNameAr={PLANS[plan].nameAr} />
+              <ManageSubscriptionModal planName={planName} />
             )}
           </div>
         </div>
@@ -160,23 +166,23 @@ export default function DashboardClient({
             <div className="bg-panel p-6 rounded-xl2 border border-line">
               <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center text-xs text-ink font-bold">1</span>
-                المواد الأولية
+                {t("step1Title")}
               </h2>
               <div className="space-y-4">
-                <ImageUploader id="product-upload" label="صورة المنتج (أساسي)" image={productImage} onImageChange={setProductImage} required />
-                <ImageUploader id="logo-upload" label="اللوغو (اختياري)" image={logoImage} onImageChange={setLogoImage} />
+                <ImageUploader id="product-upload" label={t("productLabel")} image={productImage} onImageChange={setProductImage} required isLogo={false} />
+                <ImageUploader id="logo-upload" label={t("logoLabel")} image={logoImage} onImageChange={setLogoImage} isLogo />
               </div>
             </div>
 
             <div className="bg-panel p-6 rounded-xl2 border border-line">
               <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center text-xs text-ink font-bold">2</span>
-                وصف المشهد
+                {t("step2Title")}
               </h2>
               <textarea
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="مثال: زجاجة عطر على طاولة رخامية سوداء مع إضاءة سينمائية دافئة..."
+                placeholder={t("promptPlaceholder")}
                 className="w-full h-32 bg-ink border border-line rounded-xl p-4 text-sm outline-none focus:border-amber-500 transition-colors resize-none placeholder-white/25"
               />
               <button
@@ -191,14 +197,14 @@ export default function DashboardClient({
                 {isGenerating ? (
                   <>
                     <div className="w-5 h-5 border-2 border-ink/30 border-t-ink rounded-full animate-spin" />
-                    جاري المعالجة...
+                    {t("generating")}
                   </>
                 ) : remaining <= 0 ? (
-                  "وصلت للحد الأقصى — رقّي خطتك"
+                  t("limitReached")
                 ) : (
                   <>
                     <Wand2 size={20} />
-                    توليد الصورة
+                    {t("generateBtn")}
                   </>
                 )}
               </button>
@@ -222,7 +228,7 @@ export default function DashboardClient({
                     </button>
                   ))}
                 </div>
-                <p className="text-center text-white/30 mt-2 text-sm">آخر عمليات التوليد</p>
+                <p className="text-center text-white/30 mt-2 text-sm">{t("historyLabel")}</p>
               </>
             )}
           </div>

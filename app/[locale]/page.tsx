@@ -1,13 +1,20 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { getTranslations } from "next-intl/server";
 import { Wand2, Layers, ShieldCheck, Zap, CreditCard } from "lucide-react";
 import { PLANS } from "@/lib/plans";
 import { createClient } from "@/lib/supabase/server";
 import { ToolTutorialHero } from "@/components/ToolTutorialHero";
 import { SubscribeButton } from "@/components/SubscribeButton";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export default async function LandingPage() {
   const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
+  const t = await getTranslations("home");
+  const tPlans = await getTranslations("plans");
+  const tNav = await getTranslations("nav");
+
+  const features = t.raw("features") as { title: string; desc: string }[];
 
   return (
     <div className="min-h-screen grain">
@@ -18,15 +25,20 @@ export default async function LandingPage() {
             <img src="/icon.png" alt="ShelfShot AI" className="w-10 h-10" />
             <span className="font-display font-bold text-xl tracking-tight">ShelfShot AI</span>
           </div>
-          <Link href="/blog" className="text-sm text-white/60 hover:text-white font-medium">
-  المدونة
-</Link>
-          <Link
-            href={user ? "/dashboard" : "/login"}
-            className="text-sm font-semibold bg-white/5 hover:bg-white/10 border border-line rounded-full px-5 py-2.5 transition-colors"
-          >
-            {user ? "لوحة التحكم" : "تسجيل الدخول"}
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/blog" className="text-sm text-white/60 hover:text-white font-medium">
+              {tNav("blog")}
+            </Link>
+          </div>
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+            <Link
+              href={user ? "/dashboard" : "/login"}
+              className="text-sm font-semibold bg-white/5 hover:bg-white/10 border border-line rounded-full px-5 py-2.5 transition-colors"
+            >
+              {user ? tNav("dashboard") : tNav("login")}
+            </Link>
+          </div>
         </div>
       </nav>
 
@@ -35,15 +47,15 @@ export default async function LandingPage() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-amber-400 font-semibold text-sm tracking-widest mb-4">
-              استوديو تصوير منتجات بالذكاء الاصطناعي
+              {t("eyebrow")}
             </p>
             <h1 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.15] mb-6">
-              صورة منتج عادية على طاولة المطبخ،
+              {t("titleLine1")}
               <br />
-              <span className="text-amber-400">تخرج بجودة استوديو احترافي</span>
+              <span className="text-amber-400">{t("titleHighlight")}</span>
             </h1>
             <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-lg">
-              ارفع صورة منتجك، اكتب وصف المشهد اللي تتخيله، ودع الذكاء الاصطناعي يصنع لك لقطة تسويقية سينمائية جاهزة للنشر — بلوغو مدمج وإضاءة استوديو، خلال ثوانٍ.
+              {t("subtitle")}
             </p>
             <div className="flex flex-wrap items-center gap-4">
               <Link
@@ -51,9 +63,9 @@ export default async function LandingPage() {
                 className="inline-flex items-center gap-2 bg-gradient-to-l from-amber-500 to-orange-600 text-ink font-bold px-7 py-3.5 rounded-full shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 transition-shadow"
               >
                 <Wand2 size={18} strokeWidth={2.5} />
-                جرّب مجاناً الآن
+                {t("ctaTry")}
               </Link>
-              <span className="text-sm text-white/40">بدون بطاقة ائتمان — 3 صور مجانية شهرياً</span>
+              <span className="text-sm text-white/40">{t("ctaNote")}</span>
             </div>
           </div>
 
@@ -64,17 +76,13 @@ export default async function LandingPage() {
       {/* Features */}
       <section className="border-t border-line/60 py-20">
         <div className="container mx-auto max-w-6xl px-6">
-          <h2 className="font-display font-bold text-2xl mb-10">ليش ShelfShot AI؟</h2>
+          <h2 className="font-display font-bold text-2xl mb-10">{t("featuresTitle")}</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { icon: Wand2, title: "من فكرة إلى صورة", desc: "اكتب وصف المشهد بالعربي أو الإنجليزي، والذكاء الاصطناعي يبنيه حول منتجك فعلياً." },
-              { icon: Layers, title: "دمج اللوغو تلقائياً", desc: "ارفع لوغو علامتك التجارية ليظهر بشكل طبيعي على المنتج أو بجانبه." },
-              { icon: ShieldCheck, title: "مفتاحك محمي دائماً", desc: "التوليد يتم بالكامل على الخادم — لا أحد يقدر يوصل لمفتاح الـ API من المتصفح." },
-            ].map((f, i) => (
+            {[Wand2, Layers, ShieldCheck].map((Icon, i) => (
               <div key={i} className="bg-panel border border-line rounded-xl2 p-6">
-                <f.icon className="text-amber-400 mb-4" size={26} />
-                <h3 className="font-bold mb-2">{f.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{f.desc}</p>
+                <Icon className="text-amber-400 mb-4" size={26} />
+                <h3 className="font-bold mb-2">{features[i].title}</h3>
+                <p className="text-white/50 text-sm leading-relaxed">{features[i].desc}</p>
               </div>
             ))}
           </div>
@@ -84,8 +92,8 @@ export default async function LandingPage() {
       {/* Pricing */}
       <section className="border-t border-line/60 py-20" id="pricing">
         <div className="container mx-auto max-w-6xl px-6">
-          <h2 className="font-display font-bold text-2xl mb-2">خطط واضحة، بدون مفاجآت</h2>
-          <p className="text-white/50 mb-10">غيّر أو ألغِ اشتراكك في أي وقت.</p>
+          <h2 className="font-display font-bold text-2xl mb-2">{t("pricingTitle")}</h2>
+          <p className="text-white/50 mb-10">{t("pricingSubtitle")}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {Object.values(PLANS).map((plan) => (
               <div
@@ -96,18 +104,18 @@ export default async function LandingPage() {
               >
                 {plan.id === "pro" && (
                   <span className="absolute -top-3 right-6 bg-amber-500 text-ink text-xs font-bold px-3 py-1 rounded-full">
-                    الأكثر طلباً
+                    {t("mostPopular")}
                   </span>
                 )}
-                <h3 className="font-bold text-lg mb-1">{plan.nameAr}</h3>
+                <h3 className="font-bold text-lg mb-1">{tPlans(`${plan.id}.name`)}</h3>
                 <div className="flex items-baseline gap-1 mb-5">
                   <span className="text-3xl font-display font-extrabold">
-                    {plan.price === 0 ? "مجاني" : `$${plan.price}`}
+                    {plan.price === 0 ? t("free") : `$${plan.price}`}
                   </span>
-                  {plan.price > 0 && <span className="text-white/40 text-sm">/ شهرياً</span>}
+                  {plan.price > 0 && <span className="text-white/40 text-sm">{t("perMonth")}</span>}
                 </div>
                 <ul className="space-y-2.5 mb-7">
-                  {plan.featuresAr.map((f, i) => (
+                  {(tPlans.raw(`${plan.id}.features`) as string[]).map((f, i) => (
                     <li key={i} className="text-sm text-white/60 flex items-center gap-2">
                       <Zap size={14} className="text-amber-400 shrink-0" />
                       {f}
@@ -119,7 +127,7 @@ export default async function LandingPage() {
                     href={user ? "/dashboard" : "/login"}
                     className="block text-center font-semibold rounded-full py-2.5 text-sm transition-colors bg-white/5 border border-line hover:bg-white/10"
                   >
-                    ابدأ مجاناً
+                    {t("startFree")}
                   </Link>
                               ) : (
                   <SubscribeButton planId={plan.id} />
@@ -134,11 +142,11 @@ export default async function LandingPage() {
         <div className="container mx-auto max-w-6xl px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="text-sm text-white/30">© {new Date().getFullYear()} ShelfShot AI</span>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/40">
-            <Link href="/about" className="hover:text-white/70">من نحن</Link>
-            <Link href="/contact" className="hover:text-white/70">اتصل بنا</Link>
-            <Link href="/terms" className="hover:text-white/70">شروط الاستخدام</Link>
-            <Link href="/privacy" className="hover:text-white/70">سياسة الخصوصية</Link>
-            <Link href="/refund" className="hover:text-white/70">سياسة الاسترجاع</Link>
+            <Link href="/about" className="hover:text-white/70">{t("footer.about")}</Link>
+            <Link href="/contact" className="hover:text-white/70">{t("footer.contact")}</Link>
+            <Link href="/terms" className="hover:text-white/70">{t("footer.terms")}</Link>
+            <Link href="/privacy" className="hover:text-white/70">{t("footer.privacy")}</Link>
+            <Link href="/refund" className="hover:text-white/70">{t("footer.refund")}</Link>
           </div>
           <div className="flex items-center gap-3 text-white/40">
             <span className="inline-flex items-center gap-1.5 border border-line rounded-md px-2.5 py-1 text-xs font-semibold">

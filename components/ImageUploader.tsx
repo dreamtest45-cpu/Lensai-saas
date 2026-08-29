@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { ImageAsset } from "@/types";
 import { Upload, X, Image as ImageIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface ImageUploaderProps {
   label: string;
@@ -11,6 +12,7 @@ interface ImageUploaderProps {
   id: string;
   accept?: string;
   required?: boolean;
+  isLogo?: boolean;
 }
 
 export const ImageUploader: React.FC<ImageUploaderProps> = ({
@@ -20,8 +22,10 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
   id,
   accept = "image/*",
   required = false,
+  isLogo = false,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const t = useTranslations("imageUploader");
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -72,14 +76,14 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
         ) : (
           <div className="text-center space-y-3">
             <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto group-hover:bg-amber-500/20 transition-colors">
-              {label.includes("لوغو") ? (
+              {isLogo ? (
                 <ImageIcon className="text-white/40 group-hover:text-amber-400" />
               ) : (
                 <Upload className="text-white/40 group-hover:text-amber-400" />
               )}
             </div>
-            <p className="text-sm text-white/50 group-hover:text-white/80">اضغط للرفع أو اسحب الصورة هنا</p>
-            <p className="text-xs text-white/30">PNG, JPG, WEBP</p>
+            <p className="text-sm text-white/50 group-hover:text-white/80">{t("dropHint")}</p>
+            <p className="text-xs text-white/30">{t("formats")}</p>
           </div>
         )}
       </div>

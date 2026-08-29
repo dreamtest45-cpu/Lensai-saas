@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface SubscribeButtonProps {
   planId: string;
@@ -9,6 +10,7 @@ interface SubscribeButtonProps {
 export function SubscribeButton({ planId }: SubscribeButtonProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const t = useTranslations("subscribeButton");
 
   async function handleSubscribe() {
     setLoading(true);
@@ -24,7 +26,7 @@ export function SubscribeButton({ planId }: SubscribeButtonProps) {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "حصل خطأ، حاولي مرة ثانية");
+        throw new Error(data.error || t("genericError"));
       }
 
       if (data.redirectUrl) {
@@ -46,7 +48,7 @@ export function SubscribeButton({ planId }: SubscribeButtonProps) {
         disabled={loading}
         className="w-full text-center font-semibold rounded-full py-2.5 text-sm transition-colors bg-white/5 border border-line hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {loading ? "لحظات..." : "اشترك الآن"}
+        {loading ? t("loading") : t("cta")}
       </button>
       {error && <p className="text-red-400 text-xs mt-2 text-center">{error}</p>}
     </div>

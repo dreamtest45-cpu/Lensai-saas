@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { Mail, Loader2, ArrowRight } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import { useTranslations } from "next-intl";
 
 export default function ForgotPasswordPage() {
   const supabase = createClient();
+  const t = useTranslations("forgotPassword");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
@@ -24,7 +26,7 @@ export default function ForgotPasswordPage() {
       if (error) throw error;
       setSent(true);
     } catch (err: any) {
-      setError(err.message || "حدث خطأ، حاول مرة أخرى.");
+      setError(err.message || t("genericError"));
     } finally {
       setLoading(false);
     }
@@ -41,19 +43,19 @@ export default function ForgotPasswordPage() {
         <div className="bg-panel border border-line rounded-xl2 p-7">
           {sent ? (
             <div className="text-center space-y-3 py-4">
-              <p className="text-emerald-400 font-semibold">تم إرسال الرابط!</p>
+              <p className="text-emerald-400 font-semibold">{t("sentTitle")}</p>
               <p className="text-sm text-white/50 leading-relaxed">
-                تحقق من بريدك الإلكتروني ({email}) واضغط على الرابط لإعادة تعيين كلمة المرور.
+                {t("sentBody", { email })}
               </p>
               <Link href="/login" className="inline-block text-sm text-amber-400 hover:text-amber-300 mt-2">
-                الرجوع لتسجيل الدخول
+                {t("backToLogin")}
               </Link>
             </div>
           ) : (
             <>
-              <h1 className="text-lg font-bold mb-1">نسيت كلمة المرور؟</h1>
+              <h1 className="text-lg font-bold mb-1">{t("title")}</h1>
               <p className="text-sm text-white/50 mb-6">
-                أدخل بريدك الإلكتروني وسنرسل لك رابط لإعادة تعيينها.
+                {t("subtitle")}
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
@@ -61,7 +63,7 @@ export default function ForgotPasswordPage() {
                   <input
                     type="email"
                     required
-                    placeholder="بريدك الإلكتروني"
+                    placeholder={t("emailPlaceholder")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
@@ -76,7 +78,7 @@ export default function ForgotPasswordPage() {
                   className="w-full bg-gradient-to-l from-amber-500 to-orange-600 text-ink font-bold py-3 rounded-xl flex items-center justify-center gap-2 disabled:opacity-60"
                 >
                   {loading && <Loader2 className="animate-spin" size={18} />}
-                  إرسال رابط إعادة التعيين
+                  {t("sendBtn")}
                 </button>
               </form>
               <Link
@@ -84,7 +86,7 @@ export default function ForgotPasswordPage() {
                 className="mt-5 flex items-center justify-center gap-1 text-sm text-white/40 hover:text-white/70"
               >
                 <ArrowRight size={14} />
-                الرجوع لتسجيل الدخول
+                {t("backToLogin")}
               </Link>
             </>
           )}

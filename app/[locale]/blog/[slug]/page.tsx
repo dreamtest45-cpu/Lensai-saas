@@ -1,6 +1,7 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/lib/blog-posts";
+import { getTranslations } from "next-intl/server";
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({ slug: post.slug }));
@@ -15,9 +16,12 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = BLOG_POSTS.find((p) => p.slug === params.slug);
   if (!post) return notFound();
+
+  const t = await getTranslations("blog");
+  const tNav = await getTranslations("nav");
 
   return (
     <div className="min-h-screen grain">
@@ -28,7 +32,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <span className="font-display font-bold text-lg tracking-tight">ShelfShot AI</span>
           </Link>
           <Link href="/blog" className="text-sm text-white/50 hover:text-white flex items-center gap-1">
-            المدونة
+            {tNav("blog")}
           </Link>
         </div>
       </nav>
@@ -53,12 +57,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </div>
 
         <div className="mt-12 bg-panel border border-line rounded-xl2 p-6 text-center">
-          <p className="text-white/70 mb-4">جرّبي ShelfShot AI مجاناً وحوّلي صور منتجاتك لجودة استوديو احترافي.</p>
+          <p className="text-white/70 mb-4">{t("ctaBody")}</p>
           <Link
             href="/login"
             className="inline-block bg-gradient-to-l from-amber-500 to-orange-600 text-ink font-bold px-6 py-2.5 rounded-full text-sm"
           >
-            جرّب مجاناً الآن
+            {t("ctaButton")}
           </Link>
         </div>
       </main>

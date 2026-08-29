@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { Aperture, Lock, Loader2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import { useTranslations } from "next-intl";
 
 export default function ResetPasswordPage() {
   const supabase = createClient();
   const router = useRouter();
+  const t = useTranslations("resetPassword");
   const [ready, setReady] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -34,11 +36,11 @@ export default function ResetPasswordPage() {
     setError(null);
 
     if (password.length < 6) {
-      setError("كلمة المرور يجب أن تكون 6 أحرف على الأقل.");
+      setError(t("errorShort"));
       return;
     }
     if (password !== confirmPassword) {
-      setError("كلمتا المرور غير متطابقتين.");
+      setError(t("errorMismatch"));
       return;
     }
 
@@ -52,7 +54,7 @@ export default function ResetPasswordPage() {
         router.refresh();
       }, 1500);
     } catch (err: any) {
-      setError(err.message || "حدث خطأ، حاول مرة أخرى.");
+      setError(err.message || t("genericError"));
     } finally {
       setLoading(false);
     }
@@ -72,14 +74,14 @@ export default function ResetPasswordPage() {
           {!ready && !success && (
             <div className="text-center py-6 space-y-3">
               <Loader2 className="animate-spin mx-auto text-amber-400" size={24} />
-              <p className="text-sm text-white/50">جاري التحقق من الرابط...</p>
+              <p className="text-sm text-white/50">{t("verifying")}</p>
             </div>
           )}
 
           {ready && !success && (
             <>
-              <h1 className="text-lg font-bold mb-1">تعيين كلمة مرور جديدة</h1>
-              <p className="text-sm text-white/50 mb-6">اختر كلمة مرور جديدة لحسابك.</p>
+              <h1 className="text-lg font-bold mb-1">{t("title")}</h1>
+              <p className="text-sm text-white/50 mb-6">{t("subtitle")}</p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
                   <Lock className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
@@ -87,7 +89,7 @@ export default function ResetPasswordPage() {
                     type="password"
                     required
                     minLength={6}
-                    placeholder="كلمة المرور الجديدة"
+                    placeholder={t("newPasswordPlaceholder")}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
@@ -99,7 +101,7 @@ export default function ResetPasswordPage() {
                     type="password"
                     required
                     minLength={6}
-                    placeholder="تأكيد كلمة المرور"
+                    placeholder={t("confirmPasswordPlaceholder")}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
@@ -114,7 +116,7 @@ export default function ResetPasswordPage() {
                   className="w-full bg-gradient-to-l from-amber-500 to-orange-600 text-ink font-bold py-3 rounded-xl flex items-center justify-center gap-2 disabled:opacity-60"
                 >
                   {loading && <Loader2 className="animate-spin" size={18} />}
-                  حفظ كلمة المرور
+                  {t("saveBtn")}
                 </button>
               </form>
             </>
@@ -122,8 +124,8 @@ export default function ResetPasswordPage() {
 
           {success && (
             <div className="text-center py-6 space-y-2">
-              <p className="text-emerald-400 font-semibold">تم تغيير كلمة المرور بنجاح!</p>
-              <p className="text-sm text-white/50">جاري تحويلك للوحة التحكم...</p>
+              <p className="text-emerald-400 font-semibold">{t("successTitle")}</p>
+              <p className="text-sm text-white/50">{t("successBody")}</p>
             </div>
           )}
         </div>

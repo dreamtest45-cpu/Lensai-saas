@@ -1,15 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { CreditCard, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface ManageSubscriptionModalProps {
-  planNameAr: string;
+  planName: string;
 }
 
-export function ManageSubscriptionModal({ planNameAr }: ManageSubscriptionModalProps) {
+export function ManageSubscriptionModal({ planName }: ManageSubscriptionModalProps) {
   const router = useRouter();
+  const t = useTranslations("manageSubscription");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -23,7 +25,7 @@ export function ManageSubscriptionModal({ planNameAr }: ManageSubscriptionModalP
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "حصل خطأ، حاولي مرة ثانية");
+        throw new Error(data.error || t("genericError"));
       }
 
       setOpen(false);
@@ -42,7 +44,7 @@ export function ManageSubscriptionModal({ planNameAr }: ManageSubscriptionModalP
         className="text-sm font-semibold bg-white/5 border border-line px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white/10"
       >
         <CreditCard size={14} />
-        إدارة الاشتراك
+        {t("manage")}
       </button>
 
       {open && (
@@ -55,11 +57,10 @@ export function ManageSubscriptionModal({ planNameAr }: ManageSubscriptionModalP
               <X size={18} />
             </button>
 
-            <h3 className="font-bold text-lg mb-2">إلغاء الاشتراك</h3>
+            <h3 className="font-bold text-lg mb-2">{t("title")}</h3>
             <p className="text-sm text-white/60 mb-6">
-              أنتِ حالياً على خطة <span className="text-amber-400 font-semibold">{planNameAr}</span>.
-              إلغاء الاشتراك بيرجّعك لخطة "مجاني" فوراً. هذا الإجراء لا يمكن التراجع عنه، وبتحتاجي
-              تشتركي من جديد لو حبيتي ترجعي.
+              {t("bodyPrefix")} <span className="text-amber-400 font-semibold">{planName}</span>.{" "}
+              {t("bodySuffix")}
             </p>
 
             {error && <p className="text-red-400 text-xs mb-4">{error}</p>}
@@ -70,14 +71,14 @@ export function ManageSubscriptionModal({ planNameAr }: ManageSubscriptionModalP
                 disabled={loading}
                 className="flex-1 text-sm font-semibold bg-white/5 border border-line rounded-full py-2.5 hover:bg-white/10 disabled:opacity-50"
               >
-                تراجع
+                {t("back")}
               </button>
               <button
                 onClick={handleCancel}
                 disabled={loading}
                 className="flex-1 text-sm font-semibold bg-red-500/90 text-white rounded-full py-2.5 hover:bg-red-500 disabled:opacity-50"
               >
-                {loading ? "جاري الإلغاء..." : "تأكيد الإلغاء"}
+                {loading ? t("cancelling") : t("confirm")}
               </button>
             </div>
           </div>

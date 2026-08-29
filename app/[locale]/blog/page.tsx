@@ -1,13 +1,17 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { ArrowLeft } from "lucide-react";
 import { BLOG_POSTS } from "@/lib/blog-posts";
+import { getTranslations } from "next-intl/server";
 
-export const metadata = {
-  title: "المدونة | ShelfShot AI",
-  description: "مقالات ونصائح عملية لأصحاب المتاجر حول تصوير المنتجات وزيادة المبيعات.",
-};
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale, namespace: "blog" });
+  return { title: t("metaTitle"), description: t("metaDescription") };
+}
 
-export default function BlogIndexPage() {
+export default async function BlogIndexPage() {
+  const t = await getTranslations("blog");
+  const tNav = await getTranslations("nav");
+
   return (
     <div className="min-h-screen grain">
       <nav className="border-b border-line/60">
@@ -17,14 +21,14 @@ export default function BlogIndexPage() {
             <span className="font-display font-bold text-lg tracking-tight">ShelfShot AI</span>
           </Link>
           <Link href="/" className="text-sm text-white/50 hover:text-white flex items-center gap-1">
-            الرئيسية
+            {tNav("home")}
           </Link>
         </div>
       </nav>
 
       <main className="container mx-auto max-w-4xl px-6 py-14">
-        <h1 className="font-display font-bold text-3xl mb-2">المدونة</h1>
-        <p className="text-white/50 mb-10">نصائح عملية لأصحاب المتاجر حول تصوير المنتجات وزيادة المبيعات.</p>
+        <h1 className="font-display font-bold text-3xl mb-2">{t("title")}</h1>
+        <p className="text-white/50 mb-10">{t("subtitle")}</p>
 
         <div className="space-y-6">
           {BLOG_POSTS.map((post) => (
@@ -37,7 +41,7 @@ export default function BlogIndexPage() {
               <h2 className="font-bold text-xl mb-2">{post.title}</h2>
               <p className="text-white/60 text-sm leading-relaxed mb-3">{post.excerpt}</p>
               <span className="text-amber-400 text-sm font-semibold flex items-center gap-1">
-                اقرأ المقال
+                {t("readArticle")}
                 <ArrowLeft size={14} />
               </span>
             </Link>

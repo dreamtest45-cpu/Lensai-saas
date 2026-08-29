@@ -2,11 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { Wand2, Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 // A silent, auto-looping mini walkthrough using real product photos:
 // upload product + logo -> type prompt -> generate -> real result.
-
-const PROMPT_TEXT = "علبة شوكولاته فاخرة مفتوحة بشريط ذهبي على خلفية بنية دافئة، إضاءة استوديو احترافية...";
 
 type Stage = "idle" | "uploaded" | "typing" | "generating" | "result";
 
@@ -21,6 +20,8 @@ const STAGE_DURATIONS: Record<Stage, number> = {
 const STAGE_ORDER: Stage[] = ["idle", "uploaded", "typing", "generating", "result"];
 
 export const ToolTutorialHero: React.FC = () => {
+  const t = useTranslations("toolTutorial");
+  const PROMPT_TEXT = t("promptText");
   const [stageIndex, setStageIndex] = useState(0);
   const [typedLength, setTypedLength] = useState(0);
   const stage = STAGE_ORDER[stageIndex];
@@ -53,7 +54,7 @@ export const ToolTutorialHero: React.FC = () => {
         <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
         <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
         <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
-        <span className="text-[10px] text-white/30 ms-2">shelfshotai.com/dashboard</span>
+        <span className="text-[10px] text-white/30 ms-2">{t("urlBar")}</span>
       </div>
 
       <div className="flex-1 grid grid-cols-2 gap-3 min-h-0">
@@ -63,17 +64,17 @@ export const ToolTutorialHero: React.FC = () => {
           }`}
         >
           {!hasProduct ? (
-            <span className="text-white/25 text-[11px]">اسحب صورة المنتج هنا</span>
+            <span className="text-white/25 text-[11px]">{t("dragHint")}</span>
           ) : (
             <div className="relative w-full h-full scale-in">
               <img
                 src="/demo-product.jpg"
-                alt="صورة المنتج الأصلية"
+                alt={t("originalAlt")}
                 className="w-full h-full object-cover"
               />
               <img
                 src="/demo-logo.png"
-                alt="لوغو"
+                alt={t("logoAlt")}
                 className="absolute bottom-2 right-2 w-10 h-auto rounded shadow-lg bg-[#2b0f1f]/80 p-1"
               />
             </div>
@@ -88,16 +89,16 @@ export const ToolTutorialHero: React.FC = () => {
             <div className="absolute inset-0 fade-in">
               <img
                 src="/demo-result.jpg"
-                alt="النتيجة الاحترافية"
+                alt={t("resultAlt")}
                 className="w-full h-full object-cover"
               />
               <span className="absolute top-2 left-2 bg-emerald-500/90 text-ink text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
-                <Check size={10} strokeWidth={3} /> تم
+                <Check size={10} strokeWidth={3} /> {t("done")}
               </span>
             </div>
           )}
           {!isGenerating && !showResult && (
-            <span className="text-white/10 text-[11px]">ستظهر النتيجة هنا</span>
+            <span className="text-white/10 text-[11px]">{t("resultPlaceholder")}</span>
           )}
         </div>
       </div>
@@ -117,7 +118,7 @@ export const ToolTutorialHero: React.FC = () => {
         } ${isGenerating ? "scale-95" : "scale-100"}`}
       >
         <Wand2 size={13} />
-        توليد الصورة
+        {t("generateLabel")}
       </div>
 
       <style jsx>{`
