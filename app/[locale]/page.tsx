@@ -20,17 +20,15 @@ export default async function LandingPage() {
     <div className="min-h-screen grain">
       {/* Nav */}
       <nav className="border-b border-line/60">
-        <div className="container mx-auto max-w-6xl px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src="/icon.png" alt="ShelfShot AI" className="w-10 h-10" />
-            <span className="font-display font-bold text-xl tracking-tight">ShelfShot AI</span>
+        <div className="container mx-auto max-w-6xl px-6 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+          <div className="flex items-center gap-2.5 shrink-0">
+            <img src="/icon.png" alt="ShelfShot AI" className="w-9 h-9 sm:w-10 sm:h-10" />
+            <span className="font-display font-bold text-lg sm:text-xl tracking-tight">ShelfShot AI</span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center flex-wrap gap-x-4 gap-y-2">
             <Link href="/blog" className="text-sm text-white/60 hover:text-white font-medium">
               {tNav("blog")}
             </Link>
-          </div>
-          <div className="flex items-center gap-4">
             <LanguageSwitcher />
             <Link
               href={user ? "/dashboard" : "/login"}
