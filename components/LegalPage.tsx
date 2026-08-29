@@ -15,12 +15,12 @@ export async function LegalPage({ title, updatedAt, children }: Props) {
   return (
     <div className="min-h-screen grain">
       <nav className="border-b border-line/60">
-        <div className="container mx-auto max-w-3xl px-6 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+        <div className="container mx-auto max-w-3xl px-6 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
             <img src="/icon.png" alt="ShelfShot AI" className="w-9 h-9" />
-            <span className="font-display font-bold text-lg tracking-tight">ShelfShot AI</span>
+            <span className="font-display font-bold text-base sm:text-lg tracking-tight">ShelfShot AI</span>
           </Link>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center flex-wrap gap-x-5 gap-y-2">
             <Link href="/" className="text-sm text-white/50 hover:text-white flex items-center gap-1">
               <ArrowRight size={14} />
               {t("home")}
