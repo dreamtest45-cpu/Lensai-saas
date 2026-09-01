@@ -4,356 +4,357 @@
     "switchToArabic": "العربية"
   },
   "nav": {
-    "blog": "المدونة",
-    "home": "الرئيسية",
-    "login": "تسجيل الدخول",
-    "dashboard": "لوحة التحكم"
+    "blog": "Blog",
+    "home": "Home",
+    "login": "Sign In",
+    "dashboard": "Dashboard"
   },
   "home": {
-    "eyebrow": "استوديو تصوير منتجات بالذكاء الاصطناعي",
-    "titleLine1": "صورة منتج عادية على طاولة المطبخ،",
-    "titleHighlight": "تخرج بجودة استوديو احترافي",
-    "subtitle": "ارفع صورة منتجك، اكتب وصف المشهد اللي تتخيله، ودع الذكاء الاصطناعي يصنع لك لقطة تسويقية سينمائية جاهزة للنشر — بلوغو مدمج وإضاءة استوديو، خلال ثوانٍ.",
-    "ctaTry": "جرّب مجاناً الآن",
-    "ctaNote": "بدون بطاقة ائتمان — 3 صور مجانية شهرياً",
-    "featuresTitle": "ليش ShelfShot AI؟",
+    "eyebrow": "AI-Powered Product Photography Studio",
+    "titleLine1": "An ordinary product photo on your kitchen table,",
+    "titleHighlight": "comes out with professional studio quality",
+    "subtitle": "Upload your product photo, describe the scene you're imagining, and let AI create a cinematic, publish-ready marketing shot for you — with your logo embedded and studio lighting, in seconds.",
+    "ctaTry": "Try It Free Now",
+    "ctaNote": "No credit card — 3 free images monthly",
+    "featuresTitle": "Why ShelfShot AI?",
     "features": [
       {
-        "title": "من فكرة إلى صورة",
-        "desc": "اكتب وصف المشهد بالعربي أو الإنجليزي، والذكاء الاصطناعي يبنيه حول منتجك فعلياً."
+        "title": "From Idea to Image",
+        "desc": "Describe the scene in Arabic or English, and the AI builds it around your actual product."
       },
       {
-        "title": "دمج اللوغو تلقائياً",
-        "desc": "ارفع لوغو علامتك التجارية ليظهر بشكل طبيعي على المنتج أو بجانبه."
+        "title": "Automatic Logo Placement",
+        "desc": "Upload your brand logo to have it appear naturally on or near the product."
       },
       {
-        "title": "مفتاحك محمي دائماً",
-        "desc": "التوليد يتم بالكامل على الخادم — لا أحد يقدر يوصل لمفتاح الـ API من المتصفح."
+        "title": "Your Key Stays Protected",
+        "desc": "Generation happens entirely on the server — no one can access the API key from the browser."
       }
     ],
-    "pricingTitle": "خطط واضحة، بدون مفاجآت",
-    "pricingSubtitle": "غيّر أو ألغِ اشتراكك في أي وقت.",
-    "mostPopular": "الأكثر طلباً",
-    "free": "مجاني",
-    "perMonth": "/ شهرياً",
-    "startFree": "ابدأ مجاناً",
+    "pricingTitle": "Clear Plans, No Surprises",
+    "pricingSubtitle": "Change or cancel your subscription anytime.",
+    "mostPopular": "Most Popular",
+    "free": "Free",
+    "perMonth": "/ month",
+    "startFree": "Start Free",
     "footer": {
-      "about": "من نحن",
-      "contact": "اتصل بنا",
-      "terms": "شروط الاستخدام",
-      "privacy": "سياسة الخصوصية",
-      "refund": "سياسة الاسترجاع"
+      "about": "About Us",
+      "contact": "Contact",
+      "terms": "Terms of Use",
+      "privacy": "Privacy Policy",
+      "refund": "Refund Policy"
     }
   },
   "about": {
-    "title": "من نحن",
-    "updatedAt": "يوليو 2026",
-    "p1": "ShelfShot AI منصة تتيح لأصحاب المتاجر والمنتجات تحويل صور منتجاتهم العادية إلى لقطات تسويقية احترافية بجودة استوديو، باستخدام أحدث نماذج الذكاء الاصطناعي، دون الحاجة لاستوديو تصوير أو مصمم محترف.",
-    "p2": "نؤمن أن كل صاحب مشروع صغير أو متوسط يستحق صوراً تسويقية تنافس العلامات التجارية الكبرى، بتكلفة معقولة وخلال ثوانٍ معدودة.",
-    "offerTitle": "ماذا نقدّم",
+    "title": "About Us",
+    "updatedAt": "July 2026",
+    "p1": "ShelfShot AI is a platform that lets store and product owners turn ordinary product photos into professional, studio-quality marketing shots using the latest AI models — without needing a photo studio or a professional designer.",
+    "p2": "We believe every small or medium business owner deserves marketing photos that compete with major brands, at an affordable cost and within seconds.",
+    "offerTitle": "What We Offer",
     "offerItems": [
-      "توليد صور منتجات احترافية من صورة واحدة فقط.",
-      "دمج شعار العلامة التجارية بشكل طبيعي داخل المشهد.",
-      "خطط اشتراك مرنة تناسب الأفراد والمشاريع الصغيرة والمتوسطة."
+      "Generate professional product photos from a single image.",
+      "Naturally embed your brand logo within the scene.",
+      "Flexible subscription plans for individuals and small-to-medium businesses."
     ]
   },
   "contact": {
-    "title": "اتصل بنا",
-    "updatedAt": "يوليو 2026",
-    "intro": "لأي استفسار، مشكلة تقنية، أو طلب دعم يخص اشتراكك، يسعدنا تواصلك معنا عبر البريد الإلكتروني التالي وسنرد خلال 1-2 يوم عمل:",
-    "activityTitle": "معلومات النشاط",
-    "activityBody": "ShelfShot AI — خدمة رقمية لتوليد صور المنتجات بالذكاء الاصطناعي، تعمل عبر اشتراكات شهرية. النشاط مسجَّل في المملكة الأردنية الهاشمية."
+    "title": "Contact Us",
+    "updatedAt": "July 2026",
+    "intro": "For any inquiry, technical issue, or support request regarding your subscription, we'd be happy to hear from you at the email below and will respond within 1-2 business days:",
+    "activityTitle": "Business Information",
+    "activityBody": "ShelfShot AI — a digital service for AI-generated product photography, operating on monthly subscriptions. The business is registered in the Hashemite Kingdom of Jordan."
   },
   "privacy": {
-    "title": "سياسة الخصوصية",
-    "updatedAt": "يوليو 2026",
-    "intro": "نحرص في ShelfShot AI على حماية خصوصية مستخدمينا. توضح هذه السياسة نوع البيانات التي نجمعها، وكيفية استخدامها وحمايتها.",
+    "title": "Privacy Policy",
+    "updatedAt": "July 2026",
+    "intro": "At ShelfShot AI, we're committed to protecting our users' privacy. This policy explains what data we collect, and how we use and protect it.",
     "sections": [
       {
-        "heading": "1. البيانات التي نجمعها",
+        "heading": "1. Data We Collect",
         "items": [
-          "بيانات الحساب: البريد الإلكتروني وكلمة المرور (مشفّرة) عند التسجيل.",
-          "الصور المرفوعة: صور المنتجات والشعارات التي يرفعها المستخدم لغرض التوليد.",
-          "بيانات الاستخدام: عدد الصور المولَّدة، تاريخ الاستخدام، والخطة المشترك بها.",
-          "بيانات الدفع: تُعالَج بالكامل عبر بوابة الدفع الخارجية المعتمدة، ولا يتم تخزين أرقام البطاقات على خوادمنا."
+          "Account data: email and password (encrypted) upon registration.",
+          "Uploaded images: product and logo images the user uploads for generation purposes.",
+          "Usage data: number of images generated, usage dates, and subscribed plan.",
+          "Payment data: fully processed through our approved third-party payment gateway; card numbers are never stored on our servers."
         ]
       },
       {
-        "heading": "2. كيف نستخدم بياناتك",
+        "heading": "2. How We Use Your Data",
         "items": [
-          "لتقديم الخدمة الأساسية: توليد الصور وحفظ سجل الاستخدام.",
-          "لإدارة الاشتراكات والفوترة.",
-          "للتواصل معك بخصوص حسابك (تأكيد البريد، إعادة تعيين كلمة المرور، إشعارات هامة).",
-          "لا نبيع بياناتك الشخصية لأي طرف ثالث لأغراض تسويقية."
+          "To provide the core service: generating images and keeping usage history.",
+          "To manage subscriptions and billing.",
+          "To contact you about your account (email confirmation, password reset, important notices).",
+          "We do not sell your personal data to any third party for marketing purposes."
         ]
       },
       {
-        "heading": "3. مشاركة البيانات مع أطراف ثالثة",
+        "heading": "3. Sharing Data with Third Parties",
         "paragraphs": [
-          "نستخدم عدداً من مزودي الخدمات الموثوقين لتشغيل المنصة، وتتم مشاركة بيانات محدودة معهم بالقدر اللازم فقط لتقديم الخدمة:"
+          "We use a number of trusted service providers to run the platform, and limited data is shared with them only to the extent needed to deliver the service:"
         ],
         "items": [
-          "مزود قاعدة البيانات والمصادقة (Supabase) لتخزين بيانات الحساب.",
-          "مزود نموذج الذكاء الاصطناعي (Google Gemini) لمعالجة الصور وتوليد النتائج.",
-          "بوابة الدفع المعتمدة لمعالجة الاشتراكات.",
-          "مزود خدمة البريد الإلكتروني لإرسال إشعارات الحساب."
+          "Database and authentication provider (Supabase) for storing account data.",
+          "AI model provider (Google Gemini) for processing images and generating results.",
+          "Our approved payment gateway for processing subscriptions.",
+          "Email service provider for sending account notifications."
         ]
       },
       {
-        "heading": "4. أمان البيانات",
+        "heading": "4. Data Security",
         "paragraphs": [
-          "تُنقل جميع البيانات عبر اتصال مشفّر (HTTPS/SSL). مفاتيح الوصول للأنظمة الخارجية محفوظة على الخادم فقط ولا تُكشف للمتصفح أبداً."
+          "All data is transmitted over an encrypted connection (HTTPS/SSL). Access keys to external systems are stored on the server only and are never exposed to the browser."
         ]
       },
       {
-        "heading": "5. حقوقك",
+        "heading": "5. Your Rights",
         "paragraphs": [
-          "يحق لك في أي وقت طلب الاطلاع على بياناتك، تصحيحها، أو حذف حسابك وكل البيانات المرتبطة به، عبر التواصل معنا من صفحة"
+          "You may at any time request to view your data, correct it, or delete your account and all associated data, by contacting us via our"
         ],
         "hasContactLink": true
       },
       {
-        "heading": "6. الاحتفاظ بالبيانات",
+        "heading": "6. Data Retention",
         "paragraphs": [
-          "نحتفظ ببيانات حسابك وسجل الصور المولَّدة طالما حسابك نشط. عند حذف الحساب، يتم حذف البيانات المرتبطة به خلال مدة معقولة، باستثناء ما يلزم الاحتفاظ به لأغراض محاسبية أو قانونية."
+          "We retain your account data and generated image history as long as your account is active. Upon account deletion, associated data is removed within a reasonable period, except where retention is required for accounting or legal purposes."
         ]
       }
     ],
-    "contactLinkLabel": "اتصل بنا"
+    "contactLinkLabel": "Contact page"
   },
   "terms": {
-    "title": "شروط الاستخدام",
-    "updatedAt": "يوليو 2026",
-    "intro": "باستخدامك لموقع وخدمة ShelfShot AI (\"الخدمة\")، فإنك توافق على الشروط والأحكام التالية. الرجاء قراءتها بعناية قبل استخدام الخدمة.",
+    "title": "Terms of Use",
+    "updatedAt": "July 2026",
+    "intro": "By using the ShelfShot AI website and service (the \"Service\"), you agree to the following terms and conditions. Please read them carefully before using the Service.",
     "sections": [
       {
-        "heading": "1. طبيعة الخدمة",
+        "heading": "1. Nature of the Service",
         "paragraphs": [
-          "ShelfShot AI هي خدمة تعمل بنظام الاشتراك الشهري، تتيح للمستخدمين رفع صور منتجاتهم وتوليد صور تسويقية احترافية باستخدام نماذج الذكاء الاصطناعي. الخدمة رقمية بالكامل ولا تتضمن أي منتج مادي يُشحن للمستخدم."
+          "ShelfShot AI is a monthly subscription-based service that allows users to upload their product photos and generate professional marketing images using AI models. The service is entirely digital and does not include any physical product shipped to the user."
         ]
       },
       {
-        "heading": "2. الحسابات والاستخدام",
+        "heading": "2. Accounts and Usage",
         "items": [
-          "يجب أن يكون عمرك 18 عاماً فأكثر لإنشاء حساب واستخدام الخدمة.",
-          "أنت مسؤول عن الحفاظ على سرية بيانات دخولك، وعن أي نشاط يتم من خلال حسابك.",
-          "يُمنع استخدام الخدمة لتوليد محتوى غير قانوني، أو ينتهك حقوق ملكية فكرية للغير، أو مسيء، أو مخالف للأنظمة المعمول بها."
+          "You must be 18 years of age or older to create an account and use the Service.",
+          "You are responsible for keeping your login credentials confidential, and for any activity conducted through your account.",
+          "Using the Service to generate illegal content, content that infringes third-party intellectual property, offensive content, or content that violates applicable regulations is prohibited."
         ]
       },
       {
-        "heading": "3. الخطط والاشتراكات",
+        "heading": "3. Plans and Subscriptions",
         "paragraphs": [
-          "تُقدَّم الخدمة عبر خطط اشتراك شهرية بحدود استخدام محددة لكل خطة (عدد الصور المولَّدة شهرياً)، كما هو موضح في صفحة الأسعار. يتجدد الاشتراك تلقائياً كل شهر ما لم يتم إلغاؤه من قِبل المستخدم قبل موعد التجديد."
+          "The Service is offered through monthly subscription plans with defined usage limits per plan (number of images generated monthly), as shown on the pricing page. The subscription renews automatically each month unless cancelled by the user before the renewal date."
         ]
       },
       {
-        "heading": "4. الملكية الفكرية للمحتوى المولَّد",
+        "heading": "4. Intellectual Property of Generated Content",
         "paragraphs": [
-          "يحتفظ المستخدم بحقوق الصور التي يرفعها. أما الصور الناتجة عن عملية التوليد بالذكاء الاصطناعي، فيحق للمستخدم استخدامها تجارياً ضمن حدود خطته المشترك بها، مع إقراره بأن نماذج الذكاء الاصطناعي قد تُنتج نتائج متفاوتة الجودة ولا تضمن ShelfShot AI دقة أو ملاءمة كل نتيجة لكل استخدام."
+          "The user retains rights to the images they upload. Images resulting from the AI generation process may be used commercially by the user within the limits of their subscribed plan, with the understanding that AI models may produce results of varying quality, and ShelfShot AI does not guarantee the accuracy or suitability of every result for every use case."
         ]
       },
       {
-        "heading": "5. حدود المسؤولية",
+        "heading": "5. Limitation of Liability",
         "paragraphs": [
-          "تُقدَّم الخدمة \"كما هي\" دون أي ضمانات صريحة أو ضمنية. لا تتحمل ShelfShot AI مسؤولية أي أضرار غير مباشرة أو تبعية ناتجة عن استخدام الخدمة أو عدم القدرة على استخدامها."
+          "The Service is provided \"as is\" without any express or implied warranties. ShelfShot AI is not liable for any indirect or consequential damages arising from the use of, or inability to use, the Service."
         ]
       },
       {
-        "heading": "6. التعديلات على الشروط",
+        "heading": "6. Changes to These Terms",
         "paragraphs": [
-          "نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم نشر أي تعديلات على هذه الصفحة، ويُعتبر استمرارك باستخدام الخدمة بعد التعديل موافقة ضمنية عليها."
+          "We reserve the right to modify these terms at any time. Any changes will be posted on this page, and your continued use of the Service after such changes constitutes implicit acceptance of them."
         ]
       },
       {
-        "heading": "7. التواصل",
+        "heading": "7. Contact",
         "paragraphs": [
-          "لأي استفسار بخصوص هذه الشروط، يمكنك التواصل معنا عبر صفحة"
+          "For any inquiry regarding these terms, you can reach us via our"
         ],
         "hasContactLink": true
       }
     ],
-    "contactLinkLabel": "اتصل بنا"
+    "contactLinkLabel": "Contact page"
   },
   "refund": {
-    "title": "سياسة الاسترجاع والإلغاء",
-    "updatedAt": "يوليو 2026",
+    "title": "Refund & Cancellation Policy",
+    "updatedAt": "July 2026",
     "sections": [
       {
-        "heading": "1. إلغاء الاشتراك",
+        "heading": "1. Cancelling Your Subscription",
         "paragraphs": [
-          "يمكنك إلغاء اشتراكك في أي وقت من لوحة التحكم، دون أي رسوم إضافية أو التزام بمدة معينة. عند الإلغاء، يستمر وصولك للخطة الحالية حتى نهاية الفترة المدفوعة، ولا يتجدد الاشتراك تلقائياً بعدها."
+          "You can cancel your subscription at any time from the dashboard, with no extra fees or minimum commitment. Upon cancellation, your access to the current plan continues until the end of the paid period, and the subscription will not renew automatically afterward."
         ]
       },
       {
-        "heading": "2. سياسة الاسترجاع",
+        "heading": "2. Refund Policy",
         "paragraphs": [
-          "بما أن الخدمة رقمية وتُستهلك فور الاشتراك (توليد الصور يستهلك تكلفة معالجة فعلية فور الطلب)، فإننا لا نقدم استرجاعاً للمبالغ المدفوعة عن الفترة الحالية من الاشتراك بعد استخدام أي جزء من رصيد الصور الشهري.",
-          "في حال واجهت مشكلة تقنية حالت دون استخدام الخدمة بشكل كامل خلال الشهر (كخلل من طرفنا)، يُرجى التواصل معنا خلال 7 أيام من حدوث المشكلة، وسنقوم بمراجعة الحالة وتقديم تعويض مناسب (تمديد الاشتراك أو استرجاع جزئي) حسب طبيعة المشكلة."
+          "Since the service is digital and consumed immediately upon subscribing (image generation incurs an actual processing cost as soon as it's requested), we do not offer refunds for amounts paid for the current subscription period once any portion of the monthly image quota has been used.",
+          "If you experience a technical issue that prevented you from using the service fully during the month (due to a fault on our end), please contact us within 7 days of the issue occurring, and we will review the case and provide appropriate compensation (subscription extension or partial refund) depending on the nature of the issue."
         ]
       },
       {
-        "heading": "3. المدفوعات الخاطئة أو المكررة",
+        "heading": "3. Incorrect or Duplicate Payments",
         "paragraphs": [
-          "في حال حدوث خصم مزدوج أو خاطئ لأي سبب تقني، يُرجى التواصل معنا فوراً عبر صفحة"
+          "If a duplicate or incorrect charge occurs for any technical reason, please contact us immediately via our"
         ],
-        "paragraphSuffix": "مرفقاً بإثبات الدفع، وسيتم استرجاع المبلغ الزائد خلال 5-10 أيام عمل.",
+        "paragraphSuffix": "with proof of payment attached, and the excess amount will be refunded within 5-10 business days.",
         "hasContactLink": true
       },
       {
-        "heading": "4. تغيير الخطة",
+        "heading": "4. Changing Your Plan",
         "paragraphs": [
-          "يمكنك الترقية لخطة أعلى في أي وقت، وسيتم احتساب الفرق تناسبياً. للانتقال لخطة أقل، يسري التغيير بدءاً من دورة الفوترة التالية."
+          "You can upgrade to a higher plan at any time, and the difference will be prorated. To move to a lower plan, the change takes effect starting from the next billing cycle."
         ]
       },
       {
-        "heading": "5. طرق الدفع المدعومة",
+        "heading": "5. Supported Payment Methods",
         "paragraphs": [
-          "نقبل الدفع عبر بطاقات فيزا وماستركارد، إضافة إلى محافظ الدفع الرقمية المدعومة من بوابة الدفع المعتمدة لدينا."
+          "We accept payment via Visa and Mastercard, in addition to digital payment wallets supported by our approved payment gateway."
         ]
       },
       {
-        "heading": "6. سياسة التوصيل",
+        "heading": "6. Delivery Policy",
         "paragraphs": [
-          "ShelfShot AI خدمة رقمية بالكامل ولا تتضمن أي شحن أو توصيل مادي. فور إتمام عملية التوليد، تظهر النتيجة مباشرة داخل لوحة التحكم الخاصة بحسابك، ويمكنك تحميلها فوراً بدون أي انتظار أو رسوم إضافية."
+          "ShelfShot AI is a fully digital service and does not involve any physical shipping or delivery. As soon as generation is complete, the result appears directly inside your account dashboard, and you can download it immediately with no waiting or additional fees."
         ]
       }
     ],
-    "contactLinkLabel": "اتصل بنا"
+    "contactLinkLabel": "Contact page"
   },
   "login": {
-    "signIn": "تسجيل الدخول",
-    "signUp": "حساب جديد",
-    "emailPlaceholder": "بريدك الإلكتروني",
-    "passwordPlaceholder": "كلمة المرور",
-    "signInBtn": "دخول",
-    "signUpBtn": "إنشاء حساب",
-    "forgotPassword": "نسيت كلمة المرور؟",
-    "signupSuccess": "تم إنشاء الحساب! تحقق من بريدك الإلكتروني لتأكيد التسجيل.",
-    "genericError": "حدث خطأ، حاول مرة أخرى."
+    "signIn": "Sign In",
+    "signUp": "New Account",
+    "emailPlaceholder": "Your email",
+    "passwordPlaceholder": "Password",
+    "signInBtn": "Sign In",
+    "signUpBtn": "Create Account",
+    "forgotPassword": "Forgot your password?",
+    "signupSuccess": "Account created! Check your email to confirm your registration.",
+    "genericError": "Something went wrong, please try again."
   },
   "forgotPassword": {
-    "title": "نسيت كلمة المرور؟",
-    "subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابط لإعادة تعيينها.",
-    "emailPlaceholder": "بريدك الإلكتروني",
-    "sendBtn": "إرسال رابط إعادة التعيين",
-    "sentTitle": "تم إرسال الرابط!",
-    "sentBody": "تحقق من بريدك الإلكتروني ({email}) واضغط على الرابط لإعادة تعيين كلمة المرور.",
-    "backToLogin": "الرجوع لتسجيل الدخول",
-    "genericError": "حدث خطأ، حاول مرة أخرى."
+    "title": "Forgot Your Password?",
+    "subtitle": "Enter your email and we'll send you a link to reset it.",
+    "emailPlaceholder": "Your email",
+    "sendBtn": "Send Reset Link",
+    "sentTitle": "Link sent!",
+    "sentBody": "Check your email ({email}) and click the link to reset your password.",
+    "backToLogin": "Back to sign in",
+    "genericError": "Something went wrong, please try again."
   },
   "resetPassword": {
-    "verifying": "جاري التحقق من الرابط...",
-    "title": "تعيين كلمة مرور جديدة",
-    "subtitle": "اختر كلمة مرور جديدة لحسابك.",
-    "newPasswordPlaceholder": "كلمة المرور الجديدة",
-    "confirmPasswordPlaceholder": "تأكيد كلمة المرور",
-    "saveBtn": "حفظ كلمة المرور",
-    "successTitle": "تم تغيير كلمة المرور بنجاح!",
-    "successBody": "جاري تحويلك للوحة التحكم...",
-    "errorShort": "كلمة المرور يجب أن تكون 6 أحرف على الأقل.",
-    "errorMismatch": "كلمتا المرور غير متطابقتين.",
-    "genericError": "حدث خطأ، حاول مرة أخرى."
+    "verifying": "Verifying link...",
+    "title": "Set a New Password",
+    "subtitle": "Choose a new password for your account.",
+    "newPasswordPlaceholder": "New password",
+    "confirmPasswordPlaceholder": "Confirm password",
+    "saveBtn": "Save Password",
+    "successTitle": "Password changed successfully!",
+    "successBody": "Redirecting you to the dashboard...",
+    "errorShort": "Password must be at least 6 characters.",
+    "errorMismatch": "Passwords do not match.",
+    "genericError": "Something went wrong, please try again."
   },
   "dashboard": {
-    "planLabel": "خطة {plan}",
-    "signOut": "تسجيل الخروج",
-    "cancelledNotice": "تم إلغاء الاشتراك. راح تضل مستفيد من خطة {plan} لحد {date}، وبعدها بترجع تلقائياً لخطة مجاني.",
-    "usageLabel": "الاستخدام هذا الشهر",
-    "step1Title": "المواد الأولية",
-    "step2Title": "وصف المشهد",
-    "productLabel": "صورة المنتج (أساسي)",
-    "logoLabel": "اللوغو (اختياري)",
-    "promptPlaceholder": "مثال: زجاجة عطر على طاولة رخامية سوداء مع إضاءة سينمائية دافئة...",
-    "generating": "جاري المعالجة...",
-    "limitReached": "وصلت للحد الأقصى — رقّي خطتك",
-    "generateBtn": "توليد الصورة",
-    "historyLabel": "آخر عمليات التوليد",
-    "errNoProduct": "الرجاء رفع صورة المنتج أولاً.",
-    "errNoPrompt": "الرجاء كتابة وصف للمشهد.",
-    "errGenerate": "حدث خطأ أثناء توليد الصورة."
+    "planLabel": "{plan} Plan",
+    "signOut": "Sign Out",
+    "cancelledNotice": "Subscription cancelled. You'll keep {plan} plan access until {date}, after which you'll automatically move to the Free plan.",
+    "usageLabel": "This month's usage",
+    "step1Title": "Source Materials",
+    "step2Title": "Scene Description",
+    "productLabel": "Product Photo (required)",
+    "logoLabel": "Logo (optional)",
+    "promptPlaceholder": "Example: a perfume bottle on a black marble table with warm cinematic lighting...",
+    "generating": "Processing...",
+    "limitReached": "You've hit your limit — upgrade your plan",
+    "generateBtn": "Generate Image",
+    "upgradeBtn": "Upgrade Plan",
+    "historyLabel": "Recent generations",
+    "errNoProduct": "Please upload a product photo first.",
+    "errNoPrompt": "Please write a scene description.",
+    "errGenerate": "An error occurred while generating the image."
   },
   "imageUploader": {
-    "dropHint": "اضغط للرفع أو اسحب الصورة هنا",
+    "dropHint": "Click to upload or drag an image here",
     "formats": "PNG, JPG, WEBP"
   },
   "resultDisplay": {
-    "loading": "جاري توليد لقطة المنتج...",
-    "download": "تحميل",
-    "placeholder": "ستظهر النتيجة هنا"
+    "loading": "Generating your product shot...",
+    "download": "Download",
+    "placeholder": "Your result will appear here"
   },
   "subscribeButton": {
-    "loading": "لحظات...",
-    "cta": "اشترك الآن",
-    "genericError": "حصل خطأ، حاولي مرة ثانية"
+    "loading": "One moment...",
+    "cta": "Subscribe Now",
+    "genericError": "Something went wrong, please try again"
   },
   "manageSubscription": {
-    "manage": "إدارة الاشتراك",
-    "title": "إلغاء الاشتراك",
-    "bodyPrefix": "أنتِ حالياً على خطة",
-    "bodySuffix": "إلغاء الاشتراك بيرجّعك لخطة \"مجاني\" فوراً. هذا الإجراء لا يمكن التراجع عنه، وبتحتاجي تشتركي من جديد لو حبيتي ترجعي.",
-    "back": "تراجع",
-    "confirm": "تأكيد الإلغاء",
-    "cancelling": "جاري الإلغاء...",
-    "genericError": "حصل خطأ، حاولي مرة ثانية"
+    "manage": "Manage Subscription",
+    "title": "Cancel Subscription",
+    "bodyPrefix": "You're currently on the",
+    "bodySuffix": "plan. Cancelling will move you back to the \"Free\" plan immediately. This action cannot be undone, and you'll need to resubscribe if you want to come back.",
+    "back": "Go back",
+    "confirm": "Confirm Cancellation",
+    "cancelling": "Cancelling...",
+    "genericError": "Something went wrong, please try again"
   },
   "toolTutorial": {
-    "promptText": "علبة شوكولاته فاخرة مفتوحة بشريط ذهبي على خلفية بنية دافئة، إضاءة استوديو احترافية...",
+    "promptText": "A luxury open chocolate box with a gold ribbon on a warm brown background, professional studio lighting...",
     "urlBar": "shelfshotai.com/dashboard",
-    "dragHint": "اسحب صورة المنتج هنا",
-    "originalAlt": "صورة المنتج الأصلية",
-    "logoAlt": "لوغو",
-    "resultAlt": "النتيجة الاحترافية",
-    "done": "تم",
-    "resultPlaceholder": "ستظهر النتيجة هنا",
-    "generateLabel": "توليد الصورة"
+    "dragHint": "Drag your product photo here",
+    "originalAlt": "Original product photo",
+    "logoAlt": "Logo",
+    "resultAlt": "Professional result",
+    "done": "Done",
+    "resultPlaceholder": "Result will appear here",
+    "generateLabel": "Generate Image"
   },
   "blog": {
-    "metaTitle": "المدونة | ShelfShot AI",
-    "metaDescription": "مقالات ونصائح عملية لأصحاب المتاجر حول تصوير المنتجات وزيادة المبيعات.",
-    "title": "المدونة",
-    "subtitle": "نصائح عملية لأصحاب المتاجر حول تصوير المنتجات وزيادة المبيعات.",
-    "readArticle": "اقرأ المقال",
-    "ctaBody": "جرّبي ShelfShot AI مجاناً وحوّلي صور منتجاتك لجودة استوديو احترافي.",
-    "ctaButton": "جرّب مجاناً الآن"
+    "metaTitle": "Blog | ShelfShot AI",
+    "metaDescription": "Practical articles and tips for store owners on product photography and boosting sales.",
+    "title": "Blog",
+    "subtitle": "Practical tips for store owners on product photography and boosting sales.",
+    "readArticle": "Read article",
+    "ctaBody": "Try ShelfShot AI for free and turn your product photos into professional studio quality.",
+    "ctaButton": "Try It Free Now"
   },
   "plans": {
     "free": {
-      "name": "مجاني",
+      "name": "Free",
       "features": [
-        "3 صور شهرياً",
-        "دمج لوغو أساسي",
-        "دقة قياسية"
+        "3 images/month",
+        "Basic logo placement",
+        "Standard resolution"
       ]
     },
     "starter": {
-      "name": "بداية",
+      "name": "Starter",
       "features": [
-        "20 صورة شهرياً",
-        "دمج لوغو أساسي",
-        "دقة قياسية"
+        "20 images/month",
+        "Basic logo placement",
+        "Standard resolution"
       ]
     },
     "economic": {
-      "name": "اقتصادي",
+      "name": "Economic",
       "features": [
-        "50 صورة شهرياً",
-        "دمج لوغو متقدم",
-        "أولوية بالمعالجة",
-        "دعم عبر البريد"
+        "50 images/month",
+        "Advanced logo placement",
+        "Priority processing",
+        "Email support"
       ]
     },
     "pro": {
-      "name": "احترافي",
+      "name": "Pro",
       "features": [
-        "150 صورة شهرياً",
-        "استخدام تجاري كامل",
-        "دعم مباشر ذو أولوية",
-        "سجل توليد غير محدود"
+        "150 images/month",
+        "Full commercial usage",
+        "Priority direct support",
+        "Unlimited generation history"
       ]
     }
   },
   "meta": {
-    "title": "ShelfShot AI — استوديو تصوير المنتجات بالذكاء الاصطناعي",
-    "description": "حوّل صور منتجاتك العادية إلى لقطات تصوير احترافية وسينمائية خلال ثوانٍ، بدون استوديو تصوير أو مصمم."
+    "title": "ShelfShot AI — AI Product Photography Studio",
+    "description": "Turn your ordinary product photos into professional, cinematic shots in seconds — no photo studio or designer needed."
   }
 }
