@@ -267,6 +267,7 @@
     "generating": "جاري المعالجة...",
     "limitReached": "وصلت للحد الأقصى — رقّي خطتك",
     "generateBtn": "توليد الصورة",
+    "upgradeBtn": "ترقية الخطة",
     "historyLabel": "آخر عمليات التوليد",
     "errNoProduct": "الرجاء رفع صورة المنتج أولاً.",
     "errNoPrompt": "الرجاء كتابة وصف للمشهد.",

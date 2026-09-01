@@ -8,7 +8,6 @@ import { useTranslations, useLocale } from "next-intl";
 import { createClient } from "@/lib/supabase/client";
 import { ImageUploader } from "@/components/ImageUploader";
 import { ResultDisplay } from "@/components/ResultDisplay";
-import { SubscribeButton } from "@/components/SubscribeButton";
 import { ManageSubscriptionModal } from "@/components/ManageSubscriptionModal";
 import { ImageAsset } from "@/types";
 import { PLANS, PlanId } from "@/lib/plans";
@@ -145,16 +144,16 @@ export default function DashboardClient({
             </div>
           </div>
           <div className="flex gap-2 flex-wrap">
-            {(Object.keys(PLANS) as PlanId[])
-              .filter((id) => id !== "free" && PLANS[id].monthlyGenerations > limit)
-              .map((id) => (
-                <div key={id} className="w-40">
-                  <p className="text-center text-xs text-white/50 mb-1">
-                    {tPlans(`${id}.name`)} — ${PLANS[id].price}
-                  </p>
-                  <SubscribeButton planId={id} />
-                </div>
-              ))}
+            {(Object.keys(PLANS) as PlanId[]).some(
+              (id) => id !== "free" && PLANS[id].monthlyGenerations > limit
+            ) && (
+              <Link
+                href="/#pricing"
+                className="flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-bold bg-gradient-to-l from-amber-500 to-orange-600 text-ink hover:shadow-lg hover:shadow-amber-500/20 transition-all"
+              >
+                {t("upgradeBtn")}
+              </Link>
+            )}
             {plan !== "free" && subscriptionStatus !== "cancelled" && (
               <ManageSubscriptionModal planName={planName} />
             )}

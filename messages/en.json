@@ -267,6 +267,7 @@
     "generating": "Processing...",
     "limitReached": "You've hit your limit — upgrade your plan",
     "generateBtn": "Generate Image",
+    "upgradeBtn": "Upgrade Plan",
     "historyLabel": "Recent generations",
     "errNoProduct": "Please upload a product photo first.",
     "errNoPrompt": "Please write a scene description.",
