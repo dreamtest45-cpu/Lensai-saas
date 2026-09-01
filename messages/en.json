@@ -228,7 +228,7 @@
     "signInBtn": "Sign In",
     "signUpBtn": "Create Account",
     "forgotPassword": "Forgot your password?",
-    "signupSuccess": "Account created! Check your email to confirm your registration.",
+    "signupSuccess": "Account created! Check your email to confirm your registration. If you don't see it within a few minutes, please check your spam or junk folder.",
     "genericError": "Something went wrong, please try again."
   },
   "forgotPassword": {
