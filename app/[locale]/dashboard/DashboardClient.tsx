@@ -9,6 +9,7 @@ import { createClient } from "@/lib/supabase/client";
 import { ImageUploader } from "@/components/ImageUploader";
 import { ResultDisplay } from "@/components/ResultDisplay";
 import { ManageSubscriptionModal } from "@/components/ManageSubscriptionModal";
+import { RedeemCouponModal } from "@/components/RedeemCouponModal";
 import { ImageAsset } from "@/types";
 import { PLANS, PlanId } from "@/lib/plans";
 
@@ -27,6 +28,7 @@ interface Props {
   history: HistoryItem[];
   subscriptionStatus: string | null;
   currentPeriodEnd: string | null;
+    couponRedeemed: boolean;
 }
 
 export default function DashboardClient({
@@ -37,6 +39,7 @@ export default function DashboardClient({
   history,
   subscriptionStatus,
   currentPeriodEnd,
+    couponRedeemed,
 }: Props) {
   const router = useRouter();
   const supabase = createClient();
@@ -128,6 +131,18 @@ export default function DashboardClient({
             })}
           </div>
         )}
+                {subscriptionStatus === "coupon" && currentPeriodEnd && (
+          <div className="bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm rounded-xl2 px-5 py-3 mb-6">
+            {t("couponNotice", {
+              plan: planName,
+              date: new Date(currentPeriodEnd).toLocaleDateString(locale === "ar" ? "ar-EG" : "en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }),
+            })}
+          </div>
+        )}
 
         {/* Usage bar */}
         <div className="bg-panel border border-line rounded-xl2 p-5 mb-8 flex items-center justify-between flex-wrap gap-4">
@@ -156,6 +171,9 @@ export default function DashboardClient({
             )}
             {plan !== "free" && subscriptionStatus !== "cancelled" && (
               <ManageSubscriptionModal planName={planName} />
+            )}
+                        {!couponRedeemed && (
+              <RedeemCouponModal />
             )}
           </div>
         </div>
