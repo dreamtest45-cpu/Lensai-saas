@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
       subscription_status: "expired",
       current_period_end: null,
     })
-    .eq("subscription_status", "cancelled")
+        .in("subscription_status", ["cancelled", "coupon"])
     .lt("current_period_end", new Date().toISOString())
     .select("id");
 
