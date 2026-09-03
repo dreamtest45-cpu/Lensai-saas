@@ -258,6 +258,7 @@
     "planLabel": "{plan} Plan",
     "signOut": "Sign Out",
     "cancelledNotice": "Subscription cancelled. You'll keep {plan} plan access until {date}, after which you'll automatically move to the Free plan.",
+        "couponNotice": "You're enjoying the {plan} plan free via a coupon until {date}, after which you'll automatically move to the Free plan.",
     "usageLabel": "This month's usage",
     "step1Title": "Source Materials",
     "step2Title": "Scene Description",
@@ -271,7 +272,17 @@
     "historyLabel": "Recent generations",
     "errNoProduct": "Please upload a product photo first.",
     "errNoPrompt": "Please write a scene description.",
-    "errGenerate": "An error occurred while generating the image."
+       "errGenerate": "An error occurred while generating the image."
+  },
+  "redeemCoupon": {
+    "openBtn": "I have a coupon",
+    "title": "Redeem coupon",
+    "body": "Enter your coupon code to get the Starter plan free for one month.",
+    "placeholder": "Coupon code",
+    "back": "Back",
+    "confirm": "Redeem",
+    "redeeming": "Redeeming...",
+    "genericError": "Something went wrong, please try again."
   },
   "imageUploader": {
     "dropHint": "Click to upload or drag an image here",
