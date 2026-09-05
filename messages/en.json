@@ -31,6 +31,38 @@
         "desc": "Generation happens entirely on the server — no one can access the API key from the browser."
       }
     ],
+    "testimonialsTitle": "What Our Customers Say",
+    "testimonialsSubtitle": "Real feedback from store owners using ShelfShot AI every day.",
+    "testimonials": [
+      {
+        "quote": "I've had a Salla store for 3 years and used to pay photographers for commercial product shots. Now ShelfShot AI has made all that easy — I no longer need photographers, and I put that money into marketing instead.",
+        "author": "Pro plan customer"
+      },
+      {
+        "quote": "Fast, easy, and simple — the result looks just like professional photography.",
+        "author": "Pro plan customer"
+      },
+      {
+        "quote": "I run an organic soap store and discovered ShelfShot through a colleague — I haven't used anything else since.",
+        "author": "Starter plan customer"
+      },
+      {
+        "quote": "Got my work done in minutes... amazing.",
+        "author": "Economic plan customer"
+      },
+      {
+        "quote": "My product stays exactly as it is, down to every detail. A great fit for small and online stores.",
+        "author": "Starter plan customer"
+      },
+      {
+        "quote": "Saved myself the time of searching for photographers, and the best part is there are no rigid templates limiting me.",
+        "author": "Economic plan customer"
+      },
+      {
+        "quote": "The automatic logo integration feature made me drop Canva and ChatGPT.",
+        "author": "Pro plan customer"
+      }
+    ],
     "pricingTitle": "Clear Plans, No Surprises",
     "pricingSubtitle": "Change or cancel your subscription anytime.",
     "mostPopular": "Most Popular",
@@ -258,7 +290,7 @@
     "planLabel": "{plan} Plan",
     "signOut": "Sign Out",
     "cancelledNotice": "Subscription cancelled. You'll keep {plan} plan access until {date}, after which you'll automatically move to the Free plan.",
-        "couponNotice": "You're enjoying the {plan} plan free via a coupon until {date}, after which you'll automatically move to the Free plan.",
+    "couponNotice": "You're enjoying the {plan} plan free via a coupon until {date}, after which you'll automatically move to the Free plan.",
     "usageLabel": "This month's usage",
     "step1Title": "Source Materials",
     "step2Title": "Scene Description",
@@ -272,7 +304,7 @@
     "historyLabel": "Recent generations",
     "errNoProduct": "Please upload a product photo first.",
     "errNoPrompt": "Please write a scene description.",
-       "errGenerate": "An error occurred while generating the image."
+    "errGenerate": "An error occurred while generating the image."
   },
   "redeemCoupon": {
     "openBtn": "I have a coupon",
