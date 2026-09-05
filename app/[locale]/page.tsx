@@ -1,6 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
-import { Wand2, Layers, ShieldCheck, Zap, CreditCard } from "lucide-react";
+import { Wand2, Layers, ShieldCheck, Zap, CreditCard, Quote } from "lucide-react";
 import { PLANS } from "@/lib/plans";
 import { createClient } from "@/lib/supabase/server";
 import { ToolTutorialHero } from "@/components/ToolTutorialHero";
@@ -15,6 +15,7 @@ export default async function LandingPage() {
   const tNav = await getTranslations("nav");
 
   const features = t.raw("features") as { title: string; desc: string }[];
+  const testimonials = t.raw("testimonials") as { quote: string; author: string }[];
 
   return (
     <div className="min-h-screen grain">
@@ -81,6 +82,25 @@ export default async function LandingPage() {
                 <Icon className="text-amber-400 mb-4" size={26} />
                 <h3 className="font-bold mb-2">{features[i].title}</h3>
                 <p className="text-white/50 text-sm leading-relaxed">{features[i].desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="border-t border-line/60 py-20" id="testimonials">
+        <div className="container mx-auto max-w-6xl px-6">
+          <h2 className="font-display font-bold text-2xl mb-2">{t("testimonialsTitle")}</h2>
+          <p className="text-white/50 mb-10">{t("testimonialsSubtitle")}</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {testimonials.map((item, i) => (
+              <div key={i} className="bg-panel border border-line rounded-xl2 p-6 flex flex-col">
+                <Quote className="text-amber-400 mb-4 shrink-0" size={22} />
+                <p className="text-white/70 text-sm leading-relaxed mb-5 flex-1">
+                  {item.quote}
+                </p>
+                <span className="text-xs font-semibold text-white/40">{item.author}</span>
               </div>
             ))}
           </div>
