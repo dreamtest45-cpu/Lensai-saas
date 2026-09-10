@@ -3,7 +3,10 @@ import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: "about" });
-  return { title: `${t("title")} — ShelfShot AI` };
+    return {
+    title: `${t("title")} — ShelfShot AI`,
+    alternates: { canonical: locale === "en" ? "/en/about" : "/about" },
+  };
 }
 
 export default async function AboutPage() {
