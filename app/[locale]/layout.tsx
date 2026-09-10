@@ -47,6 +47,20 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir} className={`${cairo.variable} ${plexArabic.variable}`}>
       <body className="font-body antialiased">
+        <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "ShelfShot AI",
+      url: "https://www.shelfshotai.com",
+      logo: "https://www.shelfshotai.com/icon.png",
+      description:
+        "أداة بالذكاء الاصطناعي تحوّل صور المنتجات العادية إلى تصوير احترافي بجودة استوديو، لأصحاب المتاجر الإلكترونية.",
+    }),
+  }}
+/>
         {/* Google Analytics (GA4) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZZH6LLLYYG"
