@@ -7,6 +7,10 @@ import { ToolTutorialHero } from "@/components/ToolTutorialHero";
 import { SubscribeButton } from "@/components/SubscribeButton";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
+export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
+  return { alternates: { canonical: locale === "en" ? "/en" : "/" } };
+}
+
 export default async function LandingPage() {
   const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
