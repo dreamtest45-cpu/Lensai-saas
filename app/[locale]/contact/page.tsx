@@ -4,8 +4,10 @@ import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: "contact" });
-  title: `${t("title")} — ShelfShot AI`,
+  return {
+    title: `${t("title")} — ShelfShot AI`,
     alternates: { canonical: locale === "en" ? "/en/contact" : "/contact" },
+  };
 }
 
 export default async function ContactPage() {
