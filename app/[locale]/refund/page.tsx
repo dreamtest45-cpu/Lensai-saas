@@ -12,7 +12,10 @@ interface Section {
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   const t = await getTranslations({ locale, namespace: "refund" });
-  return { title: `${t("title")} — ShelfShot AI` };
+ return {
+  title: `${t("title")} — ShelfShot AI`,
+  alternates: { canonical: locale === "en" ? "/en/refund" : "/refund" },
+};
 }
 
 export default async function RefundPage() {
