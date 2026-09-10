@@ -18,6 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
+        metadataBase: new URL("https://www.shelfshotai.com"),
     title: t("title"),
     description: t("description"),
   };
