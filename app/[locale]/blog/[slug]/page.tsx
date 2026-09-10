@@ -13,18 +13,41 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   return {
     title: `${post.title} | ShelfShot AI`,
     description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
   };
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = BLOG_POSTS.find((p) => p.slug === params.slug);
   if (!post) return notFound();
+  const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.title,
+  description: post.excerpt,
+  datePublished: post.date,
+  dateModified: post.date,
+  author: { "@type": "Organization", name: "ShelfShot AI" },
+  publisher: {
+    "@type": "Organization",
+    name: "ShelfShot AI",
+    logo: { "@type": "ImageObject", url: "https://www.shelfshotai.com/icon.png" },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://www.shelfshotai.com/blog/${post.slug}`,
+  },
+};
 
   const t = await getTranslations("blog");
   const tNav = await getTranslations("nav");
 
   return (
     <div className="min-h-screen grain">
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+/>
       <nav className="border-b border-line/60">
         <div className="container mx-auto max-w-3xl px-6 py-4 flex flex-wrap items-center justify-between gap-3">
           <Link href="/" className="flex items-center gap-2.5 shrink-0">
