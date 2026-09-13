@@ -6,12 +6,13 @@ import { createClient } from "@/lib/supabase/server";
 import { ToolTutorialHero } from "@/components/ToolTutorialHero";
 import { SubscribeButton } from "@/components/SubscribeButton";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { FaqSection } from "@/components/FaqSection";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   return { alternates: { canonical: locale === "en" ? "/en" : "/" } };
 }
 
-export default async function LandingPage() {
+export default async function LandingPage({ params: { locale } }: { params: { locale: string } }) {
   const supabase = createClient();
   const { data: { user } } = await supabase.auth.getUser();
   const t = await getTranslations("home");
@@ -157,8 +158,10 @@ export default async function LandingPage() {
               </div>
             ))}
           </div>
-        </div>
+               </div>
       </section>
+
+      <FaqSection locale={locale} />
 
      <footer className="border-t border-line/60 py-10">
         <div className="container mx-auto max-w-6xl px-6 flex flex-col md:flex-row items-center justify-between gap-4">
