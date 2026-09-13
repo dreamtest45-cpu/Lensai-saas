@@ -26,11 +26,12 @@ const EXAMPLES: { product: string; logo: string | null; result: string }[] = [
 ];
 
 export const ToolTutorialHero: React.FC = () => {
-  const t = useTranslations("toolTutorial");
-  const PROMPT_TEXT = t("promptText");
+    const t = useTranslations("toolTutorial");
   const [stageIndex, setStageIndex] = useState(0);
   const [typedLength, setTypedLength] = useState(0);
   const [exampleIndex, setExampleIndex] = useState(0);
+  const PROMPT_TEXTS = [t("promptText"), t("promptText2"), t("promptText3")];
+  const PROMPT_TEXT = PROMPT_TEXTS[exampleIndex];
   const stage = STAGE_ORDER[stageIndex];
 
   useEffect(() => {
