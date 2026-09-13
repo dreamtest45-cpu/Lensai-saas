@@ -7,6 +7,7 @@ import { ToolTutorialHero } from "@/components/ToolTutorialHero";
 import { SubscribeButton } from "@/components/SubscribeButton";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { FaqSection } from "@/components/FaqSection";
+import { BLOG_POSTS } from "@/lib/blog-posts";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   return { alternates: { canonical: locale === "en" ? "/en" : "/" } };
@@ -18,6 +19,7 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
   const t = await getTranslations("home");
   const tPlans = await getTranslations("plans");
   const tNav = await getTranslations("nav");
+  const latestPosts = [...BLOG_POSTS].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 2);
 
   const features = t.raw("features") as { title: string; desc: string }[];
   const testimonials = t.raw("testimonials") as { quote: string; author: string }[];
@@ -159,6 +161,33 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
             ))}
           </div>
                </div>
+      </section>
+
+           {/* Blog */}
+      <section className="border-t border-line/60 py-20" id="blog">
+        <div className="container mx-auto max-w-6xl px-6">
+          <h2 className="font-display font-bold text-2xl mb-2">
+            {locale === "en" ? "From the Blog" : "من المدونة"}
+          </h2>
+          <p className="text-white/50 mb-10">
+            {locale === "en"
+              ? "Tips and honest comparisons for online sellers"
+              : "نصائح ومقارنات صريحة لأصحاب المتاجر الإلكترونية"}
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {latestPosts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="block bg-panel border border-line rounded-xl2 p-6 hover:border-amber-500/40 transition-colors"
+              >
+                <p className="text-xs text-white/40 mb-2">{post.date}</p>
+                <h3 className="font-bold mb-2">{post.title}</h3>
+                <p className="text-white/50 text-sm leading-relaxed">{post.excerpt}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
       <FaqSection locale={locale} />
