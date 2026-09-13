@@ -19,16 +19,29 @@ const STAGE_DURATIONS: Record<Stage, number> = {
 
 const STAGE_ORDER: Stage[] = ["idle", "uploaded", "typing", "generating", "result"];
 
+const EXAMPLES: { product: string; logo: string | null; result: string }[] = [
+  { product: "/demo-product.jpg", logo: "/demo-logo.png", result: "/demo-result.jpg" },
+  { product: "/demo-product-2.jpeg", logo: "/demo-logo-2.jpeg", result: "/demo-result-2.png" },
+  { product: "/demo-product-3.jpeg", logo: null, result: "/demo-result-3.jpeg" },
+];
+
 export const ToolTutorialHero: React.FC = () => {
   const t = useTranslations("toolTutorial");
   const PROMPT_TEXT = t("promptText");
   const [stageIndex, setStageIndex] = useState(0);
   const [typedLength, setTypedLength] = useState(0);
+  const [exampleIndex, setExampleIndex] = useState(0);
   const stage = STAGE_ORDER[stageIndex];
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setStageIndex((i) => (i + 1) % STAGE_ORDER.length);
+      setStageIndex((i) => {
+        const next = (i + 1) % STAGE_ORDER.length;
+        if (next === 0) {
+          setExampleIndex((ei) => (ei + 1) % EXAMPLES.length);
+        }
+        return next;
+      });
     }, STAGE_DURATIONS[stage]);
     return () => clearTimeout(timer);
   }, [stage]);
@@ -68,15 +81,17 @@ export const ToolTutorialHero: React.FC = () => {
           ) : (
             <div className="relative w-full h-full scale-in">
               <img
-                src="/demo-product.jpg"
+                src={EXAMPLES[exampleIndex].product}
                 alt={t("originalAlt")}
                 className="w-full h-full object-cover"
               />
-              <img
-                src="/demo-logo.png"
-                alt={t("logoAlt")}
-                className="absolute bottom-2 right-2 w-10 h-auto rounded shadow-lg bg-[#2b0f1f]/80 p-1"
-              />
+              {EXAMPLES[exampleIndex].logo && (
+                <img
+                  src={EXAMPLES[exampleIndex].logo}
+                  alt={t("logoAlt")}
+                  className="absolute bottom-2 right-2 w-10 h-auto rounded shadow-lg bg-[#2b0f1f]/80 p-1"
+                />
+              )}
             </div>
           )}
         </div>
@@ -88,7 +103,7 @@ export const ToolTutorialHero: React.FC = () => {
           {showResult && (
             <div className="absolute inset-0 fade-in">
               <img
-                src="/demo-result.jpg"
+                src={EXAMPLES[exampleIndex].result}
                 alt={t("resultAlt")}
                 className="w-full h-full object-cover"
               />
