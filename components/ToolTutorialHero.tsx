@@ -84,7 +84,7 @@ export const ToolTutorialHero: React.FC = () => {
               <img
                 src={EXAMPLES[exampleIndex].product}
                 alt={t("originalAlt")}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
               {EXAMPLES[exampleIndex].logo && (
                 <img
@@ -106,7 +106,7 @@ export const ToolTutorialHero: React.FC = () => {
               <img
                 src={EXAMPLES[exampleIndex].result}
                 alt={t("resultAlt")}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
               <span className="absolute top-2 left-2 bg-emerald-500/90 text-ink text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
                 <Check size={10} strokeWidth={3} /> {t("done")}
