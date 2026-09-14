@@ -8,6 +8,7 @@ import { SubscribeButton } from "@/components/SubscribeButton";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { FaqSection } from "@/components/FaqSection";
 import { BLOG_POSTS } from "@/lib/blog-posts";
+import Image from "next/image";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }) {
   return { alternates: { canonical: locale === "en" ? "/en" : "/" } };
@@ -30,7 +31,7 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
       <nav className="border-b border-line/60">
         <div className="container mx-auto max-w-6xl px-6 py-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-3">
           <div className="flex items-center gap-2.5 shrink-0">
-            <img src="/icon.png" alt="ShelfShot AI" className="w-9 h-9 sm:w-10 sm:h-10" />
+            <Image src="/icon.png" alt="ShelfShot AI" width={40} height={40} className="w-9 h-9 sm:w-10 sm:h-10" />
             <span className="font-display font-bold text-lg sm:text-xl tracking-tight">ShelfShot AI</span>
           </div>
           <div className="flex items-center flex-wrap gap-x-4 gap-y-2">
