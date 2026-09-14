@@ -58,6 +58,29 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // 2b. Rate limit: block a second request from the same user within 10
+  // seconds of their last one. Never triggers in normal use — the button
+  // is disabled while a request is in flight, and a single generation
+  // already takes longer than 10s — this only stops scripted/multi-tab abuse.
+  const { data: lastGeneration } = await supabase
+    .from("generations")
+    .select("created_at")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (lastGeneration) {
+    const secondsSinceLast =
+      (Date.now() - new Date(lastGeneration.created_at).getTime()) / 1000;
+    if (secondsSinceLast < 8) {
+      return NextResponse.json(
+        { error: "في طلب توليد شغّال حالياً، الرجاء الانتظار قليلاً قبل المحاولة مرة أخرى." },
+        { status: 429 }
+      );
+    }
+  }
+
   // 3. Parse the request body: base64 images + text prompt.
   const body = await req.json();
   const { productBase64, productMimeType, logoBase64, logoMimeType, prompt } = body as {
