@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { Wand2, Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -81,17 +82,23 @@ export const ToolTutorialHero: React.FC = () => {
             <span className="text-white/25 text-[11px]">{t("dragHint")}</span>
           ) : (
             <div className="relative w-full h-full scale-in">
-              <img
+              <Image
                 src={EXAMPLES[exampleIndex].product}
                 alt={t("originalAlt")}
-                className="w-full h-full object-contain"
+                fill
+                sizes="(max-width: 768px) 45vw, 260px"
+                className="object-contain"
               />
               {EXAMPLES[exampleIndex].logo && (
-                <img
-                  src={EXAMPLES[exampleIndex].logo}
-                  alt={t("logoAlt")}
-                  className="absolute bottom-2 right-2 w-10 h-auto rounded shadow-lg bg-[#2b0f1f]/80 p-1"
-                />
+                <div className="absolute bottom-2 right-2 w-10 h-10 rounded shadow-lg bg-[#2b0f1f]/80 p-1">
+                  <Image
+                    src={EXAMPLES[exampleIndex].logo}
+                    alt={t("logoAlt")}
+                    fill
+                    sizes="40px"
+                    className="object-contain rounded"
+                  />
+                </div>
               )}
             </div>
           )}
@@ -103,10 +110,12 @@ export const ToolTutorialHero: React.FC = () => {
           )}
           {showResult && (
             <div className="absolute inset-0 fade-in">
-              <img
+              <Image
                 src={EXAMPLES[exampleIndex].result}
                 alt={t("resultAlt")}
-                className="w-full h-full object-contain"
+                fill
+                sizes="(max-width: 768px) 45vw, 260px"
+                className="object-contain"
               />
               <span className="absolute top-2 left-2 bg-emerald-500/90 text-ink text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
                 <Check size={10} strokeWidth={3} /> {t("done")}
