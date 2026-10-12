@@ -54,7 +54,7 @@ export const BeforeAfterHero: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="relative rounded-xl2 overflow-hidden border border-line bg-panel aspect-square select-none touch-none"
+      className="relative rounded-xl2 overflow-hidden border border-line bg-card aspect-square select-none touch-none"
       onMouseMove={(e) => dragging && updateFromClientX(e.clientX)}
       onMouseUp={endDrag}
       onMouseLeave={() => dragging && endDrag()}
@@ -76,12 +76,12 @@ export const BeforeAfterHero: React.FC = () => {
             </linearGradient>
           </defs>
         </svg>
-        <span className="absolute bottom-4 text-[11px] text-white/25 tracking-wide">صورة أصلية</span>
+        <span className="absolute bottom-4 text-[11px] text-muted tracking-wide">صورة أصلية</span>
       </div>
 
       {/* AFTER layer (clipped by drag position) */}
       <div
-        className="absolute inset-0 flex items-center justify-center p-10 bg-gradient-to-br from-amber-900/50 via-panel to-panel"
+        className="absolute inset-0 flex items-center justify-center p-10 bg-gradient-to-br from-amber-900/50 via-card to-card"
         style={{ clipPath: `inset(0 ${position}% 0 0)` }}
       >
         <svg viewBox="0 0 200 200" className="w-full h-full max-w-[220px]">

@@ -46,7 +46,7 @@ export function SubscribeButton({ planId }: SubscribeButtonProps) {
       <button
         onClick={handleSubscribe}
         disabled={loading}
-        className="w-full text-center font-semibold rounded-full py-2.5 text-sm transition-colors bg-white/5 border border-line hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full text-center font-semibold rounded-full py-2.5 text-sm transition-colors bg-black/5 border border-line hover:bg-black/10 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? t("loading") : t("cta")}
       </button>

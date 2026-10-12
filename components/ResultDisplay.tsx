@@ -32,11 +32,11 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ isLoading, generat
   };
 
   return (
-    <div className="bg-panel border border-line rounded-xl2 aspect-square flex items-center justify-center overflow-hidden relative">
+    <div className="bg-card border border-line rounded-xl2 aspect-square flex items-center justify-center overflow-hidden relative">
       {isLoading && (
         <div className="text-center space-y-3">
-          <div className="w-10 h-10 border-2 border-white/20 border-t-amber-500 rounded-full animate-spin mx-auto" />
-          <p className="text-sm text-white/50">{t("loading")}</p>
+          <div className="w-10 h-10 border-2 border-black/20 border-t-amber-500 rounded-full animate-spin mx-auto" />
+          <p className="text-sm text-muted">{t("loading")}</p>
         </div>
       )}
 
@@ -53,7 +53,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ isLoading, generat
           <button
             onClick={handleDownload}
             type="button"
-            className="absolute bottom-4 left-4 bg-ink/80 backdrop-blur border border-line text-white text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 hover:bg-ink transition-colors"
+            className="absolute bottom-4 left-4 bg-white/80 backdrop-blur border border-line text-ink text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white transition-colors"
           >
             <Download size={16} />
             {t("download")}
@@ -63,8 +63,8 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ isLoading, generat
 
       {!isLoading && !error && !generatedImageUrl && (
         <div className="text-center space-y-2">
-          <Sparkles className="mx-auto text-white/15" size={32} />
-          <p className="text-sm text-white/30">{t("placeholder")}</p>
+          <Sparkles className="mx-auto text-muted" size={32} />
+          <p className="text-sm text-muted">{t("placeholder")}</p>
         </div>
       )}
     </div>

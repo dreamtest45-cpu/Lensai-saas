@@ -51,14 +51,14 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
 
   return (
     <div className="w-full">
-      <label className="block text-sm font-medium text-white/70 mb-2">
+      <label className="block text-sm font-medium text-muted mb-2">
         {label} {required && <span className="text-red-400">*</span>}
       </label>
 
       <div
         onClick={() => fileInputRef.current?.click()}
         className={`relative border-2 border-dashed rounded-xl p-4 h-48 flex flex-col items-center justify-center cursor-pointer transition-all duration-300 group ${
-          image ? "border-amber-500/50 bg-white/5" : "border-line hover:border-amber-400 hover:bg-white/5"
+          image ? "border-amber-500/50 bg-black/5" : "border-line hover:border-amber-400 hover:bg-black/5"
         }`}
       >
         <input type="file" ref={fileInputRef} onChange={handleFileChange} accept={accept} className="hidden" id={id} />
@@ -68,22 +68,22 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({
             <img src={image.preview} alt="Preview" className="max-h-full max-w-full object-contain rounded-md shadow-lg" />
             <button
               onClick={clearImage}
-              className="absolute -top-2 -left-2 bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-full shadow-md transition-transform hover:scale-110"
+              className="absolute -top-2 -left-2 bg-red-500 hover:bg-red-600 text-ink p-1.5 rounded-full shadow-md transition-transform hover:scale-110"
             >
               <X size={16} />
             </button>
           </div>
         ) : (
           <div className="text-center space-y-3">
-            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mx-auto group-hover:bg-amber-500/20 transition-colors">
+            <div className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center mx-auto group-hover:bg-amber-500/20 transition-colors">
               {isLogo ? (
-                <ImageIcon className="text-white/40 group-hover:text-amber-400" />
+                <ImageIcon className="text-muted group-hover:text-amber-400" />
               ) : (
-                <Upload className="text-white/40 group-hover:text-amber-400" />
+                <Upload className="text-muted group-hover:text-amber-400" />
               )}
             </div>
-            <p className="text-sm text-white/50 group-hover:text-white/80">{t("dropHint")}</p>
-            <p className="text-xs text-white/30">{t("formats")}</p>
+            <p className="text-sm text-muted group-hover:text-muted">{t("dropHint")}</p>
+            <p className="text-xs text-muted">{t("formats")}</p>
           </div>
         )}
       </div>

@@ -97,13 +97,13 @@ export default function DashboardClient({
 
   return (
     <div className="min-h-screen">
-      <header className="bg-panel border-b border-line sticky top-0 z-50">
+      <header className="bg-card border-b border-line sticky top-0 z-50">
         <div className="container mx-auto px-6 h-20 flex items-center justify-between max-w-6xl">
           <Link href="/" className="flex items-center gap-3">
             <img src="/icon.png" alt="ShelfShot AI" className="w-10 h-10" />
             <div>
               <h1 className="text-xl font-display font-bold">ShelfShot AI</h1>
-              <p className="text-xs text-white/40">{email}</p>
+              <p className="text-xs text-muted">{email}</p>
             </div>
           </Link>
           <div className="flex items-center gap-3">
@@ -111,7 +111,7 @@ export default function DashboardClient({
               <Crown size={14} />
               {t("planLabel", { plan: planName })}
             </span>
-            <button onClick={handleSignOut} className="text-white/50 hover:text-white p-2 rounded-lg hover:bg-white/5" title={t("signOut")}>
+            <button onClick={handleSignOut} className="text-muted hover:text-ink p-2 rounded-lg hover:bg-black/5" title={t("signOut")}>
               <LogOut size={18} />
             </button>
           </div>
@@ -145,13 +145,13 @@ export default function DashboardClient({
         )}
 
         {/* Usage bar */}
-        <div className="bg-panel border border-line rounded-xl2 p-5 mb-8 flex items-center justify-between flex-wrap gap-4">
+        <div className="bg-card border border-line rounded-xl2 p-5 mb-8 flex items-center justify-between flex-wrap gap-4">
           <div className="flex-1 min-w-[220px]">
             <div className="flex justify-between text-sm mb-2">
-              <span className="text-white/60">{t("usageLabel")}</span>
+              <span className="text-muted">{t("usageLabel")}</span>
               <span className="font-semibold">{used} / {limit}</span>
             </div>
-            <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+            <div className="h-2 rounded-full bg-black/5 overflow-hidden">
               <div
                 className={`h-full rounded-full ${usagePct >= 100 ? "bg-red-500" : "bg-amber-500"}`}
                 style={{ width: `${usagePct}%` }}
@@ -180,7 +180,7 @@ export default function DashboardClient({
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-panel p-6 rounded-xl2 border border-line">
+            <div className="bg-card p-6 rounded-xl2 border border-line">
               <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center text-xs text-ink font-bold">1</span>
                 {t("step1Title")}
@@ -191,7 +191,7 @@ export default function DashboardClient({
               </div>
             </div>
 
-            <div className="bg-panel p-6 rounded-xl2 border border-line">
+            <div className="bg-card p-6 rounded-xl2 border border-line">
               <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                 <span className="w-6 h-6 rounded-full bg-amber-500 flex items-center justify-center text-xs text-ink font-bold">2</span>
                 {t("step2Title")}
@@ -200,14 +200,14 @@ export default function DashboardClient({
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder={t("promptPlaceholder")}
-                className="w-full h-32 bg-ink border border-line rounded-xl p-4 text-sm outline-none focus:border-amber-500 transition-colors resize-none placeholder-white/25"
+                className="w-full h-32 bg-white border border-line rounded-xl p-4 text-sm outline-none focus:border-amber-500 transition-colors resize-none placeholder-muted/60"
               />
               <button
                 onClick={handleGenerate}
                 disabled={isGenerating || !productImage || !prompt || remaining <= 0}
                 className={`w-full mt-4 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all ${
                   isGenerating || !productImage || !prompt || remaining <= 0
-                    ? "bg-white/5 text-white/30 cursor-not-allowed"
+                    ? "bg-black/5 text-muted cursor-not-allowed"
                     : "bg-gradient-to-l from-amber-500 to-orange-600 text-ink hover:shadow-lg hover:shadow-amber-500/20 active:scale-[0.98]"
                 }`}
               >
@@ -239,13 +239,13 @@ export default function DashboardClient({
                       key={h.id}
                       type="button"
                       onClick={() => h.result_url && setResultImage(h.result_url)}
-                      className="aspect-square rounded-xl overflow-hidden bg-panel border border-line/50 hover:border-amber-500/50 transition-colors"
+                      className="aspect-square rounded-xl overflow-hidden bg-card border border-line/50 hover:border-amber-500/50 transition-colors"
                     >
                       {h.result_url && <img src={h.result_url} alt={h.prompt} className="w-full h-full object-cover" />}
                     </button>
                   ))}
                 </div>
-                <p className="text-center text-white/30 mt-2 text-sm">{t("historyLabel")}</p>
+                <p className="text-center text-muted mt-2 text-sm">{t("historyLabel")}</p>
               </>
             )}
           </div>

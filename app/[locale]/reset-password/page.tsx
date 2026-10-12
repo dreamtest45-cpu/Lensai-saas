@@ -70,21 +70,21 @@ export default function ResetPasswordPage() {
           <span className="font-display font-bold text-2xl">ShelfShot AI</span>
         </div>
 
-        <div className="bg-panel border border-line rounded-xl2 p-7">
+        <div className="bg-card border border-line rounded-xl2 p-7">
           {!ready && !success && (
             <div className="text-center py-6 space-y-3">
               <Loader2 className="animate-spin mx-auto text-amber-400" size={24} />
-              <p className="text-sm text-white/50">{t("verifying")}</p>
+              <p className="text-sm text-muted">{t("verifying")}</p>
             </div>
           )}
 
           {ready && !success && (
             <>
               <h1 className="text-lg font-bold mb-1">{t("title")}</h1>
-              <p className="text-sm text-white/50 mb-6">{t("subtitle")}</p>
+              <p className="text-sm text-muted mb-6">{t("subtitle")}</p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
-                  <Lock className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+                  <Lock className="absolute right-3 top-1/2 -translate-y-1/2 text-muted" size={18} />
                   <input
                     type="password"
                     required
@@ -92,11 +92,11 @@ export default function ResetPasswordPage() {
                     placeholder={t("newPasswordPlaceholder")}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
+                    className="w-full bg-white border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
                   />
                 </div>
                 <div className="relative">
-                  <Lock className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+                  <Lock className="absolute right-3 top-1/2 -translate-y-1/2 text-muted" size={18} />
                   <input
                     type="password"
                     required
@@ -104,7 +104,7 @@ export default function ResetPasswordPage() {
                     placeholder={t("confirmPasswordPlaceholder")}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
+                    className="w-full bg-white border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
                   />
                 </div>
 
@@ -125,7 +125,7 @@ export default function ResetPasswordPage() {
           {success && (
             <div className="text-center py-6 space-y-2">
               <p className="text-emerald-400 font-semibold">{t("successTitle")}</p>
-              <p className="text-sm text-white/50">{t("successBody")}</p>
+              <p className="text-sm text-muted">{t("successBody")}</p>
             </div>
           )}
         </div>

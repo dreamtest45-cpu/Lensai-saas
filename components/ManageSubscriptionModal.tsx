@@ -41,7 +41,7 @@ export function ManageSubscriptionModal({ planName }: ManageSubscriptionModalPro
     <>
       <button
         onClick={() => setOpen(true)}
-        className="text-sm font-semibold bg-white/5 border border-line px-4 py-2 rounded-full flex items-center gap-2 hover:bg-white/10"
+        className="text-sm font-semibold bg-black/5 border border-line px-4 py-2 rounded-full flex items-center gap-2 hover:bg-black/10"
       >
         <CreditCard size={14} />
         {t("manage")}
@@ -49,16 +49,16 @@ export function ManageSubscriptionModal({ planName }: ManageSubscriptionModalPro
 
       {open && (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[100] p-4">
-          <div className="bg-panel border border-line rounded-xl2 p-6 max-w-sm w-full relative">
+          <div className="bg-card border border-line rounded-xl2 p-6 max-w-sm w-full relative">
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-4 left-4 text-white/40 hover:text-white"
+              className="absolute top-4 left-4 text-muted hover:text-ink"
             >
               <X size={18} />
             </button>
 
             <h3 className="font-bold text-lg mb-2">{t("title")}</h3>
-            <p className="text-sm text-white/60 mb-6">
+            <p className="text-sm text-muted mb-6">
               {t("bodyPrefix")} <span className="text-amber-400 font-semibold">{planName}</span>.{" "}
               {t("bodySuffix")}
             </p>
@@ -69,14 +69,14 @@ export function ManageSubscriptionModal({ planName }: ManageSubscriptionModalPro
               <button
                 onClick={() => setOpen(false)}
                 disabled={loading}
-                className="flex-1 text-sm font-semibold bg-white/5 border border-line rounded-full py-2.5 hover:bg-white/10 disabled:opacity-50"
+                className="flex-1 text-sm font-semibold bg-black/5 border border-line rounded-full py-2.5 hover:bg-black/10 disabled:opacity-50"
               >
                 {t("back")}
               </button>
               <button
                 onClick={handleCancel}
                 disabled={loading}
-                className="flex-1 text-sm font-semibold bg-red-500/90 text-white rounded-full py-2.5 hover:bg-red-500 disabled:opacity-50"
+                className="flex-1 text-sm font-semibold bg-red-500/90 text-ink rounded-full py-2.5 hover:bg-red-500 disabled:opacity-50"
               >
                 {loading ? t("cancelling") : t("confirm")}
               </button>

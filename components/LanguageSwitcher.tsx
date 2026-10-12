@@ -17,7 +17,7 @@ export function LanguageSwitcher() {
   return (
     <button
       onClick={() => router.replace(pathname, { locale: nextLocale })}
-      className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white font-medium transition-colors"
+      className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-ink font-medium transition-colors"
       aria-label="Switch language"
     >
       <Languages size={16} />

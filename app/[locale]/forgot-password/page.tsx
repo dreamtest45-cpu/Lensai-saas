@@ -40,11 +40,11 @@ export default function ForgotPasswordPage() {
           <span className="font-display font-bold text-2xl">ShelfShot AI</span>
         </div>
 
-        <div className="bg-panel border border-line rounded-xl2 p-7">
+        <div className="bg-card border border-line rounded-xl2 p-7">
           {sent ? (
             <div className="text-center space-y-3 py-4">
               <p className="text-emerald-400 font-semibold">{t("sentTitle")}</p>
-              <p className="text-sm text-white/50 leading-relaxed">
+              <p className="text-sm text-muted leading-relaxed">
                 {t("sentBody", { email })}
               </p>
               <Link href="/login" className="inline-block text-sm text-amber-400 hover:text-amber-300 mt-2">
@@ -54,19 +54,19 @@ export default function ForgotPasswordPage() {
           ) : (
             <>
               <h1 className="text-lg font-bold mb-1">{t("title")}</h1>
-              <p className="text-sm text-white/50 mb-6">
+              <p className="text-sm text-muted mb-6">
                 {t("subtitle")}
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative">
-                  <Mail className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+                  <Mail className="absolute right-3 top-1/2 -translate-y-1/2 text-muted" size={18} />
                   <input
                     type="email"
                     required
                     placeholder={t("emailPlaceholder")}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
+                    className="w-full bg-white border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
                   />
                 </div>
 
@@ -83,7 +83,7 @@ export default function ForgotPasswordPage() {
               </form>
               <Link
                 href="/login"
-                className="mt-5 flex items-center justify-center gap-1 text-sm text-white/40 hover:text-white/70"
+                className="mt-5 flex items-center justify-center gap-1 text-sm text-muted hover:text-muted"
               >
                 <ArrowRight size={14} />
                 {t("backToLogin")}

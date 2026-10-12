@@ -8,13 +8,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0B0D12",
-        panel: "#12151C",
-        panel2: "#181C25",
-        line: "#242936",
+        ground: "#FFF8F1",
+        ink: "#1B1B1F",
+        muted: "#5C5A57",
+        card: "#F3E9DF",
+        card2: "#FFFFFF",
+        line: "#E3D6C8",
         amber: {
-          400: "#F5B94D",
-          500: "#F0A020",
+          300: "#9A5A00",
+          400: "#B86A00",
+          500: "#F29E0F",
           600: "#D97F0B",
         },
       },

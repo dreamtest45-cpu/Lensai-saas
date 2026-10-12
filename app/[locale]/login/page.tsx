@@ -53,12 +53,12 @@ export default function LoginPage() {
           <span className="font-display font-bold text-2xl">ShelfShot AI</span>
         </div>
 
-        <div className="bg-panel border border-line rounded-xl2 p-7">
-          <div className="flex gap-2 mb-6 bg-ink/50 rounded-full p-1">
+        <div className="bg-card border border-line rounded-xl2 p-7">
+          <div className="flex gap-2 mb-6 bg-white/50 rounded-full p-1">
             <button
               onClick={() => setMode("signin")}
               className={`flex-1 text-sm font-semibold py-2 rounded-full transition-colors ${
-                mode === "signin" ? "bg-amber-500 text-ink" : "text-white/50"
+                mode === "signin" ? "bg-amber-500 text-ink" : "text-muted"
               }`}
             >
               {t("signIn")}
@@ -66,7 +66,7 @@ export default function LoginPage() {
             <button
               onClick={() => setMode("signup")}
               className={`flex-1 text-sm font-semibold py-2 rounded-full transition-colors ${
-                mode === "signup" ? "bg-amber-500 text-ink" : "text-white/50"
+                mode === "signup" ? "bg-amber-500 text-ink" : "text-muted"
               }`}
             >
               {t("signUp")}
@@ -75,18 +75,18 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="relative">
-              <Mail className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+              <Mail className="absolute right-3 top-1/2 -translate-y-1/2 text-muted" size={18} />
               <input
                 type="email"
                 required
                 placeholder={t("emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
+                className="w-full bg-white border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
               />
             </div>
             <div className="relative">
-              <Lock className="absolute right-3 top-1/2 -translate-y-1/2 text-white/30" size={18} />
+              <Lock className="absolute right-3 top-1/2 -translate-y-1/2 text-muted" size={18} />
               <input
                 type="password"
                 required
@@ -94,7 +94,7 @@ export default function LoginPage() {
                 placeholder={t("passwordPlaceholder")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-ink border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
+                className="w-full bg-white border border-line rounded-xl py-3 pr-11 pl-4 text-sm outline-none focus:border-amber-500 transition-colors"
               />
             </div>
 
@@ -111,7 +111,7 @@ export default function LoginPage() {
             </button>
 
             {mode === "signin" && (
-              <Link href="/forgot-password" className="block text-center text-sm text-white/40 hover:text-amber-400 transition-colors">
+              <Link href="/forgot-password" className="block text-center text-sm text-muted hover:text-amber-400 transition-colors">
                 {t("forgotPassword")}
               </Link>
             )}

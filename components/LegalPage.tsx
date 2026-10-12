@@ -21,7 +21,7 @@ export async function LegalPage({ title, updatedAt, children }: Props) {
             <span className="font-display font-bold text-base sm:text-lg tracking-tight">ShelfShot AI</span>
           </Link>
           <div className="flex items-center flex-wrap gap-x-5 gap-y-2">
-            <Link href="/" className="text-sm text-white/50 hover:text-white flex items-center gap-1">
+            <Link href="/" className="text-sm text-muted hover:text-ink flex items-center gap-1">
               <ArrowRight size={14} />
               {t("home")}
             </Link>
@@ -32,14 +32,14 @@ export async function LegalPage({ title, updatedAt, children }: Props) {
 
       <main className="container mx-auto max-w-3xl px-6 py-14">
         <h1 className="font-display font-bold text-3xl mb-2">{title}</h1>
-        <p className="text-white/40 text-sm mb-10">{updatedAt}</p>
-        <div className="space-y-6 text-white/70 leading-relaxed [&_h2]:text-white [&_h2]:font-bold [&_h2]:text-lg [&_h2]:mt-8 [&_h2]:mb-2 [&_ul]:list-disc [&_ul]:pr-5 [&_ul]:space-y-1.5">
+        <p className="text-muted text-sm mb-10">{updatedAt}</p>
+        <div className="space-y-6 text-muted leading-relaxed [&_h2]:text-ink [&_h2]:font-bold [&_h2]:text-lg [&_h2]:mt-8 [&_h2]:mb-2 [&_ul]:list-disc [&_ul]:pr-5 [&_ul]:space-y-1.5">
           {children}
         </div>
       </main>
 
       <footer className="border-t border-line/60 py-10 mt-10">
-        <div className="container mx-auto max-w-3xl px-6 text-sm text-white/30 text-center">
+        <div className="container mx-auto max-w-3xl px-6 text-sm text-muted text-center">
           © {new Date().getFullYear()} ShelfShot AI
         </div>
       </footer>

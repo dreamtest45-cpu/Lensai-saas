@@ -35,13 +35,13 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
             <span className="font-display font-bold text-lg sm:text-xl tracking-tight">ShelfShot AI</span>
           </div>
           <div className="flex items-center flex-wrap gap-x-4 gap-y-2">
-            <Link href="/blog" className="text-sm text-white/60 hover:text-white font-medium">
+            <Link href="/blog" className="text-sm text-muted hover:text-ink font-medium">
               {tNav("blog")}
             </Link>
             <LanguageSwitcher />
             <Link
               href={user ? "/dashboard" : "/login"}
-              className="text-sm font-semibold bg-white/5 hover:bg-white/10 border border-line rounded-full px-5 py-2.5 transition-colors"
+              className="text-sm font-semibold bg-black/5 hover:bg-black/10 border border-line rounded-full px-5 py-2.5 transition-colors"
             >
               {user ? tNav("dashboard") : tNav("login")}
             </Link>
@@ -61,7 +61,7 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
               <br />
               <span className="text-amber-400">{t("titleHighlight")}</span>
             </h1>
-            <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-lg">
+            <p className="text-muted text-lg leading-relaxed mb-8 max-w-lg">
               {t("subtitle")}
             </p>
             <div className="flex flex-wrap items-center gap-4">
@@ -72,7 +72,7 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
                 <Wand2 size={18} strokeWidth={2.5} />
                 {t("ctaTry")}
               </Link>
-              <span className="text-sm text-white/40">{t("ctaNote")}</span>
+              <span className="text-sm text-muted">{t("ctaNote")}</span>
             </div>
           </div>
 
@@ -86,10 +86,10 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
           <h2 className="font-display font-bold text-2xl mb-10">{t("featuresTitle")}</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[Wand2, Layers, ShieldCheck].map((Icon, i) => (
-              <div key={i} className="bg-panel border border-line rounded-xl2 p-6">
+              <div key={i} className="bg-card border border-line rounded-xl2 p-6">
                 <Icon className="text-amber-400 mb-4" size={26} />
                 <h3 className="font-bold mb-2">{features[i].title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{features[i].desc}</p>
+                <p className="text-muted text-sm leading-relaxed">{features[i].desc}</p>
               </div>
             ))}
           </div>
@@ -100,15 +100,15 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
       <section className="border-t border-line/60 py-20" id="testimonials">
         <div className="container mx-auto max-w-6xl px-6">
           <h2 className="font-display font-bold text-2xl mb-2">{t("testimonialsTitle")}</h2>
-          <p className="text-white/50 mb-10">{t("testimonialsSubtitle")}</p>
+          <p className="text-muted mb-10">{t("testimonialsSubtitle")}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((item, i) => (
-              <div key={i} className="bg-panel border border-line rounded-xl2 p-6 flex flex-col">
+              <div key={i} className="bg-card border border-line rounded-xl2 p-6 flex flex-col">
                 <Quote className="text-amber-400 mb-4 shrink-0" size={22} />
-                <p className="text-white/70 text-sm leading-relaxed mb-5 flex-1">
+                <p className="text-muted text-sm leading-relaxed mb-5 flex-1">
                   {item.quote}
                 </p>
-                <span className="text-xs font-semibold text-white/40">{item.author}</span>
+                <span className="text-xs font-semibold text-muted">{item.author}</span>
               </div>
             ))}
           </div>
@@ -119,13 +119,13 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
       <section className="border-t border-line/60 py-20" id="pricing">
         <div className="container mx-auto max-w-6xl px-6">
           <h2 className="font-display font-bold text-2xl mb-2">{t("pricingTitle")}</h2>
-          <p className="text-white/50 mb-10">{t("pricingSubtitle")}</p>
+          <p className="text-muted mb-10">{t("pricingSubtitle")}</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {Object.values(PLANS).map((plan) => (
               <div
                 key={plan.id}
                 className={`rounded-xl2 p-7 border ${
-                  plan.id === "pro" ? "border-amber-500/60 bg-panel2 relative" : "border-line bg-panel"
+                  plan.id === "pro" ? "border-amber-500/60 bg-card2 relative" : "border-line bg-card"
                 }`}
               >
                 {plan.id === "pro" && (
@@ -138,11 +138,11 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
                   <span className="text-3xl font-display font-extrabold">
                     {plan.price === 0 ? t("free") : `$${plan.price}`}
                   </span>
-                  {plan.price > 0 && <span className="text-white/40 text-sm">{t("perMonth")}</span>}
+                  {plan.price > 0 && <span className="text-muted text-sm">{t("perMonth")}</span>}
                 </div>
                 <ul className="space-y-2.5 mb-7">
                   {(tPlans.raw(`${plan.id}.features`) as string[]).map((f, i) => (
-                    <li key={i} className="text-sm text-white/60 flex items-center gap-2">
+                    <li key={i} className="text-sm text-muted flex items-center gap-2">
                       <Zap size={14} className="text-amber-400 shrink-0" />
                       {f}
                     </li>
@@ -151,7 +151,7 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
                 {plan.price === 0 ? (
                   <Link
                     href={user ? "/dashboard" : "/login"}
-                    className="block text-center font-semibold rounded-full py-2.5 text-sm transition-colors bg-white/5 border border-line hover:bg-white/10"
+                    className="block text-center font-semibold rounded-full py-2.5 text-sm transition-colors bg-black/5 border border-line hover:bg-black/10"
                   >
                     {t("startFree")}
                   </Link>
@@ -170,7 +170,7 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
           <h2 className="font-display font-bold text-2xl mb-2">
             {locale === "en" ? "From the Blog" : "من المدونة"}
           </h2>
-          <p className="text-white/50 mb-10">
+          <p className="text-muted mb-10">
             {locale === "en"
               ? "Tips and honest comparisons for online sellers"
               : "نصائح ومقارنات صريحة لأصحاب المتاجر الإلكترونية"}
@@ -180,11 +180,11 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block bg-panel border border-line rounded-xl2 p-6 hover:border-amber-500/40 transition-colors"
+                className="block bg-card border border-line rounded-xl2 p-6 hover:border-amber-500/40 transition-colors"
               >
-                <p className="text-xs text-white/40 mb-2">{post.date}</p>
+                <p className="text-xs text-muted mb-2">{post.date}</p>
                 <h3 className="font-bold mb-2">{post.title}</h3>
-                <p className="text-white/50 text-sm leading-relaxed">{post.excerpt}</p>
+                <p className="text-muted text-sm leading-relaxed">{post.excerpt}</p>
               </Link>
             ))}
           </div>
@@ -195,15 +195,15 @@ export default async function LandingPage({ params: { locale } }: { params: { lo
 
      <footer className="border-t border-line/60 py-10">
         <div className="container mx-auto max-w-6xl px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-sm text-white/30">© {new Date().getFullYear()} ShelfShot AI</span>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-white/40">
-            <Link href="/about" className="hover:text-white/70">{t("footer.about")}</Link>
-            <Link href="/contact" className="hover:text-white/70">{t("footer.contact")}</Link>
-            <Link href="/terms" className="hover:text-white/70">{t("footer.terms")}</Link>
-            <Link href="/privacy" className="hover:text-white/70">{t("footer.privacy")}</Link>
-            <Link href="/refund" className="hover:text-white/70">{t("footer.refund")}</Link>
+          <span className="text-sm text-muted">© {new Date().getFullYear()} ShelfShot AI</span>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
+            <Link href="/about" className="hover:text-muted">{t("footer.about")}</Link>
+            <Link href="/contact" className="hover:text-muted">{t("footer.contact")}</Link>
+            <Link href="/terms" className="hover:text-muted">{t("footer.terms")}</Link>
+            <Link href="/privacy" className="hover:text-muted">{t("footer.privacy")}</Link>
+            <Link href="/refund" className="hover:text-muted">{t("footer.refund")}</Link>
           </div>
-          <div className="flex items-center gap-3 text-white/40">
+          <div className="flex items-center gap-3 text-muted">
             <span className="inline-flex items-center gap-1.5 border border-line rounded-md px-2.5 py-1 text-xs font-semibold">
               <CreditCard size={14} />
               Visa

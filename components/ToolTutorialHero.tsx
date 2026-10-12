@@ -64,22 +64,22 @@ export const ToolTutorialHero: React.FC = () => {
   const hasProduct = stage !== "idle";
 
   return (
-    <div className="relative rounded-xl2 overflow-hidden border border-line bg-panel aspect-square p-6 flex flex-col gap-3">
+    <div className="relative rounded-xl2 overflow-hidden border border-line bg-card aspect-square p-6 flex flex-col gap-3">
       <div className="flex items-center gap-2 opacity-70">
         <div className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-        <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
-        <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
-        <span className="text-[10px] text-white/30 ms-2">{t("urlBar")}</span>
+        <div className="w-2.5 h-2.5 rounded-full bg-black/20" />
+        <div className="w-2.5 h-2.5 rounded-full bg-black/20" />
+        <span className="text-[10px] text-muted ms-2">{t("urlBar")}</span>
       </div>
 
       <div className="flex-1 grid grid-cols-2 gap-3 min-h-0">
         <div
           className={`relative rounded-xl border-2 border-dashed overflow-hidden flex items-center justify-center transition-colors duration-500 ${
-            hasProduct ? "border-amber-500/50 bg-white/5" : "border-line"
+            hasProduct ? "border-amber-500/50 bg-black/5" : "border-line"
           }`}
         >
           {!hasProduct ? (
-            <span className="text-white/25 text-[11px]">{t("dragHint")}</span>
+            <span className="text-muted text-[11px]">{t("dragHint")}</span>
           ) : (
             <div className="relative w-full h-full scale-in">
               <Image
@@ -106,7 +106,7 @@ export const ToolTutorialHero: React.FC = () => {
 
         <div className="relative rounded-xl border border-line overflow-hidden flex items-center justify-center bg-[#15171C]">
           {isGenerating && (
-            <div className="w-6 h-6 border-2 border-white/15 border-t-amber-500 rounded-full animate-spin" />
+            <div className="w-6 h-6 border-2 border-black/15 border-t-amber-500 rounded-full animate-spin" />
           )}
           {showResult && (
             <div className="absolute inset-0 fade-in">
@@ -123,23 +123,23 @@ export const ToolTutorialHero: React.FC = () => {
             </div>
           )}
           {!isGenerating && !showResult && (
-            <span className="text-white/10 text-[11px]">{t("resultPlaceholder")}</span>
+            <span className="text-muted text-[11px]">{t("resultPlaceholder")}</span>
           )}
         </div>
       </div>
 
-      <div className="rounded-lg bg-ink border border-line px-3 py-2.5 text-[11px] text-white/60 h-9 flex items-center overflow-hidden whitespace-nowrap">
+      <div className="rounded-lg bg-white border border-line px-3 py-2.5 text-[11px] text-muted h-9 flex items-center overflow-hidden whitespace-nowrap">
         {stage === "typing" || stage === "generating" || stage === "result"
           ? PROMPT_TEXT.slice(0, stage === "typing" ? typedLength : PROMPT_TEXT.length)
           : ""}
-        {stage === "typing" && <span className="inline-block w-[2px] h-3 bg-amber-400 ms-0.5 animate-pulse" />}
+        {stage === "typing" && <span className="inline-block w-[2px] h-3 bg-amber-500 ms-0.5 animate-pulse" />}
       </div>
 
       <div
         className={`rounded-lg py-2 text-center text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-300 ${
           isGenerating || showResult
             ? "bg-gradient-to-l from-amber-500 to-orange-600 text-ink"
-            : "bg-white/5 text-white/30"
+            : "bg-black/5 text-muted"
         } ${isGenerating ? "scale-95" : "scale-100"}`}
       >
         <Wand2 size={13} />

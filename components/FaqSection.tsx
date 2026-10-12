@@ -25,17 +25,17 @@ export function FaqSection({ locale }: { locale: string }) {
     <section className="border-t border-line/60 py-20" id="faq">
       <div className="container mx-auto max-w-6xl px-6">
         <h2 className="font-display font-bold text-2xl mb-2">{title}</h2>
-        <p className="text-white/50 mb-10">{subtitle}</p>
+        <p className="text-muted mb-10">{subtitle}</p>
         <div className="max-w-3xl space-y-4">
           {items.map((item, i) => (
-            <details key={i} className="bg-panel border border-line rounded-xl2 p-6 group">
+            <details key={i} className="bg-card border border-line rounded-xl2 p-6 group">
               <summary className="font-bold cursor-pointer list-none flex items-center justify-between gap-4">
                 {item.question}
                 <span className="text-amber-400 shrink-0 text-xl leading-none group-open:rotate-45 transition-transform">
                   +
                 </span>
               </summary>
-              <p className="text-white/50 text-sm leading-relaxed mt-4">{item.answer}</p>
+              <p className="text-muted text-sm leading-relaxed mt-4">{item.answer}</p>
             </details>
           ))}
         </div>
