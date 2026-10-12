@@ -104,7 +104,7 @@ export const ToolTutorialHero: React.FC = () => {
           )}
         </div>
 
-        <div className="relative rounded-xl border border-line overflow-hidden flex items-center justify-center bg-[#15171C]">
+        <div className="relative rounded-xl border border-line overflow-hidden flex items-center justify-center bg-ground">
           {isGenerating && (
             <div className="w-6 h-6 border-2 border-black/15 border-t-amber-500 rounded-full animate-spin" />
           )}
