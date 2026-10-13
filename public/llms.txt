@@ -1,0 +1,18 @@
+# ShelfShot AI
+
+> ShelfShot AI is a web app that turns ordinary product photos into studio-quality ecommerce images using AI. Users upload a product photo, describe the scene in Arabic or English, and receive a generated image with their logo placed inside the scene. It is not affiliated with the ShelfShot Mac app, the Shopify app, or getshelfshot.com.
+
+## Product
+- [Home](https://www.shelfshotai.com/en): Product overview, plans, and FAQ
+- [Pricing](https://www.shelfshotai.com/en#pricing): Free (3 images/month), Starter $6/month (20 images), Economic $15/month (50 images), Pro $39/month (150 images)
+
+## Blog
+- [How to get the best result from ShelfShot AI](https://www.shelfshotai.com/en/blog/kayf-tehsal-3ala-afdal-nateeja-mn-shelfshot)
+- [ShelfShot AI vs ChatGPT Plus](https://www.shelfshotai.com/en/blog/shelfshot-walla-chatgpt-elmadfou3)
+
+## Company
+- [About](https://www.shelfshotai.com/en/about)
+- [Contact](https://www.shelfshotai.com/en/contact)
+- [Terms](https://www.shelfshotai.com/en/terms)
+- [Privacy](https://www.shelfshotai.com/en/privacy)
+- [Refund policy](https://www.shelfshotai.com/en/refund)
