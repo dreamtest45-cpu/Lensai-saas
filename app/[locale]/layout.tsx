@@ -62,6 +62,7 @@ export default async function RootLayout({
         sameAs: [
           "https://x.com/ShelfShotai",
           "https://www.tiktok.com/@shelfshot.ai",
+             "https://www.linkedin.com/in/shelfshot-ai-615b77432/",
         ],
       },
       {
