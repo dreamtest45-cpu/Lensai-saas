@@ -27,7 +27,7 @@ export const FAQ_ITEMS_AR: FaqItem[] = [
   {
     question: "هل الصورة الناتجة بتحافظ على شكل المنتج الحقيقي؟",
     answer:
-      "نعم، الأداة مصممة للحفاظ على شكل وملامح المنتج الأصلي كما هو (الشكل، الألوان، التفاصيل)، وبس بتغيّر المشهد والخلفية والإضاءة من حوله — مش بتغيّر المنتج نفسه.",
+      "الأداة مصممة للحفاظ على شكل المنتج الأصلي وألوانه وتفاصيله الأساسية، وبتغيّر المشهد والخلفية والإضاءة من حوله. النتائج قد تختلف قليلاً، لذلك ننصح بمراجعة كل صورة قبل نشرها.",
   },
   {
     question: "هل فيني أضيف لوغو متجري بشكل تلقائي على الصورة؟",
@@ -48,6 +48,11 @@ export const FAQ_ITEMS_AR: FaqItem[] = [
     question: "شو الفرق بين ShelfShot AI وأدوات زي PhotoRoom أو Pebblely أو Flair.ai؟",
     answer:
       "الفرق الأساسي إنه ShelfShot AI بيولّد المشهد بالكامل من وصفك النصي، بدل ما تختار من قوالب جاهزة محدودة زي أغلب الأدوات المنافسة. كمان اللوغو بينحط داخل المشهد نفسه بشكل طبيعي وقت التوليد، مش كطبقة ثابتة فوق الصورة. وبالنسبة للسعر، ShelfShot AI أرخص من أغلب البدائل المذكورة، وبيدعم اللغة العربية بشكل مباشر.",
+  },
+  {
+    question: "هل ShelfShot AI مرتبطة بتطبيق ShelfShot على Mac أو تطبيق Shopify؟",
+    answer:
+      "لا. ShelfShot AI (shelfshotai.com) أداة ويب لتصوير المنتجات بالذكاء الاصطناعي، وليست مرتبطة بتطبيق ShelfShot على Mac أو تطبيق Shopify أو getshelfshot.com.",
   },
 ];
 
@@ -75,7 +80,7 @@ export const FAQ_ITEMS_EN: FaqItem[] = [
   {
     question: "Does the generated image keep the product's real shape and details accurate?",
     answer:
-      "Yes, the tool is designed to preserve the original product's shape and features exactly as they are (shape, colors, details) — it only changes the scene, background, and lighting around it, not the product itself.",
+      "The tool is designed to preserve the original product's shape, colors, and key details while changing the scene, background, and lighting around it. Results can vary slightly, so we recommend reviewing each image before publishing.",
   },
   {
     question: "Can I automatically add my store's logo to the image?",
@@ -96,5 +101,10 @@ export const FAQ_ITEMS_EN: FaqItem[] = [
     question: "What's the difference between ShelfShot AI and tools like PhotoRoom, Pebblely, or Flair.ai?",
     answer:
       "The main difference is that ShelfShot AI generates the entire scene from your text description, instead of choosing from the limited templates most competing tools rely on. The logo is also embedded naturally within the generated scene itself, rather than as a static layer on top of the image. On pricing, ShelfShot AI is more affordable than most of the alternatives mentioned, and it supports Arabic directly.",
+  },
+  {
+    question: "Is ShelfShot AI related to the ShelfShot Mac app or the Shopify app?",
+    answer:
+      "No. ShelfShot AI (shelfshotai.com) is a web-based AI product photography tool. It is not related to the ShelfShot Mac app, the Shopify app, or getshelfshot.com.",
   },
 ];
