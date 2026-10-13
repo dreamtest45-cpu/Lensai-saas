@@ -47,18 +47,38 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir} className={`${cairo.variable} ${plexArabic.variable}`}>
       <body className="font-body antialiased">
-        <script
+       <script
   type="application/ld+json"
   dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      name: "ShelfShot AI",
-      url: "https://www.shelfshotai.com",
-      logo: "https://www.shelfshotai.com/icon.png",
-      description:
-        "أداة بالذكاء الاصطناعي تحوّل صور المنتجات العادية إلى تصوير احترافي بجودة استوديو، لأصحاب المتاجر الإلكترونية.",
-    }),
+    __html: JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "ShelfShot AI",
+        url: "https://www.shelfshotai.com",
+        logo: "https://www.shelfshotai.com/icon.png",
+        description:
+          "أداة بالذكاء الاصطناعي تحوّل صور المنتجات العادية إلى تصوير احترافي بجودة استوديو، لأصحاب المتاجر الإلكترونية.",
+        sameAs: [
+          "https://x.com/ShelfShotai",
+          "https://www.tiktok.com/@shelfshot.ai",
+        ],
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "ShelfShot AI",
+        url: "https://www.shelfshotai.com",
+        applicationCategory: "DesignApplication",
+        operatingSystem: "Web",
+        offers: [
+          { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD" },
+          { "@type": "Offer", name: "Starter", price: "6", priceCurrency: "USD" },
+          { "@type": "Offer", name: "Economic", price: "15", priceCurrency: "USD" },
+          { "@type": "Offer", name: "Pro", price: "39", priceCurrency: "USD" },
+        ],
+      },
+    ]),
   }}
 />
         {/* Google Analytics (GA4) */}
